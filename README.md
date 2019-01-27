@@ -26,7 +26,7 @@ I am using the Ultimate edition (on a free trial) and these instructions refer t
 3. After the download finishes, click the file to open it.
 4. Following the instructions in the popup window, dragging the IntelliJ icon to your Applications folder.
 5. Once the files finish copying over, navigate to your Applications folder and open IntelliJ IDEA.
-6. You may get a warning that asks you if you're sure you want to open the app, click Open.
+6. You may get a warning that asks you if you're sure you want to open the app, click `Open`.
 7. A window will appear that allows you to walk through personalizing your IntelliJ IDEA. You may choose to do so, or just click the button in the bottom left corner to use the default settings.
 8. After finishing the personalization settings, you will be presented with a window that asks you activate your license or evaluate the Ultimate edition for free. You may choose to do either (If you create a JetBrains account with a .edu email address, you have full access to the Ultimate edition for free).
 9. Once you activate your license or register for the evaluation trial, you are now ready to use IntelliJ.
@@ -34,8 +34,8 @@ I am using the Ultimate edition (on a free trial) and these instructions refer t
 ### Running my projects in IntelliJ
 
 1. Clone the project repository to your machine. (Pull the latest changes if you've already done this)
-2. Open IntelliJ, and select Open on the welcome screen. (If the full IDE is open, go to File > Open)
-3. Navigate to the repository, select the root folder of the project, and click Open.
-4. Run the project by selecting Run > Run '<class name>'.
+2. Open IntelliJ, and select `Open` on the welcome screen. (If the full IDE is open, go to File > Open)
+3. Navigate to the repository, select the root folder of the project, and click `Open`.
+4. Run the project by selecting `Run > Run '<class name>'`.
   
 If a project requires more specific instructions, I will add a .txt file in the root folder of the project that explain the extra or alternate steps.
