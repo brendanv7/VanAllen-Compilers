@@ -33,5 +33,9 @@ I am using the Ultimate edition (on a free trial) and these instructions refer t
 
 ### Running my projects in IntelliJ
 
-1. Download the project files from this repository. You may clone the respository and pull the latest version or simply download the project root folder from github.
-2. 
+1. Clone the project repository to your machine. (Pull the latest changes if you've already done this)
+2. Open IntelliJ, and select Open on the welcome screen. (If the full IDE is open, go to File > Open
+3. Navigate to the repository, select the root folder of the project, and click Open.
+4. Run the project by selecting Run > Run '<class name>'
+  
+If a project requires more specific instructions, I will add a .txt file in the root folder of the project that explain the extra or alternate steps.
