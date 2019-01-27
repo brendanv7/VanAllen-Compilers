@@ -32,3 +32,6 @@ I am using the Ultimate edition (on a free trial) and these instructions refer t
 9. Once you activate your license or register for the evaluation trial, you are now ready to use IntelliJ.
 
 ### Running my projects in IntelliJ
+
+1. Download the project files from this repository. You may clone the respository and pull the latest version or simply download the project root folder from github.
+2. 
