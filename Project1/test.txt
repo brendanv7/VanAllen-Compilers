@@ -1,2 +1,4 @@
-{{{{{{{{ }}}}}}/*a;lksjdf;laksjdf;lkas*/heybooleantruefalseintif
-$
+{}$	
+	 	 	 {{{{{{}}}}}}$	
+	 	 	 {{{{{{}}}	/*	comments	are	ignored	*/	}}}}$	
+	 	 	 {	/*	comments	are	still	ignored	*/	int	@}$	
