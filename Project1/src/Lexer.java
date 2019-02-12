@@ -13,16 +13,20 @@ public class Lexer {
         String input;
         String[] token = new String[2];
         String keyword;
-        boolean programComplete = false;
+        boolean programComplete = true; // True to start so first print statement runs
         boolean tokenFound = false;
         boolean inComment = false;
+        boolean inString = false;
         lineNum = 0;
         program = 1;
+        errors = 0;
 
         while (scanner.hasNext()) {
             // Check for start of new program
-            if(lineNum == 0)
-                System.out.println("LEXER -- Lexing program "+program+"...");
+            if (programComplete) {
+                System.out.println("LEXER -- Lexing program " + program + "...");
+                programComplete = false;
+            }
 
             position = 0; // Reset position to beginning of line
 
@@ -55,7 +59,7 @@ public class Lexer {
                         case 'b': {
                             if (i+6 < inputChars.length && (keyword = new String(inputChars, i, 7)).equals("boolean")) {
                                 // Found a keyword, add the token
-                                token = new String[]{"B_TYPE", keyword};
+                                token = new String[]{"BOOL", keyword};
                                 // Skip to end of keyword
                                 i += 6;
                             } else {
@@ -82,7 +86,7 @@ public class Lexer {
                         case 'i': {
                             // 'i' can start two keywords, so check both, starting with the longest
                             if (i+2 < inputChars.length && (keyword = new String(inputChars, i, 3)).equals("int")) {
-                                token = new String[]{"I_TYPE", keyword};
+                                token = new String[]{"INT", keyword};
                                 i += 2;
                             } else if (i+1 < inputChars.length && (keyword = new String(inputChars, i, 2)).equals("if")) {
                                 token = new String[]{"IF", keyword};
@@ -170,19 +174,7 @@ public class Lexer {
                         case '"': {
                             token = new String[]{"QUOTE", Character.toString(c)};
                             tokenFound = true;
-                            int endIndex;
-                            for (endIndex = i; endIndex < inputChars.length; endIndex++) {
-                                if (inputChars[endIndex] == '"') {
-                                    break;
-                                }
-                            }
-                            if (endIndex == inputChars.length) {
-                                errors++;
-                                position = endIndex; // End of line for better clarity in error message
-                                printError("Unterminated string");
-                            } else {
-                                i = endIndex; // Skip to end of string
-                            }
+                            inString = !inString; // If we weren't in a string, we are now, and vice versa
                             break;
                         }
 
@@ -206,12 +198,12 @@ public class Lexer {
                         case '!': {
                             if (i + 1 < inputChars.length && inputChars[i + 1] == '=') {
                                 token = new String[]{"BOOL_OP", "!="};
+                                tokenFound = true;
                                 i += 1;
                             } else {
                                 errors++;
                                 printError("Unrecognized token [ " + Character.toString(c) + " ]");
                             }
-                            tokenFound = true;
                             break;
                         }
 
@@ -236,6 +228,7 @@ public class Lexer {
                                 errors++;
                                 printError("Unrecognized token [ " + Character.toString(c) + " ]");
                             }
+                            break;
                         }
 
                     }
@@ -245,7 +238,9 @@ public class Lexer {
                         tokenFound = false;
                         position = i+1; // Regroup position with i now that we've printed the last token
                     }
-                } else {
+                }
+                // inComment = true
+                else {
                     // See if the next character can get us out of the comment
                     if (c == '*' && i+1 < inputChars.length && inputChars[i+1] == '/') {
                         // We're now free to keep lexing
@@ -253,6 +248,13 @@ public class Lexer {
                         i++;
                     }
                 }
+            }
+
+            // Reached end of line, check for unterminated string
+            if (inString) {
+                errors++;
+                printError("Unterminated string");
+                inString = false; // Reset since string cannot continue onto next line
             }
 
             if (programComplete) {
@@ -263,10 +265,7 @@ public class Lexer {
                 }
                 printEndOfProgram();
 
-                // Reset counters and flags
-                programComplete = false;
-                tokenFound = false;
-                lineNum = 0;
+                errors = 0;
 
                 program++;
             }
@@ -274,7 +273,7 @@ public class Lexer {
 
         // Provide warning if program ended while in a comment.
         if (inComment) {
-            printWarning("Program ended in open comment. Consider closing it.");
+            printWarning("Program ended in open comment. Consider closing it");
         }
 
         // No input is an error.
