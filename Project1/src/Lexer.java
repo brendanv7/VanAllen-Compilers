@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * A lexical analyzer for the class language of
+ * CMPT 432-Compilers with Alan Labouseur.
+ *
+ * @author Brendan Van Allen
+ * @version Spring 2019
+ */
 public class Lexer {
     private static int lineNum;
     private static int position;
