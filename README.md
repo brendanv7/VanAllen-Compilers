@@ -53,7 +53,7 @@ I am using the Ultimate edition (on a free trial) and these instructions refer t
 ### Running a JAR file from the command line
 
 1. Open a new terminal window, and navigate to the directory containing the JAR file.
-2. Enter the command "java -jar <filename>.jar" to run the program.
-3. If the project requires an input and/or output file, append the following to the above command: "< <filename>.in > <filename>.out" where <filename>.in is the input file, and <filename>.out is the output file.
+2. Enter the command "java -jar (filename).jar" to run the program.
+3. If the project requires an input and/or output file, append the following to the above command: "< (filename).in > (filename).out" where (filename).in is the input file, and (filename).out is the output file.
   
 If a project requires more specific instructions, I will add a markdown file in the root folder of the project that explain the extra or alternate steps.
