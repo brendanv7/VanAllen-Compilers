@@ -15,6 +15,7 @@ public class Lexer {
         String[] token = new String[2];
         String keyword;
         boolean tokenFound = false;
+        boolean inComment = false;
         lineNum = 0;
         while (scanner.hasNext()) {
             if(lineNum == 0)
@@ -30,217 +31,252 @@ public class Lexer {
                 position++;
                 char c = inputChars[i];
 
-                // Skip whitespace to next character
-                if(Character.isWhitespace(c))
-                    continue;
-
-                switch (c) {
-                    case 'b': {
-                        if (i + 6 < inputChars.length) {
-                            keyword = new String(inputChars, i, 7);
-                            if (keyword.equals("boolean")) {
-                                token = new String[]{"B_TYPE",keyword};
-                                i += 6;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
+                // Check for comment first, because a program with comments only is treated as no input
+                if(c == '/') {
+                    if (i + 1 < inputChars.length && inputChars[i + 1] == '*') {
+                        inComment = true;
+                    } else {
+                        error = true;
+                        printError("Unrecognized token [ " + Character.toString(c) + " ]");
                     }
-
-                    case 'f': {
-                        if (i + 4 < inputChars.length) {
-                            keyword = new String(inputChars, i, 5);
-                            if (keyword.equals("false")) {
-                                token = new String[]{"BOOL_VAL",keyword};
-                                i += 4;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case 'i': {
-                        if (i + 2 < inputChars.length) {
-                            keyword = new String(inputChars, i, 3);
-                            if (keyword.equals("int")) {
-                                token = new String[]{"I_TYPE",keyword};
-                                i += 2;
-                            } else if(keyword.substring(0,2).equals("if")) {
-                                token = new String[]{"IF",keyword.substring(0,2)};
-                                i += 2;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case 'p': {
-                        if (i + 4 < inputChars.length) {
-                            keyword = new String(inputChars, i, 5);
-                            if (keyword.equals("print")) {
-                                token = new String[]{"PRINT",keyword};
-                                i += 4;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case 's': {
-                        if (i + 5 < inputChars.length) {
-                            keyword = new String(inputChars, i, 6);
-                            if (keyword.equals("string")) {
-                                token = new String[]{"STRING",keyword};
-                                i += 5;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case 't': {
-                        if (i + 3 < inputChars.length) {
-                            keyword = new String(inputChars, i, 4);
-                            if (keyword.equals("true")) {
-                                token = new String[]{"BOOL_VAL",keyword};
-                                i += 4;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case 'w': {
-                        if (i + 4 < inputChars.length) {
-                            keyword = new String(inputChars, i, 5);
-                            if (keyword.equals("while")) {
-                                token = new String[]{"WHILE",keyword};
-                                i += 4;
-                            } else {
-                                token = new String[]{"CHAR",Character.toString(c)};
-                            }
-                        } else {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '{': {
-                        token = new String[]{"R_BRACE",Character.toString(c)};
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '}': {
-                        token = new String[]{"L_BRACE",Character.toString(c)};
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '(': {
-                        token = new String[]{"R_PAREN",Character.toString(c)};
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case ')': {
-                        token = new String[]{"L_PAREN",Character.toString(c)};
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '"': {
-                        token = new String[]{"QUOTE",Character.toString(c)};
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '+': {
-                        token = new String[]{"INT_OP",Character.toString(c)};
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '=': {
-                        if (i+1 < inputChars.length && inputChars[i+1] == '=') {
-                            token = new String[]{"BOOL_OP","=="};
-                                i += 1;
-                        } else {
-                            token = new String[]{"ASSIGN_OP",Character.toString(c)};
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '!': {
-                        if (i+1 < inputChars.length && inputChars[i+1] == '=') {
-                            token = new String[]{"BOOL_OP","!="};
-                            i += 1;
-                        } else {
-                            error = true;
-                            printError("Unrecognized token [ "+Character.toString(c)+" ]");
-                        }
-                        tokenFound = true;
-                        break;
-                    }
-
-                    case '$': {
-                        token = new String[]{"EOP","$"};
-                        tokenFound = true;
-                        programComplete = true;
-                        break;
-                    }
-
-                    case '/': {
-                        token = new String[]{"EOP","$"};
-                        tokenFound = true;
-                        programComplete = true;
-                        break;
-                    }
-
-                    default: {
-                        if(Character.isLetter(c)) {
-                            token = new String[]{"CHAR",Character.toString(c)};
-                        } else if(Character.isDigit(c)) {
-                            token = new String[]{"DIGIT",Character.toString(c)};
-                        } else {
-                            
-                        }
-                    }
-
-                }
-                if(tokenFound){
-                    tokens.add(token);
-                    printToken(token);
-                    tokenFound = false;
-                } else if(error) {
-                    programComplete = true;
                     break;
+                }
+
+                // We don't want to/need to/have time for lexing in comments
+                if(!inComment) {
+                    // Skip whitespace to next character
+                    if (Character.isWhitespace(c))
+                        continue;
+
+                    switch (c) {
+                        // Keyword(s): boolean
+                        case 'b': {
+                            if (i + 6 < inputChars.length) {
+                                keyword = new String(inputChars, i, 7);
+                                if (keyword.equals("boolean")) {
+                                    token = new String[]{"B_TYPE", keyword};
+                                    i += 6;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        // Keyword(s): false
+                        case 'f': {
+                            if (i + 4 < inputChars.length) {
+                                keyword = new String(inputChars, i, 5);
+                                if (keyword.equals("false")) {
+                                    token = new String[]{"BOOL_VAL", keyword};
+                                    i += 4;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        // Keyword(s): int, if
+                        case 'i': {
+                            if (i + 2 < inputChars.length) {
+                                keyword = new String(inputChars, i, 3);
+                                if (keyword.equals("int")) {
+                                    token = new String[]{"I_TYPE", keyword};
+                                    i += 2;
+                                } else if (keyword.substring(0, 2).equals("if")) {
+                                    token = new String[]{"IF", keyword.substring(0, 2)};
+                                    i += 2;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        // Keyword(s): print
+                        case 'p': {
+                            if (i + 4 < inputChars.length) {
+                                keyword = new String(inputChars, i, 5);
+                                if (keyword.equals("print")) {
+                                    token = new String[]{"PRINT", keyword};
+                                    i += 4;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        // Keyword(s): string
+                        case 's': {
+                            if (i + 5 < inputChars.length) {
+                                keyword = new String(inputChars, i, 6);
+                                if (keyword.equals("string")) {
+                                    token = new String[]{"STRING", keyword};
+                                    i += 5;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        // Keyword(s): true
+                        case 't': {
+                            if (i + 3 < inputChars.length) {
+                                keyword = new String(inputChars, i, 4);
+                                if (keyword.equals("true")) {
+                                    token = new String[]{"BOOL_VAL", keyword};
+                                    i += 4;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        // Keyword(s): while
+                        case 'w': {
+                            if (i + 4 < inputChars.length) {
+                                keyword = new String(inputChars, i, 5);
+                                if (keyword.equals("while")) {
+                                    token = new String[]{"WHILE", keyword};
+                                    i += 4;
+                                } else {
+                                    token = new String[]{"CHAR", Character.toString(c)};
+                                }
+                            } else {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '{': {
+                            token = new String[]{"R_BRACE", Character.toString(c)};
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '}': {
+                            token = new String[]{"L_BRACE", Character.toString(c)};
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '(': {
+                            token = new String[]{"R_PAREN", Character.toString(c)};
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case ')': {
+                            token = new String[]{"L_PAREN", Character.toString(c)};
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '"': {
+                            token = new String[]{"QUOTE", Character.toString(c)};
+                            tokenFound = true;
+                            int endIndex;
+                            for (endIndex = i; endIndex < inputChars.length; endIndex++) {
+                                if (inputChars[endIndex] == '"') {
+                                    break;
+                                }
+                            }
+                            if (endIndex == inputChars.length) {
+                                error = true;
+                                position = endIndex; // End of line for better clarity in error message
+                                printError("Unterminated string");
+                            } else {
+                                i = endIndex; // Skip to end of string
+                            }
+                            break;
+                        }
+
+                        case '+': {
+                            token = new String[]{"INT_OP", Character.toString(c)};
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '=': {
+                            if (i + 1 < inputChars.length && inputChars[i + 1] == '=') {
+                                token = new String[]{"BOOL_OP", "=="};
+                                i += 1;
+                            } else {
+                                token = new String[]{"ASSIGN_OP", Character.toString(c)};
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '!': {
+                            if (i + 1 < inputChars.length && inputChars[i + 1] == '=') {
+                                token = new String[]{"BOOL_OP", "!="};
+                                i += 1;
+                            } else {
+                                error = true;
+                                printError("Unrecognized token [ " + Character.toString(c) + " ]");
+                            }
+                            tokenFound = true;
+                            break;
+                        }
+
+                        case '$': {
+                            token = new String[]{"EOP", "$"};
+                            tokenFound = true;
+                            programComplete = true;
+                            break;
+                        }
+
+                        default: {
+                            if (Character.isLetter(c)) {
+                                token = new String[]{"CHAR", Character.toString(c)};
+                            } else if (Character.isDigit(c)) {
+                                token = new String[]{"DIGIT", Character.toString(c)};
+                            } else {
+                                error = true;
+                                printError("Unrecognized token [ " + Character.toString(c) + " ]");
+                            }
+                        }
+
+                    }
+                    if (tokenFound) {
+                        tokens.add(token);
+                        printToken(token);
+                        tokenFound = false;
+                    }
+                    if (error) {
+                        programComplete = true;
+                        break;
+                    }
+                } else {
+                    // See if the next character can get us out of the comment
+                    if(c == '*' && i+1 < inputChars.length && inputChars[i+1] == '/') {
+                        // We're now free to keep lexing
+                        inComment = false;
+                    }
                 }
             }
 
@@ -259,6 +295,11 @@ public class Lexer {
         if(input == null) {
             printError("No input found.");
         }
+        // Provide warning if last EOP character is omitted, and add it.
+        else if(!tokens.get(tokens.size()-1)[1].equals("$")) {
+            tokens.add(new String[]{"EOP","$"});
+            printWarning("No EOP character found and end of file has been reached.");
+        }
     }
 
     private static void printToken(String[] token) {
@@ -267,5 +308,9 @@ public class Lexer {
 
     private static void printError(String message) {
         System.out.println("LEXER -- ERROR: "+message+" at ("+lineNum+":"+position+")");
+    }
+
+    private static void printWarning(String message) {
+        System.out.println("LEXER -- WARNING: "+message+" at ("+lineNum+":"+position+")");
     }
 }
