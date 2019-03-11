@@ -45,9 +45,8 @@ public class Tree {
 
         level++;
         // Recursively print all of this node's children
-        for(int i=0;i<current.children.size();i++) {
-            current = current.children.get(i);
-            printTree(current, level);
+        for (int i = 0; i < current.children.size(); i++) {
+            printTree(current.children.get(i), level);
         }
     }
 

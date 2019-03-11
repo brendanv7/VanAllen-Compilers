@@ -377,6 +377,8 @@ public class Parser {
                 default:
                     // Epsilon production
             }
+            
+            resetParent();
         }
     }
 

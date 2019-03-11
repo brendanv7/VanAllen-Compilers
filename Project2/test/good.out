@@ -37,7 +37,9 @@ CST for program 2:
 <Program>
 -<Block>
 --[{]
--<StatementList>
+--<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 2.
 
@@ -90,27 +92,39 @@ CST for program 3:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<Block>
-----[{]
----<StatementList>
-----<Statement>
------<Block>
-------[{]
+--<StatementList>
+---<Statement>
+----<Block>
+-----[{]
 -----<StatementList>
 ------<Statement>
 -------<Block>
 --------[{]
--------<StatementList>
---------<Statement>
----------<Block>
-----------[{]
----------<StatementList>
-----------<Statement>
------------<Block>
-------------[{]
+--------<StatementList>
+---------<Statement>
+----------<Block>
+-----------[{]
 -----------<StatementList>
+------------<Statement>
+-------------<Block>
+--------------[{]
+--------------<StatementList>
+---------------<Statement>
+----------------<Block>
+-----------------[{]
+-----------------<StatementList>
+-----------------[}]
+---------------<StatementList>
+--------------[}]
+------------<StatementList>
+-----------[}]
+---------<StatementList>
+--------[}]
+------<StatementList>
+-----[}]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 3.
 
@@ -190,12 +204,20 @@ CST for program 5:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<PrintStatement>
-----[print]
----[(]
 --<StatementList>
+---<Statement>
+----<PrintStatement>
+-----[print]
+-----[(]
+-----<Expr>
+------<StringExpr>
+-------["]
+-------<CharList>
+-------["]
+-----[)]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 5.
 
@@ -227,11 +249,18 @@ CST for program 6:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<PrintStatement>
-----[print]
----[(]
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----[print]
+-----[(]
+-----<Expr>
+------<Id>
+-------[a]
+-----[)]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 6.
 
@@ -263,11 +292,18 @@ CST for program 7:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<PrintStatement>
-----[print]
----[(]
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----[print]
+-----[(]
+-----<Expr>
+------<IntExpr>
+-------[2]
+-----[)]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 7.
 
@@ -303,12 +339,22 @@ CST for program 8:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<PrintStatement>
-----[print]
----[(]
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----[print]
+-----[(]
+-----<Expr>
+------<StringExpr>
+-------["]
+-------<CharList>
+--------[a]
+--------<CharList>
+-------["]
+-----[)]
+---<StatementList>
 --[}]
+-[$]
 
 Compilation complete (for now) for program 8.
 
@@ -340,11 +386,18 @@ CST for program 9:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<PrintStatement>
-----[print]
----[(]
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----[print]
+-----[(]
+-----<Expr>
+------<BooleanExpr>
+-------[false]
+-----[)]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 9.
 
@@ -386,11 +439,28 @@ CST for program 10:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<PrintStatement>
-----[print]
----[(]
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----[print]
+-----[(]
+-----<Expr>
+------<StringExpr>
+-------["]
+-------<CharList>
+--------[i]
+--------<CharList>
+---------[n]
+---------<CharList>
+----------[t]
+----------<CharList>
+-----------[a]
+-----------<CharList>
+-------["]
+-----[)]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 10.
 
@@ -446,12 +516,18 @@ CST for program 12:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<AssignmentStatement>
-----<Id>
------[a]
----[=]
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------[a]
+-----[=]
+-----<Expr>
+------<IntExpr>
+-------[1]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 12.
 
@@ -483,12 +559,18 @@ CST for program 13:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<AssignmentStatement>
-----<Id>
------[a]
----[=]
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------[a]
+-----[=]
+-----<Expr>
+------<IntExpr>
+-------[1]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 13.
 
@@ -536,12 +618,34 @@ CST for program 14:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<AssignmentStatement>
-----<Id>
------[a]
----[=]
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------[a]
+-----[=]
+-----<Expr>
+------<IntExpr>
+-------[1]
+-------[+]
+-------<Expr>
+--------<IntExpr>
+---------[2]
+---------[+]
+---------<Expr>
+----------<IntExpr>
+-----------[3]
+-----------[+]
+-----------<Expr>
+------------<IntExpr>
+-------------[4]
+-------------[+]
+-------------<Expr>
+--------------<IntExpr>
+---------------[5]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 14.
 
@@ -594,12 +698,39 @@ CST for program 15:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<VarDecl>
-----[int]
----<Id>
-----[a]
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----[int]
+-----<Id>
+------[a]
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------[a]
+------[=]
+------<Expr>
+-------<Id>
+--------[a]
+----<StatementList>
+-----<Statement>
+------<VarDecl>
+-------[string]
+-------<Id>
+--------[b]
+-----<StatementList>
+------<Statement>
+-------<AssignmentStatement>
+--------<Id>
+---------[a]
+--------[=]
+--------<Expr>
+---------<Id>
+----------[b]
+------<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 15.
 
@@ -652,12 +783,39 @@ CST for program 16:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<VarDecl>
-----[int]
----<Id>
-----[a]
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----[int]
+-----<Id>
+------[a]
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------[a]
+------[=]
+------<Expr>
+-------<Id>
+--------[a]
+----<StatementList>
+-----<Statement>
+------<VarDecl>
+-------[string]
+-------<Id>
+--------[b]
+-----<StatementList>
+------<Statement>
+-------<AssignmentStatement>
+--------<Id>
+---------[a]
+--------[=]
+--------<Expr>
+---------<Id>
+----------[b]
+------<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 16.
 
@@ -754,32 +912,83 @@ CST for program 17:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<Block>
-----[{]
----<StatementList>
-----<Statement>
------<Block>
-------[{]
+--<StatementList>
+---<Statement>
+----<Block>
+-----[{]
 -----<StatementList>
 ------<Statement>
 -------<Block>
 --------[{]
--------<StatementList>
---------<Statement>
----------<Block>
-----------[{]
----------<StatementList>
-----------<Statement>
------------<Block>
-------------[{]
+--------<StatementList>
+---------<Statement>
+----------<Block>
+-----------[{]
 -----------<StatementList>
 ------------<Statement>
--------------<AssignmentStatement>
---------------<Id>
----------------[a]
--------------[=]
+-------------<Block>
+--------------[{]
+--------------<StatementList>
+---------------<Statement>
+----------------<Block>
+-----------------[{]
+-----------------<StatementList>
+------------------<Statement>
+-------------------<AssignmentStatement>
+--------------------<Id>
+---------------------[a]
+--------------------[=]
+--------------------<Expr>
+---------------------<IntExpr>
+----------------------[1]
+----------------------[+]
+----------------------<Expr>
+-----------------------<IntExpr>
+------------------------[2]
+------------------------[+]
+------------------------<Expr>
+-------------------------<IntExpr>
+--------------------------[3]
+--------------------------[+]
+--------------------------<Expr>
+---------------------------<IntExpr>
+----------------------------[4]
+----------------------------[+]
+----------------------------<Expr>
+-----------------------------<IntExpr>
+------------------------------[5]
+------------------<StatementList>
+-------------------<Statement>
+--------------------<Block>
+---------------------[{]
+---------------------<StatementList>
+----------------------<Statement>
+-----------------------<PrintStatement>
+------------------------[print]
+------------------------[(]
+------------------------<Expr>
+-------------------------<IntExpr>
+--------------------------[4]
+--------------------------[+]
+--------------------------<Expr>
+---------------------------<Id>
+----------------------------[a]
+------------------------[)]
+----------------------<StatementList>
+---------------------[}]
+-------------------<StatementList>
+-----------------[}]
+---------------<StatementList>
+--------------[}]
+------------<StatementList>
+-----------[}]
+---------<StatementList>
+--------[}]
+------<StatementList>
+-----[}]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 17.
 
@@ -808,12 +1017,15 @@ CST for program 18:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<VarDecl>
-----[string]
----<Id>
-----[b]
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----[string]
+-----<Id>
+------[b]
+---<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 18.
 
@@ -899,12 +1111,72 @@ CST for program 19:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<VarDecl>
-----[string]
----<Id>
-----[s]
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----[string]
+-----<Id>
+------[s]
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------[s]
+------[=]
+------<Expr>
+-------<StringExpr>
+--------["]
+--------<CharList>
+---------[t]
+---------<CharList>
+----------[h]
+----------<CharList>
+-----------[i]
+-----------<CharList>
+------------[s]
+------------<CharList>
+-------------[ ]
+-------------<CharList>
+--------------[s]
+--------------<CharList>
+---------------[t]
+---------------<CharList>
+----------------[r]
+----------------<CharList>
+-----------------[i]
+-----------------<CharList>
+------------------[n]
+------------------<CharList>
+-------------------[g]
+-------------------<CharList>
+--------------------[ ]
+--------------------<CharList>
+---------------------[i]
+---------------------<CharList>
+----------------------[s]
+----------------------<CharList>
+-----------------------[ ]
+-----------------------<CharList>
+------------------------[ ]
+------------------------<CharList>
+-------------------------[v]
+-------------------------<CharList>
+--------------------------[i]
+--------------------------<CharList>
+---------------------------[s]
+---------------------------<CharList>
+----------------------------[i]
+----------------------------<CharList>
+-----------------------------[b]
+-----------------------------<CharList>
+------------------------------[l]
+------------------------------<CharList>
+-------------------------------[e]
+-------------------------------<CharList>
+--------["]
+----<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 19.
 
@@ -978,12 +1250,60 @@ CST for program 20:
 <Program>
 -<Block>
 --[{]
--<StatementList>
---<Statement>
----<VarDecl>
-----[boolean]
----<Id>
-----[d]
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----[boolean]
+-----<Id>
+------[d]
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------[d]
+------[=]
+------<Expr>
+-------<BooleanExpr>
+--------[(]
+--------<Expr>
+---------<StringExpr>
+----------["]
+----------<CharList>
+-----------[s]
+-----------<CharList>
+------------[t]
+------------<CharList>
+-------------[r]
+-------------<CharList>
+--------------[i]
+--------------<CharList>
+---------------[n]
+---------------<CharList>
+----------------[g]
+----------------<CharList>
+----------["]
+--------[!=]
+--------<Expr>
+---------<StringExpr>
+----------["]
+----------<CharList>
+-----------[s]
+-----------<CharList>
+------------[t]
+------------<CharList>
+-------------[r]
+-------------<CharList>
+--------------[i]
+--------------<CharList>
+---------------[n]
+---------------<CharList>
+----------------[g]
+----------------<CharList>
+----------["]
+--------[)]
+----<StatementList>
+--[}]
+-[$]
 
 Compilation complete (for now) for program 20.
 
