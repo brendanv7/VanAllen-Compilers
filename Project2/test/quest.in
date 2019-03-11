@@ -1,0 +1,17 @@
+{ int a /* unterminated comment }$
+
+{intfintif=2}$
+
+{intii=0stringss="hello"booleanbb=(true==(1!
+=2))if(b==true){while(true!=(b!=(false==(2!=3))))
+{i=1+iprint(s)}}print("ugly code")}$
+
+{print(007)}$
+
+{a=12}$
+
+{ a = "unterminated string }$
+
+{thisisnotalexeme}$
+
+{thisisnotalexeme = 1}$

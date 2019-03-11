@@ -11,35 +11,40 @@ import java.util.Scanner;
 public class Lexer {
     private static int lineNum;
     private static int position;
-    private static int program;
     private static int errors;
+    private static int programNum;
 
-    public static void main(String args[]) {
+    public static ArrayList<Token> lex(Scanner scanner, int program, int lineNumber) {
+        programNum = program;
         ArrayList<Token> tokens = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        String input;
         Token token = null;
         String keyword;
-        boolean programComplete = true; // True to start so first print statement runs
+        boolean programComplete = false;
         boolean tokenFound = false;
         boolean inComment = false;
         boolean inString = false;
-        lineNum = 0;
-        program = 1;
+        lineNum = lineNumber;
         errors = 0;
 
-        while (scanner.hasNext()) {
-            // Check for start of new program
-            if (programComplete) {
-                System.out.println("LEXER -- Lexing program " + program + "...");
-                programComplete = false;
-            }
+        System.out.println("LEXER -- Lexing program " + program + "...");
 
-            position = 0; // Reset position to beginning of line
-
+        while (!programComplete) {
+            // New line
+            position = 0;
             lineNum++;
-            input = scanner.nextLine();
-            char[] inputChars = input.toCharArray(); // Separating input into chars helps simplify operations
+
+            char[] inputChars = scanner.nextLine().toCharArray(); // Separating input into chars helps simplify operations
+
+            // Advance until there is input, or end-of-file is reached
+            while (inputChars.length == 0) {
+                if (scanner.hasNext()) {
+                    inputChars = scanner.nextLine().toCharArray();
+                    lineNum++;
+                } else {
+                    programComplete = true;
+                    break;
+                }
+            }
 
             for (int i = 0; i < inputChars.length; i++) {
                 position++;
@@ -47,7 +52,7 @@ public class Lexer {
 
                 // Check for comment first, because a program with comments only is treated as no input
                 if (c == '/') {
-                    if (i + 1 < inputChars.length && inputChars[i+1] == '*') {
+                    if (i + 1 < inputChars.length && inputChars[i + 1] == '*') {
                         inComment = true;
                         // We know next character is '*', so we can skip it
                         i++;
@@ -56,14 +61,30 @@ public class Lexer {
 
                 // We don't want to/have time for lexing in comments
                 if (!inComment) {
-                    // Skip whitespace to next character
-                    if (Character.isWhitespace(c))
+                    // Skip whitespace to next character, unless we're in a string
+                    if (!inString && Character.isWhitespace(c))
                         continue;
 
-                    // Everything inside a string is taken literally
-                    if(inString && c != '"') {
-                        token = new Token("CHAR", Character.toString(c), lineNum, position);
-                        tokenFound = true;
+                    // Everything inside a string is taken literally, unless the next character terminates the string/program
+                    if (inString && c != '"') {
+                        // Only chars and spaces are allowed inside strings
+                        if (Character.isLetter(c) && Character.isLowerCase(c)) {
+                            token = new Token("CHAR", Character.toString(c), lineNum, position);
+                            tokenFound = true;
+                        } else if (Character.isSpaceChar(c)) {
+                            token = new Token("SPACE", Character.toString(c), lineNum, position);
+                            tokenFound = true;
+                        }
+                        // We want to be able to recover from an unterminated string
+                        else if (c == '$' && i + 1 >= inputChars.length) {
+                            // I'm cheating and treat EOP symbols in strings only as tokens if its at the end of the line
+                            token = new Token("EOP", Character.toString(c), lineNum, position);
+                            tokenFound = true;
+                            programComplete = true;
+                        } else {
+                            errors++;
+                            printError("Illegal symbol in String [ " + Character.toString(c) + " ]");
+                        }
                     } else {
 
                         // Sorry for switch/if statements when you recommended against it, Patterns are hard.
@@ -242,23 +263,30 @@ public class Lexer {
                                 }
                                 break;
                             }
-
                         }
                     }
                     if (tokenFound) {
                         tokens.add(token);
                         printToken(token);
                         tokenFound = false;
-                        position = i+1; // Regroup position with i now that we've printed the last token
+                        position = i + 1; // Regroup position with i now that we've printed the last token
                     }
                 }
                 // inComment = true
                 else {
                     // See if the next character can get us out of the comment
-                    if (c == '*' && i+1 < inputChars.length && inputChars[i+1] == '/') {
+                    if (c == '*' && i + 1 < inputChars.length && inputChars[i + 1] == '/') {
                         // We're now free to keep lexing
                         inComment = false;
                         i++;
+                    }
+                    // We want to recover and keep lexing if an EOP symbol is found in a comment
+                    else if (c == '$') {
+                        programComplete = true;
+                        // Add the EOP token since it was not properly lexed
+                        token = new Token("EOP", Character.toString(c), lineNum, position);
+                        tokens.add(token);
+                        printToken(token);
                     }
                 }
             }
@@ -269,36 +297,39 @@ public class Lexer {
                 printError("Unterminated string");
                 inString = false; // Reset since string cannot continue onto next line
             }
-
-            if (programComplete) {
-                // Provide warning if program ended while in a comment.
-                if (inComment) {
-                    inComment = false;
-                    printWarning("Program ended in open comment. Consider closing it.");
-                }
-                printEndOfProgram();
-
-                errors = 0;
-
-                program++;
-            }
         }
 
         // Provide warning if program ended while in a comment.
         if (inComment) {
-            printWarning("Program ended in open comment. Consider closing it");
+            printWarning("Program ended in open comment. Consider closing it.");
         }
 
         // No input is an error.
         if (errors == 0 && tokens.size() == 0) {
+            errors++;
             printError("No input found");
         }
+
         // Provide warning if last EOP character is omitted, and add it.
         else if (!tokens.get(tokens.size() - 1).data.equals("$")) {
             token = new Token("EOP", "$", lineNum, position);
+            tokens.add(token);
             printWarning("No EOP character found and end-of-file has been reached.");
-            printEndOfProgram();
         }
+
+        if (errors == 0) {
+            // Lex has passed
+            System.out.println("LEXER -- Lexing complete for program " + programNum + ". No errors found.\n");
+        }
+        else {
+            // Lex has failed
+            System.out.println("LEXER -- Lexing complete for program " + programNum + ". Lex failed with " + errors + " error(s).\n");
+
+            // Remove all of the tokens so null is returned and compilation does not continue
+            tokens = null;
+        }
+
+        return tokens;
     }
 
     private static void printToken(Token token) {
@@ -311,14 +342,5 @@ public class Lexer {
 
     private static void printWarning(String message) {
         System.out.println("LEXER -- WARNING: "+message+" at ("+lineNum+":"+position+")");
-    }
-
-    private static void printEndOfProgram() {
-        if (errors == 0)
-            // Lex has passed
-            System.out.println("LEXER -- Lexing complete for program " + program + ". No errors found.\n");
-        else
-            // Lex has failed
-            System.out.println("LEXER -- Lexing complete for program " + program + ". Lex failed with "+errors+" error(s).\n");
     }
 }

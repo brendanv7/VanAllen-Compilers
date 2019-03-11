@@ -1,0 +1,382 @@
+Compiling program 1...
+
+LEXER -- Lexing program 1...
+LEXER -- L_BRACE [ { ] found at (1:1)
+LEXER -- DIGIT [ 1 ] found at (1:2)
+LEXER -- ASSIGN_OP [ = ] found at (1:4)
+LEXER -- DIGIT [ 2 ] found at (1:6)
+LEXER -- R_BRACE [ } ] found at (1:7)
+LEXER -- EOP [ $ ] found at (1:8)
+LEXER -- Lexing complete for program 1. No errors found.
+
+Compilation complete (for now) for program 1.
+
+Compiling program 2...
+
+LEXER -- Lexing program 2...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- R_BRACE [ } ] found at (2:2)
+LEXER -- EOP [ $ ] found at (2:3)
+LEXER -- Lexing complete for program 2. No errors found.
+
+Compilation complete (for now) for program 2.
+
+Compiling program 3...
+
+LEXER -- Lexing program 3...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- L_BRACE [ { ] found at (2:2)
+LEXER -- L_BRACE [ { ] found at (2:3)
+LEXER -- L_BRACE [ { ] found at (2:4)
+LEXER -- L_BRACE [ { ] found at (2:5)
+LEXER -- L_BRACE [ { ] found at (2:6)
+LEXER -- R_BRACE [ } ] found at (2:7)
+LEXER -- R_BRACE [ } ] found at (2:8)
+LEXER -- R_BRACE [ } ] found at (2:9)
+LEXER -- R_BRACE [ } ] found at (2:10)
+LEXER -- R_BRACE [ } ] found at (2:11)
+LEXER -- R_BRACE [ } ] found at (2:12)
+LEXER -- EOP [ $ ] found at (2:13)
+LEXER -- Lexing complete for program 3. No errors found.
+
+Compilation complete (for now) for program 3.
+
+Compiling program 4...
+
+LEXER -- Lexing program 4...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- L_BRACE [ { ] found at (2:2)
+LEXER -- L_BRACE [ { ] found at (2:3)
+LEXER -- L_BRACE [ { ] found at (2:4)
+LEXER -- L_BRACE [ { ] found at (2:5)
+LEXER -- L_BRACE [ { ] found at (2:6)
+LEXER -- R_BRACE [ } ] found at (2:7)
+LEXER -- R_BRACE [ } ] found at (2:8)
+LEXER -- R_BRACE [ } ] found at (2:9)
+LEXER -- R_BRACE [ } ] found at (2:10)
+LEXER -- R_BRACE [ } ] found at (2:11)
+LEXER -- EOP [ $ ] found at (2:12)
+LEXER -- Lexing complete for program 4. No errors found.
+
+Compilation complete (for now) for program 4.
+
+Compiling program 5...
+
+LEXER -- Lexing program 5...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- PRINT [ print ] found at (2:2)
+LEXER -- L_PAREN [ ( ] found at (2:7)
+LEXER -- QUOTE [ " ] found at (2:8)
+LEXER -- QUOTE [ " ] found at (2:9)
+LEXER -- R_PAREN [ ) ] found at (2:10)
+LEXER -- R_BRACE [ } ] found at (2:11)
+LEXER -- EOP [ $ ] found at (2:12)
+LEXER -- Lexing complete for program 5. No errors found.
+
+Compilation complete (for now) for program 5.
+
+Compiling program 6...
+
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- PRINT [ print ] found at (2:2)
+LEXER -- L_PAREN [ ( ] found at (2:7)
+LEXER -- CHAR [ a ] found at (2:8)
+LEXER -- R_PAREN [ ) ] found at (2:9)
+LEXER -- R_BRACE [ } ] found at (2:10)
+LEXER -- EOP [ $ ] found at (2:11)
+LEXER -- Lexing complete for program 6. No errors found.
+
+Compilation complete (for now) for program 6.
+
+Compiling program 7...
+
+LEXER -- Lexing program 7...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- PRINT [ print ] found at (2:2)
+LEXER -- L_PAREN [ ( ] found at (2:7)
+LEXER -- DIGIT [ 2 ] found at (2:8)
+LEXER -- R_PAREN [ ) ] found at (2:9)
+LEXER -- R_BRACE [ } ] found at (2:10)
+LEXER -- EOP [ $ ] found at (2:11)
+LEXER -- Lexing complete for program 7. No errors found.
+
+Compilation complete (for now) for program 7.
+
+Compiling program 8...
+
+LEXER -- Lexing program 8...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- PRINT [ print ] found at (2:2)
+LEXER -- L_PAREN [ ( ] found at (2:7)
+LEXER -- QUOTE [ " ] found at (2:8)
+LEXER -- CHAR [ a ] found at (2:9)
+LEXER -- QUOTE [ " ] found at (2:10)
+LEXER -- R_PAREN [ ) ] found at (2:11)
+LEXER -- R_BRACE [ } ] found at (2:12)
+LEXER -- EOP [ $ ] found at (2:13)
+LEXER -- Lexing complete for program 8. No errors found.
+
+Compilation complete (for now) for program 8.
+
+Compiling program 9...
+
+LEXER -- Lexing program 9...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- PRINT [ print ] found at (2:2)
+LEXER -- L_PAREN [ ( ] found at (2:7)
+LEXER -- BOOL_VAL [ false ] found at (2:8)
+LEXER -- R_PAREN [ ) ] found at (2:13)
+LEXER -- R_BRACE [ } ] found at (2:14)
+LEXER -- EOP [ $ ] found at (2:15)
+LEXER -- Lexing complete for program 9. No errors found.
+
+Compilation complete (for now) for program 9.
+
+Compiling program 10...
+
+LEXER -- Lexing program 10...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- PRINT [ print ] found at (2:2)
+LEXER -- L_PAREN [ ( ] found at (2:7)
+LEXER -- QUOTE [ " ] found at (2:8)
+LEXER -- CHAR [ i ] found at (2:9)
+LEXER -- CHAR [ n ] found at (2:10)
+LEXER -- CHAR [ t ] found at (2:11)
+LEXER -- CHAR [ a ] found at (2:12)
+LEXER -- QUOTE [ " ] found at (2:13)
+LEXER -- R_PAREN [ ) ] found at (2:14)
+LEXER -- R_BRACE [ } ] found at (2:15)
+LEXER -- EOP [ $ ] found at (2:16)
+LEXER -- Lexing complete for program 10. No errors found.
+
+Compilation complete (for now) for program 10.
+
+Compiling program 11...
+
+LEXER -- Lexing program 11...
+LEXER -- PRINT [ print ] found at (2:1)
+LEXER -- L_PAREN [ ( ] found at (2:6)
+LEXER -- CHAR [ a ] found at (2:7)
+LEXER -- R_PAREN [ ) ] found at (2:8)
+LEXER -- L_BRACE [ { ] found at (2:9)
+LEXER -- PRINT [ print ] found at (2:10)
+LEXER -- L_PAREN [ ( ] found at (2:15)
+LEXER -- CHAR [ a ] found at (2:16)
+LEXER -- R_PAREN [ ) ] found at (2:17)
+LEXER -- R_BRACE [ } ] found at (2:18)
+LEXER -- EOP [ $ ] found at (2:19)
+LEXER -- Lexing complete for program 11. No errors found.
+
+Compilation complete (for now) for program 11.
+
+Compiling program 12...
+
+LEXER -- Lexing program 12...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- CHAR [ a ] found at (2:2)
+LEXER -- ASSIGN_OP [ = ] found at (2:3)
+LEXER -- DIGIT [ 1 ] found at (2:4)
+LEXER -- R_BRACE [ } ] found at (2:5)
+LEXER -- EOP [ $ ] found at (2:6)
+LEXER -- Lexing complete for program 12. No errors found.
+
+Compilation complete (for now) for program 12.
+
+Compiling program 13...
+
+LEXER -- Lexing program 13...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- CHAR [ a ] found at (2:2)
+LEXER -- ASSIGN_OP [ = ] found at (2:4)
+LEXER -- DIGIT [ 1 ] found at (2:6)
+LEXER -- R_BRACE [ } ] found at (2:7)
+LEXER -- EOP [ $ ] found at (2:8)
+LEXER -- Lexing complete for program 13. No errors found.
+
+Compilation complete (for now) for program 13.
+
+Compiling program 14...
+
+LEXER -- Lexing program 14...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- CHAR [ a ] found at (2:2)
+LEXER -- ASSIGN_OP [ = ] found at (2:4)
+LEXER -- DIGIT [ 1 ] found at (2:6)
+LEXER -- INT_OP [ + ] found at (2:8)
+LEXER -- DIGIT [ 2 ] found at (2:10)
+LEXER -- INT_OP [ + ] found at (2:12)
+LEXER -- DIGIT [ 3 ] found at (2:14)
+LEXER -- INT_OP [ + ] found at (2:16)
+LEXER -- DIGIT [ 4 ] found at (2:18)
+LEXER -- INT_OP [ + ] found at (2:22)
+LEXER -- DIGIT [ 5 ] found at (2:29)
+LEXER -- R_BRACE [ } ] found at (2:30)
+LEXER -- EOP [ $ ] found at (2:31)
+LEXER -- Lexing complete for program 14. No errors found.
+
+Compilation complete (for now) for program 14.
+
+Compiling program 15...
+
+LEXER -- Lexing program 15...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- INT [ int ] found at (3:3)
+LEXER -- CHAR [ a ] found at (3:7)
+LEXER -- CHAR [ a ] found at (4:3)
+LEXER -- ASSIGN_OP [ = ] found at (4:5)
+LEXER -- CHAR [ a ] found at (4:7)
+LEXER -- STRING [ string ] found at (5:3)
+LEXER -- CHAR [ b ] found at (5:10)
+LEXER -- CHAR [ a ] found at (6:3)
+LEXER -- ASSIGN_OP [ = ] found at (6:5)
+LEXER -- CHAR [ b ] found at (6:7)
+LEXER -- R_BRACE [ } ] found at (7:1)
+LEXER -- EOP [ $ ] found at (7:2)
+LEXER -- Lexing complete for program 15. No errors found.
+
+Compilation complete (for now) for program 15.
+
+Compiling program 16...
+
+LEXER -- Lexing program 16...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- INT [ int ] found at (2:2)
+LEXER -- CHAR [ a ] found at (2:6)
+LEXER -- CHAR [ a ] found at (2:8)
+LEXER -- ASSIGN_OP [ = ] found at (2:9)
+LEXER -- CHAR [ a ] found at (2:10)
+LEXER -- STRING [ string ] found at (2:12)
+LEXER -- CHAR [ b ] found at (2:19)
+LEXER -- CHAR [ a ] found at (2:21)
+LEXER -- ASSIGN_OP [ = ] found at (2:22)
+LEXER -- CHAR [ b ] found at (2:23)
+LEXER -- R_BRACE [ } ] found at (2:24)
+LEXER -- EOP [ $ ] found at (2:25)
+LEXER -- Lexing complete for program 16. No errors found.
+
+Compilation complete (for now) for program 16.
+
+Compiling program 17...
+
+LEXER -- Lexing program 17...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- L_BRACE [ { ] found at (2:2)
+LEXER -- L_BRACE [ { ] found at (2:3)
+LEXER -- L_BRACE [ { ] found at (2:4)
+LEXER -- L_BRACE [ { ] found at (2:5)
+LEXER -- L_BRACE [ { ] found at (2:6)
+LEXER -- CHAR [ a ] found at (2:7)
+LEXER -- ASSIGN_OP [ = ] found at (2:8)
+LEXER -- DIGIT [ 1 ] found at (2:9)
+LEXER -- INT_OP [ + ] found at (2:10)
+LEXER -- DIGIT [ 2 ] found at (2:11)
+LEXER -- INT_OP [ + ] found at (2:12)
+LEXER -- DIGIT [ 3 ] found at (2:13)
+LEXER -- INT_OP [ + ] found at (2:14)
+LEXER -- DIGIT [ 4 ] found at (2:15)
+LEXER -- INT_OP [ + ] found at (2:16)
+LEXER -- DIGIT [ 5 ] found at (2:17)
+LEXER -- L_BRACE [ { ] found at (2:18)
+LEXER -- PRINT [ print ] found at (2:19)
+LEXER -- L_PAREN [ ( ] found at (2:24)
+LEXER -- DIGIT [ 4 ] found at (2:25)
+LEXER -- INT_OP [ + ] found at (2:26)
+LEXER -- CHAR [ a ] found at (2:27)
+LEXER -- R_PAREN [ ) ] found at (2:28)
+LEXER -- R_BRACE [ } ] found at (2:29)
+LEXER -- R_BRACE [ } ] found at (2:30)
+LEXER -- R_BRACE [ } ] found at (2:31)
+LEXER -- R_BRACE [ } ] found at (2:32)
+LEXER -- R_BRACE [ } ] found at (2:33)
+LEXER -- R_BRACE [ } ] found at (2:34)
+LEXER -- R_BRACE [ } ] found at (2:35)
+LEXER -- EOP [ $ ] found at (2:36)
+LEXER -- Lexing complete for program 17. No errors found.
+
+Compilation complete (for now) for program 17.
+
+Compiling program 18...
+
+LEXER -- Lexing program 18...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- STRING [ string ] found at (4:3)
+LEXER -- CHAR [ b ] found at (4:10)
+LEXER -- R_BRACE [ } ] found at (5:1)
+LEXER -- EOP [ $ ] found at (5:2)
+LEXER -- Lexing complete for program 18. No errors found.
+
+Compilation complete (for now) for program 18.
+
+Compiling program 19...
+
+LEXER -- Lexing program 19...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- STRING [ string ] found at (3:3)
+LEXER -- CHAR [ s ] found at (3:10)
+LEXER -- CHAR [ s ] found at (4:3)
+LEXER -- ASSIGN_OP [ = ] found at (4:5)
+LEXER -- QUOTE [ " ] found at (4:7)
+LEXER -- CHAR [ t ] found at (4:8)
+LEXER -- CHAR [ h ] found at (4:9)
+LEXER -- CHAR [ i ] found at (4:10)
+LEXER -- CHAR [ s ] found at (4:11)
+LEXER -- SPACE [   ] found at (4:12)
+LEXER -- CHAR [ s ] found at (4:13)
+LEXER -- CHAR [ t ] found at (4:14)
+LEXER -- CHAR [ r ] found at (4:15)
+LEXER -- CHAR [ i ] found at (4:16)
+LEXER -- CHAR [ n ] found at (4:17)
+LEXER -- CHAR [ g ] found at (4:18)
+LEXER -- SPACE [   ] found at (4:19)
+LEXER -- CHAR [ i ] found at (4:20)
+LEXER -- CHAR [ s ] found at (4:21)
+LEXER -- SPACE [   ] found at (4:22)
+LEXER -- SPACE [   ] found at (4:29)
+LEXER -- CHAR [ v ] found at (4:32)
+LEXER -- CHAR [ i ] found at (4:33)
+LEXER -- CHAR [ s ] found at (4:34)
+LEXER -- CHAR [ i ] found at (4:35)
+LEXER -- CHAR [ b ] found at (4:36)
+LEXER -- CHAR [ l ] found at (4:37)
+LEXER -- CHAR [ e ] found at (4:38)
+LEXER -- QUOTE [ " ] found at (4:39)
+LEXER -- R_BRACE [ } ] found at (5:1)
+LEXER -- EOP [ $ ] found at (5:2)
+LEXER -- Lexing complete for program 19. No errors found.
+
+Compilation complete (for now) for program 19.
+
+Compiling program 20...
+
+LEXER -- Lexing program 20...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- BOOL [ boolean ] found at (3:3)
+LEXER -- CHAR [ d ] found at (3:11)
+LEXER -- CHAR [ d ] found at (4:3)
+LEXER -- ASSIGN_OP [ = ] found at (4:5)
+LEXER -- L_PAREN [ ( ] found at (4:7)
+LEXER -- QUOTE [ " ] found at (4:8)
+LEXER -- CHAR [ s ] found at (4:9)
+LEXER -- CHAR [ t ] found at (4:10)
+LEXER -- CHAR [ r ] found at (4:11)
+LEXER -- CHAR [ i ] found at (4:12)
+LEXER -- CHAR [ n ] found at (4:13)
+LEXER -- CHAR [ g ] found at (4:14)
+LEXER -- QUOTE [ " ] found at (4:15)
+LEXER -- BOOL_OP [ != ] found at (4:17)
+LEXER -- QUOTE [ " ] found at (4:20)
+LEXER -- CHAR [ s ] found at (4:21)
+LEXER -- CHAR [ t ] found at (4:22)
+LEXER -- CHAR [ r ] found at (4:23)
+LEXER -- CHAR [ i ] found at (4:24)
+LEXER -- CHAR [ n ] found at (4:25)
+LEXER -- CHAR [ g ] found at (4:26)
+LEXER -- QUOTE [ " ] found at (4:27)
+LEXER -- R_PAREN [ ) ] found at (4:28)
+LEXER -- R_BRACE [ } ] found at (5:1)
+LEXER -- EOP [ $ ] found at (5:2)
+LEXER -- Lexing complete for program 20. No errors found.
+
+Compilation complete (for now) for program 20.
+
