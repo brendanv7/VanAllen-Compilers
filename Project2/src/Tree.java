@@ -26,6 +26,10 @@ public class Tree {
         currentNode = n;
     }
 
+    public void printTree() {
+        // TO DO
+    }
+
     public class Node {
         String data;
         Node parent;
@@ -34,7 +38,5 @@ public class Tree {
         Node(String name) {
             this.data = data;
         }
-
-
     }
 }
