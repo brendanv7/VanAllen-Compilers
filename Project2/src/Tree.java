@@ -11,11 +11,14 @@ public class Tree {
 
     public Tree() {
         root = null;
-        root.children = new ArrayList<Node>();
         currentNode = null;
     }
 
     public void addNode(String data) {
+        currentNode = addLeafNode(data);
+    }
+
+    public Node addLeafNode(String data) {
         Node n = new Node(data);
         if (root == null)
             root = n;
@@ -23,11 +26,29 @@ public class Tree {
             n.parent = currentNode;
             currentNode.children.add(n);
         }
-        currentNode = n;
+        return n;
     }
 
     public void printTree() {
-        // TO DO
+        Node current = this.root;
+        int level = 0;
+        int childNum = 0;
+
+        printTree(current, level);
+        System.out.println();
+    }
+
+    public void printTree(Node current, int treeLevel) {
+        int level = treeLevel;
+        // Print current node with proper level
+        current.printNode(level);
+
+        level++;
+        // Recursively print all of this node's children
+        for(int i=0;i<current.children.size();i++) {
+            current = current.children.get(i);
+            printTree(current, level);
+        }
     }
 
     public class Node {
@@ -35,8 +56,18 @@ public class Tree {
         Node parent;
         ArrayList<Node> children;
 
-        Node(String name) {
+        Node(String data) {
             this.data = data;
+            parent = null;
+            children = new ArrayList<>();
+        }
+
+        void printNode(int level) {
+            String dashes = "";
+            for(int j=0;j<level;j++) {
+                dashes += "-";
+            }
+            System.out.println(dashes + this.data);
         }
     }
 }

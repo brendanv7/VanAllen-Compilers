@@ -18,8 +18,15 @@ public class Compiler {
             System.out.println("Compiling program " + program + "...\n");
             ArrayList<Token> tokens = Lexer.lex(scanner, program, lineNum);
             if(tokens != null) {
-                // Lets parse
-                System.out.println("Compilation complete (for now) for program " + program + ".\n");
+                Tree cst = Parser.parse(tokens, program);
+                if(cst != null) {
+                    System.out.println("CST for program " + program + ":");
+                    cst.printTree();
+                    // Semantic
+                    System.out.println("Compilation complete (for now) for program " + program + ".\n");
+                } else {
+                    System.out.println("Compilation stopped for program " + program + " due to Parse error(s).\n");
+                }
             } else {
                 // Don't parse, error
                 System.out.println("Compilation stopped for program " + program + " due to Lexical error(s).\n");
