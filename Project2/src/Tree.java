@@ -40,6 +40,7 @@ public class Tree {
 
     public void printTree(Node current, int treeLevel) {
         int level = treeLevel;
+
         // Print current node with proper level
         current.printNode(level);
 

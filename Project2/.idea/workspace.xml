@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bbb2ef3-b2f5-4017-84bc-6092cd152132" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Project2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/good.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/good.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/bad.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/bad.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/empty.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/empty.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fails.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fails.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/good.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/good.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/parse.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/parse.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/quest.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/quest.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/success.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/success.out" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,17 +34,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="327" column="12" selection-start-line="327" selection-start-column="12" selection-end-line="328" selection-end-column="26" />
+            <state relative-caret-position="-29">
+              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="39">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,17 +64,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="-2062">
               <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="90">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#329#330#0" expanded="true" />
@@ -92,10 +107,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Token.java" />
-        <option value="$PROJECT_DIR$/src/Lexer.java" />
         <option value="$PROJECT_DIR$/src/Parser.java" />
-        <option value="$PROJECT_DIR$/src/Compiler.java" />
+        <option value="$PROJECT_DIR$/src/Lexer.java" />
         <option value="$PROJECT_DIR$/src/Tree.java" />
+        <option value="$PROJECT_DIR$/src/Compiler.java" />
       </list>
     </option>
   </component>
@@ -138,7 +153,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552328917534" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552371193661" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -177,24 +192,25 @@
       <option name="presentableId" value="Default" />
       <updated>1551742895285</updated>
       <workItem from="1551742897896" duration="24000" />
-      <workItem from="1552257265433" duration="36446000" />
+      <workItem from="1552257265433" duration="36525000" />
+      <workItem from="1552364235777" duration="4460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36470000" />
+    <option name="totallyTimeSpent" value="41009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="798" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
@@ -205,8 +221,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.23654391" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -221,23 +238,11 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Compiler.java</url>
-          <line>23</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="327" column="12" selection-start-line="327" selection-start-column="12" selection-end-line="328" selection-end-column="26" />
+        <state relative-caret-position="-29">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -250,29 +255,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="-2062">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="90">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#329#330#0" expanded="true" />
             <element signature="e#376#377#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Compiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

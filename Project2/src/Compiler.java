@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * A Java-implementated compiler for the class language of
+ * A Java-implemented compiler for the class language of
  * CMPT 432 - Compilers with Alan Labouseur.
  *
  * @author Brendan Van Allen
@@ -12,11 +12,12 @@ public class Compiler {
 
     public static void main(String args[]) {
         Scanner scanner = new Scanner(System.in);
-        int program = 1;
+        int program = 0;
         int lineNum = 0;
         while(scanner.hasNext()) {
+            program++;
             System.out.println("Compiling program " + program + "...\n");
-            ArrayList<Token> tokens = Lexer.lex(scanner, program, lineNum);
+            ArrayList<Token> tokens = Lexer.lex(scanner, program);
             if(tokens != null) {
                 Tree cst = Parser.parse(tokens, program);
                 if(cst != null) {
@@ -31,7 +32,13 @@ public class Compiler {
                 // Don't parse, error
                 System.out.println("Compilation stopped for program " + program + " due to Lexical error(s).\n");
             }
-            program++;
+
+            System.out.println("-------------------------------------------\n");
+        }
+
+        // One last check to make sure there was input
+        if(program == 0) {
+            System.out.println("ERROR: Empty file.");
         }
 
         scanner.close();

@@ -1,0 +1,157 @@
+Compiling program 1...
+
+LEXER -- Lexing program 1...
+LEXER -- L_BRACE [ { ] found at (1:1)
+LEXER -- QUOTE [ " ] found at (1:2)
+LEXER -- ERROR: Illegal symbol in String [ $ ] at (1:3)
+LEXER -- QUOTE [ " ] found at (1:4)
+LEXER -- R_BRACE [ } ] found at (1:5)
+LEXER -- EOP [ $ ] found at (1:6)
+LEXER -- Lexing complete for program 1. Lex failed with 1 error(s).
+
+Compilation stopped for program 1 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 2...
+
+LEXER -- Lexing program 2...
+LEXER -- L_BRACE [ { ] found at (3:1)
+LEXER -- QUOTE [ " ] found at (3:2)
+LEXER -- CHAR [ t ] found at (3:3)
+LEXER -- CHAR [ w ] found at (3:4)
+LEXER -- CHAR [ o ] found at (3:5)
+LEXER -- ERROR: Unterminated string at (3:5)
+LEXER -- CHAR [ l ] found at (4:1)
+LEXER -- CHAR [ i ] found at (4:2)
+LEXER -- CHAR [ n ] found at (4:3)
+LEXER -- CHAR [ e ] found at (4:4)
+LEXER -- CHAR [ s ] found at (4:5)
+LEXER -- QUOTE [ " ] found at (4:6)
+LEXER -- ERROR: Illegal symbol in String [ } ] at (4:7)
+LEXER -- EOP [ $ ] found at (4:8)
+LEXER -- ERROR: Unterminated string at (4:8)
+LEXER -- Lexing complete for program 2. Lex failed with 3 error(s).
+
+Compilation stopped for program 2 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 3...
+
+LEXER -- Lexing program 3...
+LEXER -- L_BRACE [ { ] found at (6:1)
+LEXER -- PRINT [ print ] found at (6:2)
+LEXER -- L_PAREN [ ( ] found at (6:7)
+LEXER -- QUOTE [ " ] found at (6:8)
+LEXER -- ERROR: Illegal symbol in String [ N ] at (6:9)
+LEXER -- CHAR [ o ] found at (6:10)
+LEXER -- SPACE [   ] found at (6:11)
+LEXER -- ERROR: Illegal symbol in String [ C ] at (6:12)
+LEXER -- CHAR [ a ] found at (6:13)
+LEXER -- CHAR [ p ] found at (6:14)
+LEXER -- CHAR [ s ] found at (6:15)
+LEXER -- SPACE [   ] found at (6:16)
+LEXER -- ERROR: Illegal symbol in String [ M ] at (6:17)
+LEXER -- CHAR [ i ] found at (6:18)
+LEXER -- CHAR [ s ] found at (6:19)
+LEXER -- CHAR [ t ] found at (6:20)
+LEXER -- CHAR [ e ] found at (6:21)
+LEXER -- CHAR [ r ] found at (6:22)
+LEXER -- SPACE [   ] found at (6:23)
+LEXER -- ERROR: Illegal symbol in String [ B ] at (6:24)
+LEXER -- CHAR [ o ] found at (6:25)
+LEXER -- CHAR [ n ] found at (6:26)
+LEXER -- CHAR [ d ] found at (6:27)
+LEXER -- QUOTE [ " ] found at (6:28)
+LEXER -- R_PAREN [ ) ] found at (6:29)
+LEXER -- R_BRACE [ } ] found at (6:30)
+LEXER -- EOP [ $ ] found at (6:31)
+LEXER -- Lexing complete for program 3. Lex failed with 4 error(s).
+
+Compilation stopped for program 3 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 4...
+
+LEXER -- Lexing program 4...
+LEXER -- L_BRACE [ { ] found at (8:1)
+LEXER -- PRINT [ print ] found at (8:2)
+LEXER -- L_PAREN [ ( ] found at (8:7)
+LEXER -- QUOTE [ " ] found at (8:8)
+LEXER -- CHAR [ n ] found at (8:9)
+LEXER -- CHAR [ o ] found at (8:10)
+LEXER -- SPACE [   ] found at (8:11)
+LEXER -- CHAR [ d ] found at (8:12)
+LEXER -- CHAR [ i ] found at (8:13)
+LEXER -- CHAR [ g ] found at (8:14)
+LEXER -- CHAR [ i ] found at (8:15)
+LEXER -- CHAR [ t ] found at (8:16)
+LEXER -- CHAR [ s ] found at (8:17)
+LEXER -- SPACE [   ] found at (8:18)
+LEXER -- ERROR: Illegal symbol in String [ 0 ] at (8:19)
+LEXER -- ERROR: Illegal symbol in String [ 0 ] at (8:20)
+LEXER -- ERROR: Illegal symbol in String [ 7 ] at (8:21)
+LEXER -- QUOTE [ " ] found at (8:22)
+LEXER -- R_PAREN [ ) ] found at (8:23)
+LEXER -- R_BRACE [ } ] found at (8:24)
+LEXER -- EOP [ $ ] found at (8:25)
+LEXER -- Lexing complete for program 4. Lex failed with 3 error(s).
+
+Compilation stopped for program 4 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 5...
+
+LEXER -- Lexing program 5...
+LEXER -- L_BRACE [ { ] found at (10:1)
+LEXER -- INT [ int ] found at (10:2)
+LEXER -- ERROR: Unrecognized token [ A ] at (10:6)
+LEXER -- R_BRACE [ } ] found at (10:7)
+LEXER -- EOP [ $ ] found at (10:8)
+LEXER -- Lexing complete for program 5. Lex failed with 1 error(s).
+
+Compilation stopped for program 5 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 6...
+
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (12:1)
+LEXER -- ERROR: Unrecognized token [ ~ ] at (13:3)
+LEXER -- ERROR: Unrecognized token [ ! ] at (13:4)
+LEXER -- ERROR: Unrecognized token [ @ ] at (13:5)
+LEXER -- ERROR: Unrecognized token [ # ] at (13:6)
+LEXER -- ERROR: Unrecognized token [ % ] at (13:7)
+LEXER -- ERROR: Unrecognized token [ ^ ] at (13:8)
+LEXER -- ERROR: Unrecognized token [ & ] at (13:9)
+LEXER -- ERROR: Unrecognized token [ * ] at (13:10)
+LEXER -- ERROR: Unrecognized token [ _ ] at (13:11)
+LEXER -- INT_OP [ + ] found at (13:12)
+LEXER -- L_BRACE [ { ] found at (13:13)
+LEXER -- R_BRACE [ } ] found at (13:14)
+LEXER -- ERROR: Unrecognized token [ | ] at (13:15)
+LEXER -- ERROR: Unrecognized token [ : ] at (13:16)
+LEXER -- ERROR: Unrecognized token [ < ] at (13:17)
+LEXER -- ERROR: Unrecognized token [ > ] at (13:18)
+LEXER -- ERROR: Unrecognized token [ ? ] at (13:19)
+LEXER -- ERROR: Unrecognized token [ [ ] at (13:20)
+LEXER -- ERROR: Unrecognized token [ ] ] at (13:21)
+LEXER -- ERROR: Unrecognized token [ ; ] at (13:22)
+LEXER -- ERROR: Unrecognized token [ ' ] at (13:23)
+LEXER -- ERROR: Unrecognized token [ , ] at (13:24)
+LEXER -- ERROR: Unrecognized token [ . ] at (13:25)
+LEXER -- ERROR: Unrecognized token [ / ] at (13:26)
+LEXER -- CHAR [ b ] found at (14:3)
+LEXER -- CHAR [ o ] found at (14:4)
+LEXER -- CHAR [ o ] found at (14:5)
+LEXER -- CHAR [ l ] found at (14:6)
+LEXER -- CHAR [ e ] found at (14:8)
+LEXER -- CHAR [ a ] found at (14:9)
+LEXER -- CHAR [ n ] found at (14:10)
+LEXER -- CHAR [ d ] found at (14:12)
+LEXER -- R_BRACE [ } ] found at (15:1)
+LEXER -- EOP [ $ ] found at (15:2)
+LEXER -- Lexing complete for program 6. Lex failed with 21 error(s).
+
+Compilation stopped for program 6 due to Lexical error(s).
+
+-------------------------------------------

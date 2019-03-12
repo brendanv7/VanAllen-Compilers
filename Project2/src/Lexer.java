@@ -9,13 +9,12 @@ import java.util.Scanner;
  * @version Spring 2019
  */
 public class Lexer {
-    private static int lineNum;
+    private static int lineNum = 0;
     private static int position;
-    private static int errors;
-    private static int programNum;
 
-    public static ArrayList<Token> lex(Scanner scanner, int program, int lineNumber) {
-        programNum = program;
+    public static ArrayList<Token> lex(Scanner scanner, int program) {
+        int programNum = program;
+        int errors = 0;
         ArrayList<Token> tokens = new ArrayList<>();
         Token token = null;
         String keyword;
@@ -23,28 +22,34 @@ public class Lexer {
         boolean tokenFound = false;
         boolean inComment = false;
         boolean inString = false;
-        lineNum = lineNumber;
-        errors = 0;
+        String input = null;
 
-        System.out.println("LEXER -- Lexing program " + program + "...");
+        // Check for no input before we even try to lex
+        if(scanner.hasNext())
+            System.out.println("LEXER -- Lexing program " + program + "...");
+        else
+            programComplete = true;
 
         while (!programComplete) {
             // New line
             position = 0;
             lineNum++;
 
-            char[] inputChars = scanner.nextLine().toCharArray(); // Separating input into chars helps simplify operations
+            input = scanner.nextLine();
 
             // Advance until there is input, or end-of-file is reached
-            while (inputChars.length == 0) {
+            while (input.isEmpty()) {
                 if (scanner.hasNext()) {
-                    inputChars = scanner.nextLine().toCharArray();
+                    input = scanner.nextLine();
                     lineNum++;
                 } else {
                     programComplete = true;
                     break;
                 }
             }
+
+            // Separating input into chars helps simplify operations
+            char[] inputChars = input.toCharArray();
 
             for (int i = 0; i < inputChars.length; i++) {
                 position++;
@@ -305,7 +310,7 @@ public class Lexer {
         }
 
         // No input is an error.
-        if (errors == 0 && tokens.size() == 0) {
+        if ((errors == 0 && tokens.size() <= 1) || input == null) {
             errors++;
             printError("No input found");
         }

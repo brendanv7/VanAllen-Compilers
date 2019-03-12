@@ -1,3 +1,5 @@
+Compiling program 1...
+
 LEXER -- Lexing program 1...
 LEXER -- L_BRACE [ { ] found at (1:1)
 LEXER -- INT [ int ] found at (1:33)
@@ -5,6 +7,11 @@ LEXER -- ERROR: Unrecognized token [ @ ] at (1:38)
 LEXER -- R_BRACE [ } ] found at (1:39)
 LEXER -- EOP [ $ ] found at (1:40)
 LEXER -- Lexing complete for program 1. Lex failed with 1 error(s).
+
+Compilation stopped for program 1 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 2...
 
 LEXER -- Lexing program 2...
 LEXER -- L_BRACE [ { ] found at (2:1)
@@ -18,6 +25,11 @@ LEXER -- INT_OP [ + ] found at (2:10)
 LEXER -- ERROR: Unrecognized token [ - ] at (2:11)
 LEXER -- EOP [ $ ] found at (2:12)
 LEXER -- Lexing complete for program 2. Lex failed with 1 error(s).
+
+Compilation stopped for program 2 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 3...
 
 LEXER -- Lexing program 3...
 LEXER -- QUOTE [ " ] found at (3:1)
@@ -57,6 +69,11 @@ LEXER -- EOP [ $ ] found at (3:34)
 LEXER -- ERROR: Unterminated string at (3:34)
 LEXER -- Lexing complete for program 3. Lex failed with 5 error(s).
 
+Compilation stopped for program 3 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 4...
+
 LEXER -- Lexing program 4...
 LEXER -- ERROR: Unrecognized token [ ! ] at (4:1)
 LEXER -- ERROR: Unrecognized token [ @ ] at (4:2)
@@ -78,6 +95,11 @@ LEXER -- ERROR: Unrecognized token [ ? ] at (4:17)
 LEXER -- ERROR: Unrecognized token [ / ] at (4:18)
 LEXER -- EOP [ $ ] found at (4:19)
 LEXER -- Lexing complete for program 4. Lex failed with 18 error(s).
+
+Compilation stopped for program 4 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 5...
 
 LEXER -- Lexing program 5...
 LEXER -- CHAR [ c ] found at (5:1)
@@ -109,6 +131,11 @@ LEXER -- ERROR: Unrecognized token [ O ] at (5:30)
 LEXER -- EOP [ $ ] found at (5:31)
 LEXER -- Lexing complete for program 5. Lex failed with 13 error(s).
 
+Compilation stopped for program 5 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 6...
+
 LEXER -- Lexing program 6...
 LEXER -- CHAR [ p ] found at (6:1)
 LEXER -- CHAR [ i ] found at (6:2)
@@ -119,6 +146,11 @@ LEXER -- DIGIT [ 1 ] found at (6:8)
 LEXER -- DIGIT [ 4 ] found at (6:9)
 LEXER -- EOP [ $ ] found at (6:10)
 LEXER -- Lexing complete for program 6. Lex failed with 1 error(s).
+
+Compilation stopped for program 6 due to Lexical error(s).
+
+-------------------------------------------
+Compiling program 7...
 
 LEXER -- Lexing program 7...
 LEXER -- CHAR [ h ] found at (7:1)
@@ -136,7 +168,16 @@ LEXER -- CHAR [ n ] found at (7:15)
 LEXER -- CHAR [ i ] found at (7:16)
 LEXER -- CHAR [ n ] found at (7:17)
 LEXER -- CHAR [ g ] found at (7:18)
-LEXER -- WARNING: Program ended in open comment. Consider closing it at (7:25)
-LEXER -- WARNING: No EOP character found and end-of-file has been reached. at (7:25)
+LEXER -- EOP [ $ ] found at (7:25)
+LEXER -- WARNING: Program ended in open comment. Consider closing it. at (7:25)
 LEXER -- Lexing complete for program 7. No errors found.
 
+PARSER -- Parsing program 7...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- ERROR: Expected [L_BRACE], found [CHAR] with value 'h' at (7:1)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 7 due to Parse error(s).
+
+-------------------------------------------
