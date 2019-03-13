@@ -1,0 +1,65 @@
+{}$
+
+{{{{{{}}}}}}$
+
+{
+  print("")
+}$
+
+{
+  print(a)
+}$
+
+{
+  print(2)
+}$
+
+{
+  print("a")
+}$
+
+{
+  print(false)
+}$
+
+{
+  print("int a")
+}$
+
+{
+  a = 1
+}$
+
+{
+  a = 1 + 2 + 3 + 4   +      5
+}$
+
+{
+  int a
+  a = a
+  string b
+  a = b
+}$
+
+{ int a a=a string b a=b }$
+
+{
+  /* Comments? no problem */
+  string b
+}$
+
+{
+  string s
+  s = "this string is /* in */ visible"
+}$
+
+{
+  boolean d
+  d = ("string" != "string")
+}$
+
+{
+  while true {
+    print ((true != 1 + 2))
+  }
+}

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple tree created for this compiler to be used
@@ -29,6 +28,11 @@ public class Tree {
         return n;
     }
 
+    public void resetParent() {
+        if(currentNode != null && currentNode.parent != null)
+            currentNode = currentNode.parent;
+    }
+
     public void printTree() {
         Node current = this.root;
         int level = 0;
@@ -51,7 +55,7 @@ public class Tree {
         }
     }
 
-    public class Node {
+    class Node {
         String data;
         Node parent;
         ArrayList<Node> children;

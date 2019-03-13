@@ -43,5 +43,4 @@ public class Compiler {
 
         scanner.close();
     }
-
 }

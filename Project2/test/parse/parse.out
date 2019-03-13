@@ -24,6 +24,7 @@ CST for program 1:
 Compilation complete (for now) for program 1.
 
 -------------------------------------------
+
 Compiling program 2...
 
 LEXER -- Lexing program 2...
@@ -110,6 +111,7 @@ CST for program 2:
 Compilation complete (for now) for program 2.
 
 -------------------------------------------
+
 Compiling program 3...
 
 LEXER -- Lexing program 3...
@@ -159,6 +161,7 @@ PARSER -- Parse failed with 1 error(s)
 Compilation stopped for program 3 due to Parse error(s).
 
 -------------------------------------------
+
 Compiling program 4...
 
 LEXER -- Lexing program 4...
@@ -172,6 +175,7 @@ LEXER -- Lexing complete for program 4. Lex failed with 1 error(s).
 Compilation stopped for program 4 due to Lexical error(s).
 
 -------------------------------------------
+
 Compiling program 5...
 
 LEXER -- Lexing program 5...
@@ -252,3 +256,4 @@ CST for program 5:
 Compilation complete (for now) for program 5.
 
 -------------------------------------------
+

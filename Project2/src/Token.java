@@ -1,5 +1,5 @@
 /**
- * Represents a syntatic token for use in
+ * Represents a syntactic token for use in
  * a compiler.
  */
 public class Token {

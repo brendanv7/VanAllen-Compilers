@@ -1,0 +1,298 @@
+Compiling program 1...
+
+LEXER -- Lexing program 1...
+LEXER -- EOP [ $ ] found at (4:1)
+LEXER -- ERROR: No input found at (4:1)
+LEXER -- Lexing complete for program 1. Lex failed with 1 error(s).
+
+Compilation stopped for program 1 due to Lexical error(s).
+
+-------------------------------------------
+
+Compiling program 2...
+
+LEXER -- Lexing program 2...
+LEXER -- ERROR: Unrecognized token [ L ] at (9:1)
+LEXER -- CHAR [ e ] found at (9:2)
+LEXER -- CHAR [ x ] found at (9:3)
+LEXER -- CHAR [ e ] found at (9:4)
+LEXER -- CHAR [ r ] found at (9:5)
+LEXER -- CHAR [ f ] found at (9:7)
+LEXER -- CHAR [ a ] found at (9:8)
+LEXER -- CHAR [ i ] found at (9:9)
+LEXER -- CHAR [ l ] found at (9:10)
+LEXER -- EOP [ $ ] found at (9:11)
+LEXER -- Lexing complete for program 2. Lex failed with 1 error(s).
+
+Compilation stopped for program 2 due to Lexical error(s).
+
+-------------------------------------------
+
+Compiling program 3...
+
+LEXER -- Lexing program 3...
+LEXER -- L_BRACE [ { ] found at (14:1)
+LEXER -- DIGIT [ 1 ] found at (16:3)
+LEXER -- ASSIGN_OP [ = ] found at (16:5)
+LEXER -- DIGIT [ 2 ] found at (16:7)
+LEXER -- R_BRACE [ } ] found at (18:1)
+LEXER -- EOP [ $ ] found at (18:2)
+LEXER -- Lexing complete for program 3. No errors found.
+
+PARSER -- Parsing program 3...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- ERROR: Expected [R_BRACE], found [DIGIT] with value '1' at (16:3)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 3 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 4...
+
+LEXER -- Lexing program 4...
+LEXER -- L_BRACE [ { ] found at (21:1)
+LEXER -- INT [ int ] found at (23:3)
+LEXER -- R_BRACE [ } ] found at (25:1)
+LEXER -- EOP [ $ ] found at (25:2)
+LEXER -- Lexing complete for program 4. No errors found.
+
+PARSER -- Parsing program 4...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- ERROR: Expected [CHAR], found [R_BRACE] with value '}' at (25:1)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 4 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 5...
+
+LEXER -- Lexing program 5...
+LEXER -- L_BRACE [ { ] found at (28:1)
+LEXER -- INT [ int ] found at (30:3)
+LEXER -- DIGIT [ 1 ] found at (30:7)
+LEXER -- R_BRACE [ } ] found at (32:1)
+LEXER -- EOP [ $ ] found at (32:2)
+LEXER -- Lexing complete for program 5. No errors found.
+
+PARSER -- Parsing program 5...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- ERROR: Expected [CHAR], found [DIGIT] with value '1' at (30:7)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 5 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 6...
+
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (35:1)
+LEXER -- INT [ int ] found at (37:3)
+LEXER -- CHAR [ a ] found at (37:7)
+LEXER -- ASSIGN_OP [ = ] found at (37:9)
+LEXER -- DIGIT [ 2 ] found at (37:11)
+LEXER -- R_BRACE [ } ] found at (39:1)
+LEXER -- EOP [ $ ] found at (39:2)
+LEXER -- Lexing complete for program 6. No errors found.
+
+PARSER -- Parsing program 6...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- ERROR: Expected [R_BRACE], found [ASSIGN_OP] with value '=' at (37:9)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 6 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 7...
+
+LEXER -- Lexing program 7...
+LEXER -- L_BRACE [ { ] found at (42:1)
+LEXER -- CHAR [ a ] found at (44:3)
+LEXER -- INT_OP [ + ] found at (44:5)
+LEXER -- DIGIT [ 1 ] found at (44:7)
+LEXER -- R_BRACE [ } ] found at (46:1)
+LEXER -- EOP [ $ ] found at (46:2)
+LEXER -- Lexing complete for program 7. No errors found.
+
+PARSER -- Parsing program 7...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- ERROR: Expected [ASSIGN_OP], found [INT_OP] with value '+' at (44:5)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 7 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 8...
+
+LEXER -- Lexing program 8...
+LEXER -- L_BRACE [ { ] found at (49:1)
+LEXER -- PRINT [ print ] found at (51:3)
+LEXER -- L_PAREN [ ( ] found at (51:8)
+LEXER -- CHAR [ h ] found at (51:9)
+LEXER -- CHAR [ i ] found at (51:10)
+LEXER -- R_PAREN [ ) ] found at (51:11)
+LEXER -- R_BRACE [ } ] found at (53:1)
+LEXER -- EOP [ $ ] found at (53:2)
+LEXER -- Lexing complete for program 8. No errors found.
+
+PARSER -- Parsing program 8...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- ERROR: Expected [R_PAREN], found [CHAR] with value 'i' at (51:10)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 8 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 9...
+
+LEXER -- Lexing program 9...
+LEXER -- L_BRACE [ { ] found at (56:1)
+LEXER -- PRINT [ print ] found at (58:3)
+LEXER -- L_PAREN [ ( ] found at (58:8)
+LEXER -- STRING [ string ] found at (58:9)
+LEXER -- R_PAREN [ ) ] found at (58:15)
+LEXER -- R_BRACE [ } ] found at (60:1)
+LEXER -- EOP [ $ ] found at (60:2)
+LEXER -- Lexing complete for program 9. No errors found.
+
+PARSER -- Parsing program 9...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- ERROR: Expected token in [DIGIT, QUOTE, L_PAREN, BOOL_VAL, CHAR] found [STRING] with value 'string' at (58:9)
+PARSER -- ERROR: Expected [R_PAREN], found [STRING] with value 'string' at (58:9)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 9 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 10...
+
+LEXER -- Lexing program 10...
+LEXER -- L_BRACE [ { ] found at (63:1)
+LEXER -- WHILE [ while ] found at (65:3)
+LEXER -- QUOTE [ " ] found at (65:9)
+LEXER -- CHAR [ t ] found at (65:10)
+LEXER -- CHAR [ r ] found at (65:11)
+LEXER -- CHAR [ u ] found at (65:12)
+LEXER -- CHAR [ e ] found at (65:13)
+LEXER -- QUOTE [ " ] found at (65:14)
+LEXER -- L_BRACE [ { ] found at (65:16)
+LEXER -- R_BRACE [ } ] found at (65:18)
+LEXER -- R_BRACE [ } ] found at (67:1)
+LEXER -- EOP [ $ ] found at (67:2)
+LEXER -- Lexing complete for program 10. No errors found.
+
+PARSER -- Parsing program 10...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseWhileStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- ERROR: Expected token in [L_PAREN, BOOL_VAL] found [QUOTE] with value '"' at (65:9)
+PARSER -- parseBlock()
+PARSER -- ERROR: Expected [L_BRACE], found [QUOTE] with value '"' at (65:9)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 10 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 11...
+
+LEXER -- Lexing program 11...
+LEXER -- L_BRACE [ { ] found at (70:1)
+LEXER -- INT [ int ] found at (72:3)
+LEXER -- CHAR [ a ] found at (72:7)
+LEXER -- STRING [ string ] found at (74:3)
+LEXER -- CHAR [ b ] found at (74:10)
+LEXER -- CHAR [ a ] found at (76:3)
+LEXER -- ASSIGN_OP [ = ] found at (76:5)
+LEXER -- CHAR [ b ] found at (76:7)
+LEXER -- DIGIT [ 1 ] found at (78:3)
+LEXER -- INT_OP [ + ] found at (78:5)
+LEXER -- DIGIT [ 2 ] found at (78:7)
+LEXER -- INT_OP [ + ] found at (78:9)
+LEXER -- DIGIT [ 3 ] found at (78:11)
+LEXER -- INT_OP [ + ] found at (78:13)
+LEXER -- CHAR [ a ] found at (78:15)
+LEXER -- INT_OP [ + ] found at (78:17)
+LEXER -- CHAR [ b ] found at (78:19)
+LEXER -- WHILE [ while ] found at (80:3)
+LEXER -- L_PAREN [ ( ] found at (80:9)
+LEXER -- BOOL_VAL [ true ] found at (80:10)
+LEXER -- R_PAREN [ ) ] found at (80:14)
+LEXER -- L_BRACE [ { ] found at (80:16)
+LEXER -- CHAR [ a ] found at (82:5)
+LEXER -- ASSIGN_OP [ = ] found at (82:7)
+LEXER -- DIGIT [ 1 ] found at (82:9)
+LEXER -- INT_OP [ + ] found at (82:11)
+LEXER -- R_BRACE [ } ] found at (84:3)
+LEXER -- R_BRACE [ } ] found at (86:1)
+LEXER -- WARNING: No EOP character found and end-of-file has been reached. at (87:0)
+LEXER -- Lexing complete for program 11. No errors found.
+
+PARSER -- Parsing program 11...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- ERROR: Expected [R_BRACE], found [DIGIT] with value '1' at (78:3)
+PARSER -- Parse failed with 1 error(s)
+Compilation stopped for program 11 due to Parse error(s).
+
+-------------------------------------------
+

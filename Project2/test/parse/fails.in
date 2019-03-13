@@ -1,0 +1,49 @@
+/* Special no input case */
+$
+
+/* One lex fail to prove that compilation stops */
+Lexer fail$
+
+/* The rest contain Parse-specific errors */
+{
+  1 = 2
+}$
+
+{
+  int
+}$
+
+{
+  int 1
+}$
+
+{
+  int a = 2
+}$
+
+{
+  a + 1
+}$
+
+{
+  print(hi)
+}$
+
+{
+  print(string)
+}$
+
+{
+  while "true" { }
+}$
+
+{
+  int a
+  string b
+  a = b
+  1 + 2 + 3 + a + b
+  while (true) {
+    a = 1 +           /* this is the only line that fails parse */
+  }
+}
+

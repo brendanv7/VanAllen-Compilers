@@ -35,7 +35,7 @@ public class Lexer {
             position = 0;
             lineNum++;
 
-            input = scanner.nextLine();
+            input = "";
 
             // Advance until there is input, or end-of-file is reached
             while (input.isEmpty()) {

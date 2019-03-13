@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class Parser {
     private static ArrayList<Token> tokens;
-    private static int program;
     private static int index;
     private static Token currentToken;
     private static Tree cst;
@@ -17,15 +16,14 @@ public class Parser {
 
     public static Tree parse(ArrayList<Token> tokenList, int programNum) {
         tokens = tokenList;
-        program = programNum;
         index = 0;
         currentToken = tokens.get(index);
         cst = new Tree();
         errors = 0;
 
-        System.out.println("PARSER -- Parsing program " + program + "...");
+        System.out.println("PARSER -- Parsing programNum " + programNum + "...");
         System.out.println("PARSER -- parse()");
-        parseProgram();
+        parseprogramNum();
 
         // Reset the tree so null is returned and compilation does not continue
         if (errors > 0) {
@@ -38,6 +36,12 @@ public class Parser {
         return cst;
     }
 
+    /*
+     * Determines if the current token being parsed is what
+     * is expected from the production rules. If it is, we
+     * add it to the CST and move on to the next token. If
+     * it is not, then we have found a parse error.
+     */
     private static void matchAndConsume(String expectedToken) {
         // We don't need to recover after first error, so make sure we haven't found
         if (errors == 0) {
@@ -55,18 +59,19 @@ public class Parser {
         }
     }
 
-    private static void resetParent() {
-        if(cst.currentNode != null && cst.currentNode.parent != null)
-            cst.currentNode = cst.currentNode.parent;
-    }
-
-    private static void parseProgram() {
-        System.out.println("PARSER -- parseProgram()");
-        cst.addNode("<Program>");
+    /*
+     * programNum ::== Block $
+     */
+    private static void parseprogramNum() {
+        System.out.println("PARSER -- parseprogramNum()");
+        cst.addNode("<programNum>");
         parseBlock();
         matchAndConsume("EOP");
     }
 
+    /*
+     * Block ::== { StatementList }
+     */
     private static void parseBlock() {
         if (errors == 0) {
             System.out.println("PARSER -- parseBlock()");
@@ -74,10 +79,14 @@ public class Parser {
             matchAndConsume("L_BRACE");
             parseStatementList();
             matchAndConsume("R_BRACE");
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * StatementList ::== Statement StatementList
+     *               ::== ε
+     */
     private static void parseStatementList() {
         if (errors == 0) {
             System.out.println("PARSER -- parseStatementList()");
@@ -135,10 +144,18 @@ public class Parser {
                     // Epsilon production
             }
 
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * Statement ::== PrintStatement
+     *           ::== AssignmentStatement
+     *           ::== VarDecl
+     *           ::== WhileStatement
+     *           ::== IfStatement
+     *           ::== Block
+     */
     private static void parseStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseStatement()");
@@ -192,10 +209,13 @@ public class Parser {
                 }
             }
 
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * PrintStatement ::== print ( Expr )
+     */
     private static void parsePrintStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parsePrintStatement()");
@@ -204,10 +224,13 @@ public class Parser {
             matchAndConsume("L_PAREN");
             parseExpr();
             matchAndConsume("R_PAREN");
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * AssignmentStatement ::== Id = Expr
+     */
     private static void parseAssignmentStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseAssignmentStatement()");
@@ -215,20 +238,26 @@ public class Parser {
             parseId();
             matchAndConsume("ASSIGN_OP");
             parseExpr();
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * VarDecl ::== type Id
+     */
     private static void parseVarDecl() {
         if (errors == 0) {
             System.out.println("PARSER -- parseVarDecl()");
             cst.addNode("<VarDecl>");
             parseType();
             parseId();
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * WhileStatement ::== while BooleanExpr Block
+     */
     private static void parseWhileStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseWhileStatement()");
@@ -236,10 +265,13 @@ public class Parser {
             matchAndConsume("WHILE");
             parseBooleanExpr();
             parseBlock();
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * IfStatement ::== if BooleanExpr Block
+     */
     private static void parseIfStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseIfStatement()");
@@ -247,10 +279,16 @@ public class Parser {
             matchAndConsume("IF");
             parseBooleanExpr();
             parseBlock();
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * Expr ::== IntExpr
+     *      ::== StringExpr
+     *      ::== BooleanExpr
+     *      ::== Id
+     */
     private static void parseExpr() {
         if (errors == 0) {
             System.out.println("PARSER -- parseExpr()");
@@ -289,10 +327,14 @@ public class Parser {
                 }
             }
 
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * IntExpr ::== digit intop Expr
+     *         ::== digit
+     */
     private static void parseIntExpr() {
         if (errors == 0) {
             System.out.println("PARSER -- parseIntExpr()");
@@ -302,10 +344,13 @@ public class Parser {
                 matchAndConsume("INT_OP");
                 parseExpr();
             }
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * StringExpr ::== " CharList "
+     */
     private static void parseStringExpr() {
         if (errors == 0) {
             System.out.println("PARSER -- parseStringExpr()");
@@ -313,10 +358,14 @@ public class Parser {
             matchAndConsume("QUOTE");
             parseCharList();
             matchAndConsume("QUOTE");
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * BooleanExpr ::== ( Expr boolop Expr )
+     *             ::== boolval
+     */
     private static void parseBooleanExpr() {
         if (errors == 0) {
             System.out.println("PARSER -- parseBooleanExpr()");
@@ -344,19 +393,27 @@ public class Parser {
                 }
             }
 
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * Id ::== char
+     */
     private static void parseId() {
         if (errors == 0) {
             System.out.println("PARSER -- parseId()");
             cst.addNode("<Id>");
             matchAndConsume("CHAR");
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * CharList ::== char CharList
+     *          ::== space CharList
+     *          ::== ε
+     */
     private static void parseCharList() {
         if (errors == 0) {
             System.out.println("PARSER -- parseCharList()");
@@ -378,10 +435,16 @@ public class Parser {
                     // Epsilon production
             }
             
-            resetParent();
+            cst.resetParent();
         }
     }
 
+    /*
+     * type ::== int | string | boolean
+     *
+     * I know type is a not a non-terminal, but this
+     * method helps the aesthetics of the code.
+     */
     private static void parseType() {
         if (errors == 0) {
             switch (currentToken.type) {
