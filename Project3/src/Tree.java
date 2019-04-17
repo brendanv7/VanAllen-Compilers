@@ -13,11 +13,11 @@ public class Tree {
         currentNode = null;
     }
 
-    public void addNode(String data) {
+    public void addNode(Token data) {
         currentNode = addLeafNode(data);
     }
 
-    public Node addLeafNode(String data) {
+    public Node addLeafNode(Token data) {
         Node n = new Node(data);
         if (root == null)
             root = n;
@@ -56,11 +56,11 @@ public class Tree {
     }
 
     public class Node {
-        String data;
+        Token data;
         Node parent;
         ArrayList<Node> children;
 
-        Node(String data) {
+        Node(Token data) {
             this.data = data;
             parent = null;
             children = new ArrayList<>();
@@ -71,7 +71,7 @@ public class Tree {
             for(int j=0;j<level;j++) {
                 dashes += "-";
             }
-            System.out.println(dashes + this.data);
+            System.out.println(dashes + this.data.data);
         }
     }
 }

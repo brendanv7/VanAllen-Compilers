@@ -16,15 +16,16 @@ PARSER -- Parse completed successfully.
 CST for program 1:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 1:
 <Block>
 
+SEMANTIC -- Analyzing program 1...
 Compilation complete (for now) for program 1.
 
 -------------------------------------------
@@ -77,40 +78,40 @@ PARSER -- Parse completed successfully.
 CST for program 2:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<Block>
------[{]
+-----{
 -----<StatementList>
 ------<Statement>
 -------<Block>
---------[{]
+--------{
 --------<StatementList>
 ---------<Statement>
 ----------<Block>
------------[{]
+-----------{
 -----------<StatementList>
 ------------<Statement>
 -------------<Block>
---------------[{]
+--------------{
 --------------<StatementList>
 ---------------<Statement>
 ----------------<Block>
------------------[{]
+-----------------{
 -----------------<StatementList>
------------------[}]
+-----------------}
 ---------------<StatementList>
---------------[}]
+--------------}
 ------------<StatementList>
------------[}]
+-----------}
 ---------<StatementList>
---------[}]
+--------}
 ------<StatementList>
------[}]
+-----}
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 2:
@@ -121,6 +122,7 @@ AST for program 2:
 ----<Block>
 -----<Block>
 
+SEMANTIC -- Analyzing program 2...
 Compilation complete (for now) for program 2.
 
 -------------------------------------------
@@ -154,21 +156,21 @@ PARSER -- Parse completed successfully.
 CST for program 3:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<PrintStatement>
------[print]
------[(]
+-----print
+-----(
 -----<Expr>
 ------<StringExpr>
--------["]
+-------"
 -------<CharList>
--------["]
------[)]
+-------"
+-----)
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 3:
@@ -176,6 +178,7 @@ AST for program 3:
 -<Print Statement>
 --<"">
 
+SEMANTIC -- Analyzing program 3...
 Compilation complete (for now) for program 3.
 
 -------------------------------------------
@@ -207,19 +210,19 @@ PARSER -- Parse completed successfully.
 CST for program 4:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<PrintStatement>
------[print]
------[(]
+-----print
+-----(
 -----<Expr>
 ------<Id>
--------[a]
------[)]
+-------a
+-----)
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 4:
@@ -227,6 +230,7 @@ AST for program 4:
 -<Print Statement>
 --<a>
 
+SEMANTIC -- Analyzing program 4...
 Compilation complete (for now) for program 4.
 
 -------------------------------------------
@@ -258,19 +262,19 @@ PARSER -- Parse completed successfully.
 CST for program 5:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<PrintStatement>
------[print]
------[(]
+-----print
+-----(
 -----<Expr>
 ------<IntExpr>
--------[2]
------[)]
+-------2
+-----)
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 5:
@@ -278,6 +282,7 @@ AST for program 5:
 -<Print Statement>
 --<2>
 
+SEMANTIC -- Analyzing program 5...
 Compilation complete (for now) for program 5.
 
 -------------------------------------------
@@ -313,23 +318,23 @@ PARSER -- Parse completed successfully.
 CST for program 6:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<PrintStatement>
------[print]
------[(]
+-----print
+-----(
 -----<Expr>
 ------<StringExpr>
--------["]
+-------"
 -------<CharList>
---------[a]
+--------a
 --------<CharList>
--------["]
------[)]
+-------"
+-----)
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 6:
@@ -337,6 +342,7 @@ AST for program 6:
 -<Print Statement>
 --<"a">
 
+SEMANTIC -- Analyzing program 6...
 Compilation complete (for now) for program 6.
 
 -------------------------------------------
@@ -368,19 +374,19 @@ PARSER -- Parse completed successfully.
 CST for program 7:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<PrintStatement>
------[print]
------[(]
+-----print
+-----(
 -----<Expr>
 ------<BooleanExpr>
--------[false]
------[)]
+-------false
+-----)
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 7:
@@ -388,6 +394,7 @@ AST for program 7:
 -<Print Statement>
 --<false>
 
+SEMANTIC -- Analyzing program 7...
 Compilation complete (for now) for program 7.
 
 -------------------------------------------
@@ -431,31 +438,31 @@ PARSER -- Parse completed successfully.
 CST for program 8:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<PrintStatement>
------[print]
------[(]
+-----print
+-----(
 -----<Expr>
 ------<StringExpr>
--------["]
+-------"
 -------<CharList>
---------[i]
+--------i
 --------<CharList>
----------[n]
+---------n
 ---------<CharList>
-----------[t]
+----------t
 ----------<CharList>
------------[ ]
+----------- 
 -----------<CharList>
-------------[a]
+------------a
 ------------<CharList>
--------["]
------[)]
+-------"
+-----)
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 8:
@@ -463,6 +470,7 @@ AST for program 8:
 -<Print Statement>
 --<"int a">
 
+SEMANTIC -- Analyzing program 8...
 Compilation complete (for now) for program 8.
 
 -------------------------------------------
@@ -494,19 +502,19 @@ PARSER -- Parse completed successfully.
 CST for program 9:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<AssignmentStatement>
 -----<Id>
-------[a]
------[=]
+------a
+-----=
 -----<Expr>
 ------<IntExpr>
--------[1]
+-------1
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 9:
@@ -515,6 +523,7 @@ AST for program 9:
 --<a>
 --<1>
 
+SEMANTIC -- Analyzing program 9...
 Compilation complete (for now) for program 9.
 
 -------------------------------------------
@@ -562,35 +571,35 @@ PARSER -- Parse completed successfully.
 CST for program 10:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<AssignmentStatement>
 -----<Id>
-------[a]
------[=]
+------a
+-----=
 -----<Expr>
 ------<IntExpr>
--------[1]
--------[+]
+-------1
+-------+
 -------<Expr>
 --------<IntExpr>
----------[2]
----------[+]
+---------2
+---------+
 ---------<Expr>
 ----------<IntExpr>
------------[3]
------------[+]
+-----------3
+-----------+
 -----------<Expr>
 ------------<IntExpr>
--------------[4]
--------------[+]
+-------------4
+-------------+
 -------------<Expr>
 --------------<IntExpr>
----------------[5]
+---------------5
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 10:
@@ -607,6 +616,7 @@ AST for program 10:
 ------<4>
 ------<5>
 
+SEMANTIC -- Analyzing program 10...
 Compilation complete (for now) for program 10.
 
 -------------------------------------------
@@ -659,40 +669,40 @@ PARSER -- Parse completed successfully.
 CST for program 11:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<VarDecl>
------[int]
+-----int
 -----<Id>
-------[a]
+------a
 ---<StatementList>
 ----<Statement>
 -----<AssignmentStatement>
 ------<Id>
--------[a]
-------[=]
+-------a
+------=
 ------<Expr>
 -------<Id>
---------[a]
+--------a
 ----<StatementList>
 -----<Statement>
 ------<VarDecl>
--------[string]
+-------string
 -------<Id>
---------[b]
+--------b
 -----<StatementList>
 ------<Statement>
 -------<AssignmentStatement>
 --------<Id>
----------[a]
---------[=]
+---------a
+--------=
 --------<Expr>
 ---------<Id>
-----------[b]
+----------b
 ------<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 11:
@@ -710,6 +720,7 @@ AST for program 11:
 --<a>
 --<b>
 
+SEMANTIC -- Analyzing program 11...
 Compilation complete (for now) for program 11.
 
 -------------------------------------------
@@ -762,40 +773,40 @@ PARSER -- Parse completed successfully.
 CST for program 12:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<VarDecl>
------[int]
+-----int
 -----<Id>
-------[a]
+------a
 ---<StatementList>
 ----<Statement>
 -----<AssignmentStatement>
 ------<Id>
--------[a]
-------[=]
+-------a
+------=
 ------<Expr>
 -------<Id>
---------[a]
+--------a
 ----<StatementList>
 -----<Statement>
 ------<VarDecl>
--------[string]
+-------string
 -------<Id>
---------[b]
+--------b
 -----<StatementList>
 ------<Statement>
 -------<AssignmentStatement>
 --------<Id>
----------[a]
---------[=]
+---------a
+--------=
 --------<Expr>
 ---------<Id>
-----------[b]
+----------b
 ------<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 12:
@@ -813,6 +824,7 @@ AST for program 12:
 --<a>
 --<b>
 
+SEMANTIC -- Analyzing program 12...
 Compilation complete (for now) for program 12.
 
 -------------------------------------------
@@ -841,16 +853,16 @@ PARSER -- Parse completed successfully.
 CST for program 13:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<VarDecl>
------[string]
+-----string
 -----<Id>
-------[b]
+------b
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 13:
@@ -859,6 +871,7 @@ AST for program 13:
 --<string>
 --<b>
 
+SEMANTIC -- Analyzing program 13...
 Compilation complete (for now) for program 13.
 
 -------------------------------------------
@@ -944,73 +957,73 @@ PARSER -- Parse completed successfully.
 CST for program 14:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<VarDecl>
------[string]
+-----string
 -----<Id>
-------[s]
+------s
 ---<StatementList>
 ----<Statement>
 -----<AssignmentStatement>
 ------<Id>
--------[s]
-------[=]
+-------s
+------=
 ------<Expr>
 -------<StringExpr>
---------["]
+--------"
 --------<CharList>
----------[t]
+---------t
 ---------<CharList>
-----------[h]
+----------h
 ----------<CharList>
------------[i]
+-----------i
 -----------<CharList>
-------------[s]
+------------s
 ------------<CharList>
--------------[ ]
+------------- 
 -------------<CharList>
---------------[s]
+--------------s
 --------------<CharList>
----------------[t]
+---------------t
 ---------------<CharList>
-----------------[r]
+----------------r
 ----------------<CharList>
------------------[i]
+-----------------i
 -----------------<CharList>
-------------------[n]
+------------------n
 ------------------<CharList>
--------------------[g]
+-------------------g
 -------------------<CharList>
---------------------[ ]
+-------------------- 
 --------------------<CharList>
----------------------[i]
+---------------------i
 ---------------------<CharList>
-----------------------[s]
+----------------------s
 ----------------------<CharList>
------------------------[ ]
+----------------------- 
 -----------------------<CharList>
-------------------------[ ]
+------------------------ 
 ------------------------<CharList>
--------------------------[v]
+-------------------------v
 -------------------------<CharList>
---------------------------[i]
+--------------------------i
 --------------------------<CharList>
----------------------------[s]
+---------------------------s
 ---------------------------<CharList>
-----------------------------[i]
+----------------------------i
 ----------------------------<CharList>
------------------------------[b]
+-----------------------------b
 -----------------------------<CharList>
-------------------------------[l]
+------------------------------l
 ------------------------------<CharList>
--------------------------------[e]
+-------------------------------e
 -------------------------------<CharList>
---------["]
+--------"
 ----<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 14:
@@ -1022,6 +1035,7 @@ AST for program 14:
 --<s>
 --<"this string is  visible">
 
+SEMANTIC -- Analyzing program 14...
 Compilation complete (for now) for program 14.
 
 -------------------------------------------
@@ -1095,61 +1109,61 @@ PARSER -- Parse completed successfully.
 CST for program 15:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<VarDecl>
------[boolean]
+-----boolean
 -----<Id>
-------[d]
+------d
 ---<StatementList>
 ----<Statement>
 -----<AssignmentStatement>
 ------<Id>
--------[d]
-------[=]
+-------d
+------=
 ------<Expr>
 -------<BooleanExpr>
---------[(]
+--------(
 --------<Expr>
 ---------<StringExpr>
-----------["]
+----------"
 ----------<CharList>
------------[s]
+-----------s
 -----------<CharList>
-------------[t]
+------------t
 ------------<CharList>
--------------[r]
+-------------r
 -------------<CharList>
---------------[i]
+--------------i
 --------------<CharList>
----------------[n]
+---------------n
 ---------------<CharList>
-----------------[g]
+----------------g
 ----------------<CharList>
-----------["]
---------[!=]
+----------"
+--------!=
 --------<Expr>
 ---------<StringExpr>
-----------["]
+----------"
 ----------<CharList>
------------[s]
+-----------s
 -----------<CharList>
-------------[t]
+------------t
 ------------<CharList>
--------------[r]
+-------------r
 -------------<CharList>
---------------[i]
+--------------i
 --------------<CharList>
----------------[n]
+---------------n
 ---------------<CharList>
-----------------[g]
+----------------g
 ----------------<CharList>
-----------["]
---------[)]
+----------"
+--------)
 ----<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 15:
@@ -1163,6 +1177,7 @@ AST for program 15:
 ---<"string">
 ---<"string">
 
+SEMANTIC -- Analyzing program 15...
 Compilation complete (for now) for program 15.
 
 -------------------------------------------
@@ -1216,41 +1231,41 @@ PARSER -- Parse completed successfully.
 CST for program 16:
 <Program>
 -<Block>
---[{]
+--{
 --<StatementList>
 ---<Statement>
 ----<WhileStatement>
------[while]
+-----while
 -----<BooleanExpr>
-------[true]
+------true
 -----<Block>
-------[{]
+------{
 ------<StatementList>
 -------<Statement>
 --------<PrintStatement>
----------[print]
----------[(]
+---------print
+---------(
 ---------<Expr>
 ----------<BooleanExpr>
------------[(]
+-----------(
 -----------<Expr>
 ------------<BooleanExpr>
--------------[true]
------------[!=]
+-------------true
+-----------!=
 -----------<Expr>
 ------------<IntExpr>
--------------[1]
--------------[+]
+-------------1
+-------------+
 -------------<Expr>
 --------------<IntExpr>
----------------[2]
------------[)]
----------[)]
+---------------2
+-----------)
+---------)
 -------<StatementList>
-------[}]
+------}
 ---<StatementList>
---[}]
--[$]
+--}
+-$
 
 
 AST for program 16:
@@ -1265,6 +1280,7 @@ AST for program 16:
 ------<1>
 ------<2>
 
+SEMANTIC -- Analyzing program 16...
 Compilation complete (for now) for program 16.
 
 -------------------------------------------

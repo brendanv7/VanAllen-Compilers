@@ -48,7 +48,7 @@ public class Parser {
         // We don't need to recover after first error, so make sure we haven't found
         if (errors == 0) {
             if (currentToken.type.equals(expectedToken)) {
-                cst.addLeafNode("[" + currentToken.data + "]");
+                cst.addLeafNode(currentToken);
                 index++;
                 if(index < tokens.size())
                     currentToken = tokens.get(index);
@@ -66,7 +66,7 @@ public class Parser {
      */
     private static void parseProgram() {
         System.out.println("PARSER -- parseProgram()");
-        cst.addNode("<Program>");
+        cst.addNode(new Token("","<Program>", 0, 0));
         parseBlock();
         matchAndConsume("EOP");
     }
@@ -77,8 +77,8 @@ public class Parser {
     private static void parseBlock() {
         if (errors == 0) {
             System.out.println("PARSER -- parseBlock()");
-            cst.addNode("<Block>");
-            ast.addNode("<Block>");
+            cst.addNode(new Token("","<Block>", 0, 0));
+            ast.addNode(new Token("","<Block>", 0, 0));
             matchAndConsume("L_BRACE");
             parseStatementList();
             matchAndConsume("R_BRACE");
@@ -93,7 +93,7 @@ public class Parser {
     private static void parseStatementList() {
         if (errors == 0) {
             System.out.println("PARSER -- parseStatementList()");
-            cst.addNode("<StatementList>");
+            cst.addNode(new Token("","<StatementList>", 0, 0));
             switch (currentToken.type) {
                 case "PRINT": {
                     parseStatement();
@@ -162,7 +162,7 @@ public class Parser {
     private static void parseStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseStatement()");
-            cst.addNode("<Statement>");
+            cst.addNode(new Token("","<Statement>", 0, 0));
             switch (currentToken.type) {
                 case "PRINT": {
                     parsePrintStatement();
@@ -222,8 +222,8 @@ public class Parser {
     private static void parsePrintStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parsePrintStatement()");
-            cst.addNode("<PrintStatement>");
-            ast.addNode("<Print Statement>");
+            cst.addNode(new Token("","<PrintStatement>", 0, 0));
+            ast.addNode(new Token("","<Print Statement>", 0, 0));
             matchAndConsume("PRINT");
             matchAndConsume("L_PAREN");
             parseExpr();
@@ -239,8 +239,8 @@ public class Parser {
     private static void parseAssignmentStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseAssignmentStatement()");
-            cst.addNode("<AssignmentStatement>");
-            ast.addNode("<Assignment Statement>");
+            cst.addNode(new Token("","<AssignmentStatement>", 0, 0));
+            ast.addNode(new Token("","<Assignment Statement>", 0, 0));
             parseId();
             matchAndConsume("ASSIGN_OP");
             parseExpr();
@@ -255,8 +255,8 @@ public class Parser {
     private static void parseVarDecl() {
         if (errors == 0) {
             System.out.println("PARSER -- parseVarDecl()");
-            cst.addNode("<VarDecl>");
-            ast.addNode("<Variable Declaration");
+            cst.addNode(new Token("","<VarDecl>", 0, 0));
+            ast.addNode(new Token("","<Variable Declaration", 0, 0));
             parseType();
             parseId();
             cst.resetParent();
@@ -270,8 +270,8 @@ public class Parser {
     private static void parseWhileStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseWhileStatement()");
-            cst.addNode("<WhileStatement>");
-            ast.addNode("<While Statement>");
+            cst.addNode(new Token("","<WhileStatement>", 0, 0));
+            ast.addNode(new Token("","<While Statement>", 0, 0));
             matchAndConsume("WHILE");
             parseBooleanExpr();
             parseBlock();
@@ -286,8 +286,8 @@ public class Parser {
     private static void parseIfStatement() {
         if (errors == 0) {
             System.out.println("PARSER -- parseIfStatement()");
-            cst.addNode("<IfStatement>");
-            ast.addNode("<If Statement>");
+            cst.addNode(new Token("","<IfStatement>", 0, 0));
+            ast.addNode(new Token("","<If Statement>", 0, 0));
             matchAndConsume("IF");
             parseBooleanExpr();
             parseBlock();
@@ -306,7 +306,7 @@ public class Parser {
         Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseExpr()");
-            cst.addNode("<Expr>");
+            cst.addNode(new Token("","<Expr>", 0, 0));
             String value = "";
             switch (currentToken.type) {
                 case "DIGIT": {
@@ -356,18 +356,18 @@ public class Parser {
         Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseIntExpr()");
-            cst.addNode("<IntExpr>");
-            String first = currentToken.data;
+            cst.addNode(new Token("","<IntExpr>", 0, 0));
+            Token first = currentToken;
             matchAndConsume("DIGIT");
             if (currentToken.type.equals("INT_OP")) {
-                ast.addNode("<Addition>");
+                ast.addNode(new Token("","<Addition>", 0, 0));
                 parent = ast.currentNode;
-                ast.addNode("<"+first+">");
+                ast.addNode(new Token("", "<"+first.data+">", first.lineNum, first.position));
                 ast.resetParent();
                 matchAndConsume("INT_OP");
                 parseExpr();
             } else {
-                ast.addNode("<"+first+">");
+                ast.addNode(new Token("", "<"+first.data+">", first.lineNum, first.position));
                 parent = ast.currentNode;
                 ast.resetParent();
             }
@@ -383,11 +383,12 @@ public class Parser {
         Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseStringExpr()");
-            cst.addNode("<StringExpr>");
+            cst.addNode(new Token("", "<StringExpr>", 0, 0));
+            Token start = currentToken;
             matchAndConsume("QUOTE");
             String s = parseCharList();
             matchAndConsume("QUOTE");
-            ast.addNode("<\""+s+"\">");
+            ast.addNode(new Token("","<\""+s+"\">", start.lineNum, start.position));
             parent = ast.currentNode;
             ast.resetParent();
             cst.resetParent();
@@ -403,12 +404,12 @@ public class Parser {
         Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseBooleanExpr()");
-            cst.addNode("<BooleanExpr>");
+            cst.addNode(new Token("", "<BooleanExpr>", 0, 0));
             switch (currentToken.type) {
                 case "L_PAREN": {
                     matchAndConsume("L_PAREN");
                     Tree.Node child = parseExpr();
-                    ast.addNode("<"+currentToken.data+">");
+                    ast.addNode(new Token("", "<"+currentToken.data+">", currentToken.lineNum, currentToken.position));
                     parent = ast.currentNode;
                     parent.children.add(child);
                     child.parent.children.remove(child);
@@ -420,7 +421,7 @@ public class Parser {
                 }
 
                 case "BOOL_VAL": {
-                    ast.addNode("<"+currentToken.data+">");
+                    ast.addNode(new Token("", "<"+currentToken.data+">", currentToken.lineNum, currentToken.position));
                     parent = ast.currentNode;
                     ast.resetParent();
                     matchAndConsume("BOOL_VAL");
@@ -448,8 +449,8 @@ public class Parser {
         Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseId()");
-            cst.addNode("<Id>");
-            ast.addNode("<"+currentToken.data+">");
+            cst.addNode(new Token("", "<Id>", 0, 0));
+            ast.addNode(new Token( "", "<"+currentToken.data+">", currentToken.lineNum, currentToken.position));
             parent = ast.currentNode;
             ast.resetParent();
             matchAndConsume("CHAR");
@@ -468,7 +469,7 @@ public class Parser {
         String s = "";
         if (errors == 0) {
             System.out.println("PARSER -- parseCharList()");
-            cst.addNode("<CharList>");
+            cst.addNode(new Token("", "<CharList>", 0, 0));
             switch (currentToken.type) {
                 case "CHAR": {
                     s = currentToken.data;
@@ -503,21 +504,21 @@ public class Parser {
         if (errors == 0) {
             switch (currentToken.type) {
                 case "INT": {
-                    ast.addNode("<"+currentToken.data+">");
+                    ast.addNode(new Token("", "<"+currentToken.data+">", currentToken.lineNum, currentToken.position));
                     ast.resetParent();
                     matchAndConsume("INT");
                     break;
                 }
 
                 case "STRING": {
-                    ast.addNode("<"+currentToken.data+">");
+                    ast.addNode(new Token("", "<"+currentToken.data+">", currentToken.lineNum, currentToken.position));
                     ast.resetParent();
                     matchAndConsume("STRING");
                     break;
                 }
 
                 case "BOOL": {
-                    ast.addNode("<"+currentToken.data+">");
+                    ast.addNode(new Token("", "<"+currentToken.data+">", currentToken.lineNum, currentToken.position));
                     ast.resetParent();
                     matchAndConsume("BOOL");
                     break;
