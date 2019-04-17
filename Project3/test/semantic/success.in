@@ -11,18 +11,10 @@
 }$
 
 {
-  a = 1
-}$
-
-{
-  a = 1 + 2 + 3 + 4   +      5
-}$
-
-{
   int a
-  a = a
-  string b
-  a = b
+  int b
+  boolean c
+  c = (a == b)
 }$
 
 {
@@ -40,6 +32,22 @@
 
 {
   while true {
-    print ((true != 1 + 2))
+    print ((true != (false == true)))
   }
-}
+}$
+
+{
+  int a
+  a = 1
+  {
+    int b
+    {
+      int c
+      {
+        int d
+        d = 1
+        print ((d == a))
+      }
+    }
+  }
+}$

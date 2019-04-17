@@ -1,0 +1,45 @@
+/* Special no input case */
+$
+
+/* One lex fail to prove that compilation stops */
+Lexer fail$
+
+/* One parse fail to prove that compilation stops */
+parse fail$
+
+/* The rest contain Semantic-specific errors */
+{
+  a = 2
+}$
+
+{
+  int a
+  string b
+  a = b
+}$
+
+{
+  boolean a
+  a = (true == 2)
+}$
+
+{
+  while (5 != "five") {}
+}$
+
+{
+  int a
+  {
+    int b
+    a = 1
+    b = 2
+  }
+  print (b)
+}$
+
+{
+  int a
+  {
+    int a
+  }
+}$

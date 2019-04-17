@@ -16,6 +16,8 @@ public class SemanticAnalyzer {
 
         buildSymbolTable(ast);
         scopeCheck(ast);
+        typeCheck(ast);
+        usageCheck();
 
         // Reset the tree so null is returned and compilation does not continue
         if (errors > 0) {
@@ -44,6 +46,7 @@ public class SemanticAnalyzer {
                 case "<Block>" : {
                     scope++;
                     scopeCheck(n, scope);
+                    scope--;
                     break;
                 }
 
@@ -167,6 +170,7 @@ public class SemanticAnalyzer {
                 case "<Block>" : {
                     scope++;
                     typeCheck(n, scope);
+                    scope--;
                     break;
                 }
 
@@ -179,9 +183,12 @@ public class SemanticAnalyzer {
                     if(n.children.size() > 0) {
                         HashTableRecord h = findSymbol(n.children.get(0).data.data, scope);
                         if (h != null) {
-                            String type = h.type;
-                            if (typeMatch(type, n.children.get(1), scope)) {
-
+                            String expected = h.type;
+                            String actual = typeMatch(n.children.get(1), scope);
+                            if (!expected.equals(actual)) {
+                                errors++;
+                                System.out.println("SEMANTIC -- ERROR: Type mismatch, expected " + expected + ", found " + actual +
+                                        " at (" + n.children.get(1).data.lineNum + ":" + n.children.get(1).data.position+ ")");
                             }
                         }
                         typeCheck(n, scope);
@@ -190,17 +197,17 @@ public class SemanticAnalyzer {
                 }
 
                 case "<Variable Declaration>" : {
-                    // Do nothing since symbol table is already built
+                    // Do nothing
                     break;
                 }
 
                 case "<While Statement>" : {
-                    scopeCheck(n, scope);
+                    typeCheck(n, scope);
                     break;
                 }
 
                 case "<If Statement>" : {
-                    scopeCheck(n, scope);
+                    typeCheck(n, scope);
                     break;
                 }
 
@@ -215,12 +222,32 @@ public class SemanticAnalyzer {
                 }
 
                 case "<!=>" : {
-                    // Do nothing
+                    if(n.children.size() > 0) {
+                        String leftExpr = typeMatch(n.children.get(0), scope);
+                        String rightExpr = typeMatch(n.children.get(1), scope);
+                        if (!leftExpr.equals(rightExpr)) {
+                            errors++;
+                            System.out.println("SEMANTIC -- ERROR: Type mismatch, left side of boolean expression results in " + leftExpr
+                                    + ", and right side results in " + rightExpr + ","
+                                    + " at (" + n.children.get(1).data.lineNum + ":" + n.children.get(1).data.position+ ")");
+                        }
+                        typeCheck(n, scope);
+                    }
                     break;
                 }
 
                 case "<==>" : {
-                    // Do nothing
+                    if(n.children.size() > 0) {
+                        String leftExpr = typeMatch(n.children.get(0), scope);
+                        String rightExpr = typeMatch(n.children.get(1), scope);
+                        if (!leftExpr.equals(rightExpr)) {
+                            errors++;
+                            System.out.println("SEMANTIC -- ERROR: Type mismatch, left side of boolean expression results in " + leftExpr
+                                    + ", and right side results in " + rightExpr + ","
+                                    + " at (" + n.children.get(1).data.lineNum + ":" + n.children.get(1).data.position+ ")");
+                        }
+                        typeCheck(n, scope);
+                    }
                     break;
                 }
 
@@ -240,109 +267,83 @@ public class SemanticAnalyzer {
                 }
 
                 case "<Addition>" : {
-                    //do nothing
+                    if (n.children.size() > 0) {
+                        String rightExpr = typeMatch(n.children.get(1), scope);
+                        if(!rightExpr.equals("<int>")) {
+                            errors++;
+                            System.out.println("SEMANTIC -- ERROR: Type mismatch, right side of integer addition results in " + rightExpr
+                                    + ", at (" + n.children.get(1).data.lineNum + ":" + n.children.get(1).data.position+ ")");
+                        }
+                    }
+                    typeCheck(n, scope);
                     break;
                 }
 
                 default : {
-                    // Remove < > to parse easier
-                    String s = n.data.data.substring(1, n.data.data.length()-1);
-                    if(s.substring(0,1).equals("\"")) {
-                        // Ignore strings
-                    } else {
-                        try {
-                            Integer.parseInt(s);
-                        }
-                        catch (NumberFormatException e) {
-                            // Since s wasn't a number, we know its an identifier
-                            s = "<" + s + ">";
-                            HashTableRecord h = findSymbol(s, scope);
-                            if (h == null) {
-                                errors++;
-                                System.out.println("SEMANTIC -- ERROR: Undeclared identifier " + s +
-                                        " at (" + n.data.lineNum + ":" + n.data.position+ ")");
-                            } else {
-                                // If the identifier is not part of an assignment statement, than it is being used.
-                                if(!current.data.data.equals("<Assignment Statement>")) {
-                                    h.isUsed = true;
-                                    // Provide warning if this identifier wasn't initialized
-                                    if(!h.isInit) {
-                                        warnings++;
-                                        System.out.println("SEMANTIC -- WARNING: Identifier " + n.data.data + " is used but never initialized. " +
-                                                "at (" + current.data.lineNum + ":" + current.data.position+ ")");
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    // Ignore IDs, digits, and strings since they have no type concerns.
                 }
             }
         }
     }
 
-    private static boolean typeMatch(String type, Tree.Node expr, int scope) {
+    private static String typeMatch(Tree.Node expr, int scope) {
         switch (expr.data.data) {
             case "<Addition>" : {
-                if(type.equals("<int>")) {
-                    return typeMatch(type, expr.children.get(1));
-                } else {
-                    return false;
-                }
-                break;
+                return "<int>";
             }
 
             case "<true>" : {
-                return type.equals("<boolean>");
-                break;
+                return "<boolean>";
             }
 
             case "<false>" : {
-                return type.equals("<boolean>");
-                break;
+                return "<boolean>";
             }
 
             case "<!=>" : {
-                return type.equals("<boolean>");
-                break;
+                return "<boolean>";
             }
 
             case "<==>" : {
-                return type.equals("<boolean>");
-                break;
+                return "<boolean>";
             }
 
             default : {
                 // Remove < > to parse easier
                 String s = expr.data.data.substring(1, expr.data.data.length()-1);
                 if(s.substring(0,1).equals("\"")) {
-                    return type.equals("<string>");
+                    return "<string>";
                 } else {
                     try {
                         Integer.parseInt(s);
-                        return type.equals("<int>");
+                        return "<int>";
                     }
                     catch (NumberFormatException e) {
                         // Since s wasn't a number, we know its an identifier
                         s = "<" + s + ">";
                         HashTableRecord h = findSymbol(s, scope);
-                        if (h == null) {
-                            errors++;
-                            System.out.println("SEMANTIC -- ERROR: Undeclared identifier " + s +
-                                    " at (" + n.data.lineNum + ":" + n.data.position+ ")");
-                        } else {
-                            // If the identifier is not part of an assignment statement, than it is being used.
-                            if(!current.data.data.equals("<Assignment Statement>")) {
-                                h.isUsed = true;
-                                // Provide warning if this identifier wasn't initialized
-                                if(!h.isInit) {
-                                    warnings++;
-                                    System.out.println("SEMANTIC -- WARNING: Identifier " + n.data.data + " is used but never initialized. " +
-                                            "at (" + current.data.lineNum + ":" + current.data.position+ ")");
-                                }
-                            }
+                        if (h != null) {
+                            return h.type;
                         }
                     }
                 }
+            }
+        }
+        return null;
+    }
+
+    private static void usageCheck() {
+        for (HashTableRecord h : symbolTable) {
+            if(h.isInit) {
+                if(!h.isUsed) {
+                    warnings++;
+                    System.out.println("SEMANTIC -- WARNING: Identifier " + h.data.data + " initialized, but never used, " +
+                            "at (" + h.data.lineNum + ":" + h.data.position+ ")");
+                }
+            } else {
+                warnings++;
+                System.out.println("SEMANTIC -- WARNING: Identifier " + h.data.data + " is declared, but never initialized, " +
+                        "at (" + h.data.lineNum + ":" + h.data.position+ ")");
             }
         }
     }
@@ -371,7 +372,7 @@ public class SemanticAnalyzer {
             if(isDuplicateId(id.data, scope)) {
                 errors++;
                 System.out.println("SEMANTIC -- ERROR: Identifier " + id.data + " is already defined in this scope. " +
-                        "at (" + current.data.lineNum + ":" + current.data.position+ ")");
+                        "at (" + id.lineNum + ":" + id.position+ ")");
             } else {
                 HashTableRecord h = new HashTableRecord(id, type, scope);
                 symbolTable.add(h);
@@ -390,12 +391,7 @@ public class SemanticAnalyzer {
     }
 
     private static boolean isDuplicateId(String id, int scope) {
-        for (HashTableRecord h : symbolTable) {
-            if(id.equals(h.data.data) && scope == h.scope) {
-                return true;
-            }
-        }
-        return false;
+        return findSymbol(id, scope) != null;
     }
 
     private static void printSymbolTable() {
@@ -418,10 +414,10 @@ public class SemanticAnalyzer {
             }
             ScopeTree.Node parent = scopeTree.findScope(scope);
             if(parent != null) {
-                parent = parent.parentScope;
-                if (parent == null) {
+                if (parent.parentScope == null) {
                     scope = -1;
                 } else {
+                    parent = parent.parentScope;
                     scope = parent.scope;
                 }
             }

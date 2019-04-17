@@ -28,7 +28,9 @@ AST for program 1:
 SEMANTIC -- Analyzing program 1...
 SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+Symbol table for program 1:
 ID	Type		Scope	Line	Position
+
 Compilation complete (for now) for program 1.
 
 -------------------------------------------
@@ -128,7 +130,9 @@ AST for program 2:
 SEMANTIC -- Analyzing program 2...
 SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+Symbol table for program 2:
 ID	Type		Scope	Line	Position
+
 Compilation complete (for now) for program 2.
 
 -------------------------------------------
@@ -187,7 +191,9 @@ AST for program 3:
 SEMANTIC -- Analyzing program 3...
 SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+Symbol table for program 3:
 ID	Type		Scope	Line	Position
+
 Compilation complete (for now) for program 3.
 
 -------------------------------------------
@@ -266,7 +272,9 @@ AST for program 4:
 SEMANTIC -- Analyzing program 4...
 SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+Symbol table for program 4:
 ID	Type		Scope	Line	Position
+
 Compilation complete (for now) for program 4.
 
 -------------------------------------------
@@ -275,11 +283,21 @@ Compiling program 5...
 
 LEXER -- Lexing program 5...
 LEXER -- L_BRACE [ { ] found at (22:1)
-LEXER -- CHAR [ a ] found at (24:3)
-LEXER -- ASSIGN_OP [ = ] found at (24:5)
-LEXER -- DIGIT [ 1 ] found at (24:7)
-LEXER -- R_BRACE [ } ] found at (26:1)
-LEXER -- EOP [ $ ] found at (26:2)
+LEXER -- INT [ int ] found at (24:3)
+LEXER -- CHAR [ a ] found at (24:7)
+LEXER -- INT [ int ] found at (26:3)
+LEXER -- CHAR [ b ] found at (26:7)
+LEXER -- BOOL [ boolean ] found at (28:3)
+LEXER -- CHAR [ c ] found at (28:11)
+LEXER -- CHAR [ c ] found at (30:3)
+LEXER -- ASSIGN_OP [ = ] found at (30:5)
+LEXER -- L_PAREN [ ( ] found at (30:7)
+LEXER -- CHAR [ a ] found at (30:8)
+LEXER -- BOOL_OP [ == ] found at (30:10)
+LEXER -- CHAR [ b ] found at (30:13)
+LEXER -- R_PAREN [ ) ] found at (30:14)
+LEXER -- R_BRACE [ } ] found at (32:1)
+LEXER -- EOP [ $ ] found at (32:2)
 LEXER -- Lexing complete for program 5. No errors found.
 
 PARSER -- Parsing program 5...
@@ -288,187 +306,30 @@ PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
 PARSER -- parseAssignmentStatement()
 PARSER -- parseId()
 PARSER -- parseExpr()
-PARSER -- parseIntExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
 PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 5:
-<Program>
--<Block>
---{
---<StatementList>
----<Statement>
-----<AssignmentStatement>
------<Id>
-------a
------=
------<Expr>
-------<IntExpr>
--------1
----<StatementList>
---}
--$
-
-
-AST for program 5:
-<Block>
--<Assignment Statement>
---<a>
---<1>
-
-SEMANTIC -- Analyzing program 5...
-SEMANTIC -- ERROR: Undeclared identifier <a> at (24:3)
-SEMANTIC -- Semantic analysis failed with 1 error(s) and 0 warning(s)
-
-Compilation stopped for program 5 due to Semantic error(s).
-
--------------------------------------------
-
-Compiling program 6...
-
-LEXER -- Lexing program 6...
-LEXER -- L_BRACE [ { ] found at (29:1)
-LEXER -- CHAR [ a ] found at (31:3)
-LEXER -- ASSIGN_OP [ = ] found at (31:5)
-LEXER -- DIGIT [ 1 ] found at (31:7)
-LEXER -- INT_OP [ + ] found at (31:9)
-LEXER -- DIGIT [ 2 ] found at (31:11)
-LEXER -- INT_OP [ + ] found at (31:13)
-LEXER -- DIGIT [ 3 ] found at (31:15)
-LEXER -- INT_OP [ + ] found at (31:17)
-LEXER -- DIGIT [ 4 ] found at (31:19)
-LEXER -- INT_OP [ + ] found at (31:23)
-LEXER -- DIGIT [ 5 ] found at (31:30)
-LEXER -- R_BRACE [ } ] found at (33:1)
-LEXER -- EOP [ $ ] found at (33:2)
-LEXER -- Lexing complete for program 6. No errors found.
-
-PARSER -- Parsing program 6...
-PARSER -- parse()
-PARSER -- parseProgram()
-PARSER -- parseBlock()
-PARSER -- parseStatementList()
-PARSER -- parseStatement()
-PARSER -- parseAssignmentStatement()
-PARSER -- parseId()
-PARSER -- parseExpr()
-PARSER -- parseIntExpr()
-PARSER -- parseExpr()
-PARSER -- parseIntExpr()
-PARSER -- parseExpr()
-PARSER -- parseIntExpr()
-PARSER -- parseExpr()
-PARSER -- parseIntExpr()
-PARSER -- parseExpr()
-PARSER -- parseIntExpr()
-PARSER -- parseStatementList()
-PARSER -- Parse completed successfully.
-
-CST for program 6:
-<Program>
--<Block>
---{
---<StatementList>
----<Statement>
-----<AssignmentStatement>
------<Id>
-------a
------=
------<Expr>
-------<IntExpr>
--------1
--------+
--------<Expr>
---------<IntExpr>
----------2
----------+
----------<Expr>
-----------<IntExpr>
------------3
------------+
------------<Expr>
-------------<IntExpr>
--------------4
--------------+
--------------<Expr>
---------------<IntExpr>
----------------5
----<StatementList>
---}
--$
-
-
-AST for program 6:
-<Block>
--<Assignment Statement>
---<a>
---<Addition>
----<1>
----<Addition>
-----<2>
-----<Addition>
------<3>
------<Addition>
-------<4>
-------<5>
-
-SEMANTIC -- Analyzing program 6...
-SEMANTIC -- ERROR: Undeclared identifier <a> at (31:3)
-SEMANTIC -- Semantic analysis failed with 1 error(s) and 0 warning(s)
-
-Compilation stopped for program 6 due to Semantic error(s).
-
--------------------------------------------
-
-Compiling program 7...
-
-LEXER -- Lexing program 7...
-LEXER -- L_BRACE [ { ] found at (36:1)
-LEXER -- INT [ int ] found at (38:3)
-LEXER -- CHAR [ a ] found at (38:7)
-LEXER -- CHAR [ a ] found at (40:3)
-LEXER -- ASSIGN_OP [ = ] found at (40:5)
-LEXER -- CHAR [ a ] found at (40:7)
-LEXER -- STRING [ string ] found at (42:3)
-LEXER -- CHAR [ b ] found at (42:10)
-LEXER -- CHAR [ a ] found at (44:3)
-LEXER -- ASSIGN_OP [ = ] found at (44:5)
-LEXER -- CHAR [ b ] found at (44:7)
-LEXER -- R_BRACE [ } ] found at (46:1)
-LEXER -- EOP [ $ ] found at (46:2)
-LEXER -- Lexing complete for program 7. No errors found.
-
-PARSER -- Parsing program 7...
-PARSER -- parse()
-PARSER -- parseProgram()
-PARSER -- parseBlock()
-PARSER -- parseStatementList()
-PARSER -- parseStatement()
-PARSER -- parseVarDecl()
-PARSER -- parseId()
-PARSER -- parseStatementList()
-PARSER -- parseStatement()
-PARSER -- parseAssignmentStatement()
-PARSER -- parseId()
-PARSER -- parseExpr()
-PARSER -- parseId()
-PARSER -- parseStatementList()
-PARSER -- parseStatement()
-PARSER -- parseVarDecl()
-PARSER -- parseId()
-PARSER -- parseStatementList()
-PARSER -- parseStatement()
-PARSER -- parseAssignmentStatement()
-PARSER -- parseId()
-PARSER -- parseExpr()
-PARSER -- parseId()
-PARSER -- parseStatementList()
-PARSER -- Parse completed successfully.
-
-CST for program 7:
 <Program>
 -<Block>
 --{
@@ -480,75 +341,88 @@ CST for program 7:
 ------a
 ---<StatementList>
 ----<Statement>
------<AssignmentStatement>
+-----<VarDecl>
+------int
 ------<Id>
--------a
-------=
-------<Expr>
--------<Id>
---------a
+-------b
 ----<StatementList>
 -----<Statement>
 ------<VarDecl>
--------string
+-------boolean
 -------<Id>
---------b
+--------c
 -----<StatementList>
 ------<Statement>
 -------<AssignmentStatement>
 --------<Id>
----------a
+---------c
 --------=
 --------<Expr>
----------<Id>
-----------b
+---------<BooleanExpr>
+----------(
+----------<Expr>
+-----------<Id>
+------------a
+----------==
+----------<Expr>
+-----------<Id>
+------------b
+----------)
 ------<StatementList>
 --}
 -$
 
 
-AST for program 7:
+AST for program 5:
 <Block>
 -<Variable Declaration>
 --<int>
 --<a>
--<Assignment Statement>
---<a>
---<a>
 -<Variable Declaration>
---<string>
+--<int>
 --<b>
+-<Variable Declaration>
+--<boolean>
+--<c>
 -<Assignment Statement>
---<a>
---<b>
+--<c>
+--<==>
+---<a>
+---<b>
 
-SEMANTIC -- Analyzing program 7...
-SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
+SEMANTIC -- Analyzing program 5...
+SEMANTIC -- WARNING: Identifier <a> is declared, but never initialized, at (24:7)
+SEMANTIC -- WARNING: Identifier <b> is declared, but never initialized, at (26:7)
+SEMANTIC -- WARNING: Identifier <c> initialized, but never used, at (28:11)
+SEMANTIC -- Semantic analysis completed successfully with 3 warning(s).
 
+Symbol table for program 5:
 ID	Type		Scope	Line	Position
-<a>	<int>		0	38	7
-<b>	<string>	0	42	10
-Compilation complete (for now) for program 7.
+<a>	<int>		0	24	7
+<b>	<int>		0	26	7
+<c>	<boolean>	0	28	11
+
+Compilation complete (for now) for program 5.
 
 -------------------------------------------
 
-Compiling program 8...
+Compiling program 6...
 
-LEXER -- Lexing program 8...
-LEXER -- L_BRACE [ { ] found at (49:1)
-LEXER -- INT [ int ] found at (51:3)
-LEXER -- CHAR [ a ] found at (51:7)
-LEXER -- L_BRACE [ { ] found at (53:3)
-LEXER -- STRING [ string ] found at (55:5)
-LEXER -- CHAR [ b ] found at (55:12)
-LEXER -- R_BRACE [ } ] found at (57:3)
-LEXER -- BOOL [ boolean ] found at (59:3)
-LEXER -- CHAR [ c ] found at (59:11)
-LEXER -- R_BRACE [ } ] found at (61:1)
-LEXER -- EOP [ $ ] found at (61:2)
-LEXER -- Lexing complete for program 8. No errors found.
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (35:1)
+LEXER -- INT [ int ] found at (37:3)
+LEXER -- CHAR [ a ] found at (37:7)
+LEXER -- L_BRACE [ { ] found at (39:3)
+LEXER -- STRING [ string ] found at (41:5)
+LEXER -- CHAR [ b ] found at (41:12)
+LEXER -- R_BRACE [ } ] found at (43:3)
+LEXER -- BOOL [ boolean ] found at (45:3)
+LEXER -- CHAR [ c ] found at (45:11)
+LEXER -- R_BRACE [ } ] found at (47:1)
+LEXER -- EOP [ $ ] found at (47:2)
+LEXER -- Lexing complete for program 6. No errors found.
 
-PARSER -- Parsing program 8...
+PARSER -- Parsing program 6...
 PARSER -- parse()
 PARSER -- parseProgram()
 PARSER -- parseBlock()
@@ -571,7 +445,7 @@ PARSER -- parseId()
 PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
-CST for program 8:
+CST for program 6:
 <Program>
 -<Block>
 --{
@@ -604,7 +478,7 @@ CST for program 8:
 -$
 
 
-AST for program 8:
+AST for program 6:
 <Block>
 -<Variable Declaration>
 --<int>
@@ -617,49 +491,54 @@ AST for program 8:
 --<boolean>
 --<c>
 
-SEMANTIC -- Analyzing program 8...
-SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
+SEMANTIC -- Analyzing program 6...
+SEMANTIC -- WARNING: Identifier <a> is declared, but never initialized, at (37:7)
+SEMANTIC -- WARNING: Identifier <b> is declared, but never initialized, at (41:12)
+SEMANTIC -- WARNING: Identifier <c> is declared, but never initialized, at (45:11)
+SEMANTIC -- Semantic analysis completed successfully with 3 warning(s).
 
+Symbol table for program 6:
 ID	Type		Scope	Line	Position
-<a>	<int>		0	51	7
-<b>	<string>	1	55	12
-<c>	<boolean>	0	59	11
-Compilation complete (for now) for program 8.
+<a>	<int>		0	37	7
+<b>	<string>	1	41	12
+<c>	<boolean>	0	45	11
+
+Compilation complete (for now) for program 6.
 
 -------------------------------------------
 
-Compiling program 9...
+Compiling program 7...
 
-LEXER -- Lexing program 9...
-LEXER -- L_BRACE [ { ] found at (64:1)
-LEXER -- BOOL [ boolean ] found at (66:3)
-LEXER -- CHAR [ d ] found at (66:11)
-LEXER -- CHAR [ d ] found at (68:3)
-LEXER -- ASSIGN_OP [ = ] found at (68:5)
-LEXER -- L_PAREN [ ( ] found at (68:7)
-LEXER -- QUOTE [ " ] found at (68:8)
-LEXER -- CHAR [ s ] found at (68:9)
-LEXER -- CHAR [ t ] found at (68:10)
-LEXER -- CHAR [ r ] found at (68:11)
-LEXER -- CHAR [ i ] found at (68:12)
-LEXER -- CHAR [ n ] found at (68:13)
-LEXER -- CHAR [ g ] found at (68:14)
-LEXER -- QUOTE [ " ] found at (68:15)
-LEXER -- BOOL_OP [ != ] found at (68:17)
-LEXER -- QUOTE [ " ] found at (68:20)
-LEXER -- CHAR [ s ] found at (68:21)
-LEXER -- CHAR [ t ] found at (68:22)
-LEXER -- CHAR [ r ] found at (68:23)
-LEXER -- CHAR [ i ] found at (68:24)
-LEXER -- CHAR [ n ] found at (68:25)
-LEXER -- CHAR [ g ] found at (68:26)
-LEXER -- QUOTE [ " ] found at (68:27)
-LEXER -- R_PAREN [ ) ] found at (68:28)
-LEXER -- R_BRACE [ } ] found at (70:1)
-LEXER -- EOP [ $ ] found at (70:2)
-LEXER -- Lexing complete for program 9. No errors found.
+LEXER -- Lexing program 7...
+LEXER -- L_BRACE [ { ] found at (50:1)
+LEXER -- BOOL [ boolean ] found at (52:3)
+LEXER -- CHAR [ d ] found at (52:11)
+LEXER -- CHAR [ d ] found at (54:3)
+LEXER -- ASSIGN_OP [ = ] found at (54:5)
+LEXER -- L_PAREN [ ( ] found at (54:7)
+LEXER -- QUOTE [ " ] found at (54:8)
+LEXER -- CHAR [ s ] found at (54:9)
+LEXER -- CHAR [ t ] found at (54:10)
+LEXER -- CHAR [ r ] found at (54:11)
+LEXER -- CHAR [ i ] found at (54:12)
+LEXER -- CHAR [ n ] found at (54:13)
+LEXER -- CHAR [ g ] found at (54:14)
+LEXER -- QUOTE [ " ] found at (54:15)
+LEXER -- BOOL_OP [ != ] found at (54:17)
+LEXER -- QUOTE [ " ] found at (54:20)
+LEXER -- CHAR [ s ] found at (54:21)
+LEXER -- CHAR [ t ] found at (54:22)
+LEXER -- CHAR [ r ] found at (54:23)
+LEXER -- CHAR [ i ] found at (54:24)
+LEXER -- CHAR [ n ] found at (54:25)
+LEXER -- CHAR [ g ] found at (54:26)
+LEXER -- QUOTE [ " ] found at (54:27)
+LEXER -- R_PAREN [ ) ] found at (54:28)
+LEXER -- R_BRACE [ } ] found at (56:1)
+LEXER -- EOP [ $ ] found at (56:2)
+LEXER -- Lexing complete for program 7. No errors found.
 
-PARSER -- Parsing program 9...
+PARSER -- Parsing program 7...
 PARSER -- parse()
 PARSER -- parseProgram()
 PARSER -- parseBlock()
@@ -694,7 +573,7 @@ PARSER -- parseCharList()
 PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
-CST for program 9:
+CST for program 7:
 <Program>
 -<Block>
 --{
@@ -754,7 +633,7 @@ CST for program 9:
 -$
 
 
-AST for program 9:
+AST for program 7:
 <Block>
 -<Variable Declaration>
 --<boolean>
@@ -765,38 +644,43 @@ AST for program 9:
 ---<"string">
 ---<"string">
 
-SEMANTIC -- Analyzing program 9...
-SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
+SEMANTIC -- Analyzing program 7...
+SEMANTIC -- WARNING: Identifier <d> initialized, but never used, at (52:11)
+SEMANTIC -- Semantic analysis completed successfully with 1 warning(s).
 
+Symbol table for program 7:
 ID	Type		Scope	Line	Position
-<d>	<boolean>	0	66	11
-Compilation complete (for now) for program 9.
+<d>	<boolean>	0	52	11
+
+Compilation complete (for now) for program 7.
 
 -------------------------------------------
 
-Compiling program 10...
+Compiling program 8...
 
-LEXER -- Lexing program 10...
-LEXER -- L_BRACE [ { ] found at (73:1)
-LEXER -- WHILE [ while ] found at (75:3)
-LEXER -- BOOL_VAL [ true ] found at (75:9)
-LEXER -- L_BRACE [ { ] found at (75:14)
-LEXER -- PRINT [ print ] found at (77:5)
-LEXER -- L_PAREN [ ( ] found at (77:11)
-LEXER -- L_PAREN [ ( ] found at (77:12)
-LEXER -- BOOL_VAL [ true ] found at (77:13)
-LEXER -- BOOL_OP [ != ] found at (77:18)
-LEXER -- DIGIT [ 1 ] found at (77:21)
-LEXER -- INT_OP [ + ] found at (77:23)
-LEXER -- DIGIT [ 2 ] found at (77:25)
-LEXER -- R_PAREN [ ) ] found at (77:26)
-LEXER -- R_PAREN [ ) ] found at (77:27)
-LEXER -- R_BRACE [ } ] found at (79:3)
-LEXER -- R_BRACE [ } ] found at (81:1)
-LEXER -- WARNING: No EOP character found and end-of-file has been reached. at (82:0)
-LEXER -- Lexing complete for program 10. No errors found.
+LEXER -- Lexing program 8...
+LEXER -- L_BRACE [ { ] found at (59:1)
+LEXER -- WHILE [ while ] found at (61:3)
+LEXER -- BOOL_VAL [ true ] found at (61:9)
+LEXER -- L_BRACE [ { ] found at (61:14)
+LEXER -- PRINT [ print ] found at (63:5)
+LEXER -- L_PAREN [ ( ] found at (63:11)
+LEXER -- L_PAREN [ ( ] found at (63:12)
+LEXER -- BOOL_VAL [ true ] found at (63:13)
+LEXER -- BOOL_OP [ != ] found at (63:18)
+LEXER -- L_PAREN [ ( ] found at (63:21)
+LEXER -- BOOL_VAL [ false ] found at (63:22)
+LEXER -- BOOL_OP [ == ] found at (63:28)
+LEXER -- BOOL_VAL [ true ] found at (63:31)
+LEXER -- R_PAREN [ ) ] found at (63:35)
+LEXER -- R_PAREN [ ) ] found at (63:36)
+LEXER -- R_PAREN [ ) ] found at (63:37)
+LEXER -- R_BRACE [ } ] found at (65:3)
+LEXER -- R_BRACE [ } ] found at (67:1)
+LEXER -- EOP [ $ ] found at (67:2)
+LEXER -- Lexing complete for program 8. No errors found.
 
-PARSER -- Parsing program 10...
+PARSER -- Parsing program 8...
 PARSER -- parse()
 PARSER -- parseProgram()
 PARSER -- parseBlock()
@@ -813,14 +697,16 @@ PARSER -- parseBooleanExpr()
 PARSER -- parseExpr()
 PARSER -- parseBooleanExpr()
 PARSER -- parseExpr()
-PARSER -- parseIntExpr()
+PARSER -- parseBooleanExpr()
 PARSER -- parseExpr()
-PARSER -- parseIntExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
 PARSER -- parseStatementList()
 PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
-CST for program 10:
+CST for program 8:
 <Program>
 -<Block>
 --{
@@ -845,12 +731,16 @@ CST for program 10:
 -------------true
 -----------!=
 -----------<Expr>
-------------<IntExpr>
--------------1
--------------+
+------------<BooleanExpr>
+-------------(
 -------------<Expr>
---------------<IntExpr>
----------------2
+--------------<BooleanExpr>
+---------------false
+-------------==
+-------------<Expr>
+--------------<BooleanExpr>
+---------------true
+-------------)
 -----------)
 ---------)
 -------<StatementList>
@@ -860,7 +750,7 @@ CST for program 10:
 -$
 
 
-AST for program 10:
+AST for program 8:
 <Block>
 -<While Statement>
 --<true>
@@ -868,15 +758,241 @@ AST for program 10:
 ---<Print Statement>
 ----<!=>
 -----<true>
------<Addition>
-------<1>
-------<2>
+-----<==>
+------<false>
+------<true>
 
-SEMANTIC -- Analyzing program 10...
+SEMANTIC -- Analyzing program 8...
 SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+Symbol table for program 8:
 ID	Type		Scope	Line	Position
-Compilation complete (for now) for program 10.
+
+Compilation complete (for now) for program 8.
+
+-------------------------------------------
+
+Compiling program 9...
+
+LEXER -- Lexing program 9...
+LEXER -- L_BRACE [ { ] found at (70:1)
+LEXER -- INT [ int ] found at (72:3)
+LEXER -- CHAR [ a ] found at (72:7)
+LEXER -- CHAR [ a ] found at (74:3)
+LEXER -- ASSIGN_OP [ = ] found at (74:5)
+LEXER -- DIGIT [ 1 ] found at (74:7)
+LEXER -- L_BRACE [ { ] found at (76:3)
+LEXER -- INT [ int ] found at (78:5)
+LEXER -- CHAR [ b ] found at (78:9)
+LEXER -- L_BRACE [ { ] found at (80:5)
+LEXER -- INT [ int ] found at (82:7)
+LEXER -- CHAR [ c ] found at (82:11)
+LEXER -- L_BRACE [ { ] found at (84:7)
+LEXER -- INT [ int ] found at (86:9)
+LEXER -- CHAR [ d ] found at (86:13)
+LEXER -- CHAR [ d ] found at (88:9)
+LEXER -- ASSIGN_OP [ = ] found at (88:11)
+LEXER -- DIGIT [ 1 ] found at (88:13)
+LEXER -- PRINT [ print ] found at (90:9)
+LEXER -- L_PAREN [ ( ] found at (90:15)
+LEXER -- L_PAREN [ ( ] found at (90:16)
+LEXER -- CHAR [ d ] found at (90:17)
+LEXER -- BOOL_OP [ == ] found at (90:19)
+LEXER -- CHAR [ a ] found at (90:22)
+LEXER -- R_PAREN [ ) ] found at (90:23)
+LEXER -- R_PAREN [ ) ] found at (90:24)
+LEXER -- R_BRACE [ } ] found at (92:7)
+LEXER -- R_BRACE [ } ] found at (94:5)
+LEXER -- R_BRACE [ } ] found at (96:3)
+LEXER -- R_BRACE [ } ] found at (98:1)
+LEXER -- EOP [ $ ] found at (98:2)
+LEXER -- Lexing complete for program 9. No errors found.
+
+PARSER -- Parsing program 9...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 9:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----int
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------a
+------=
+------<Expr>
+-------<IntExpr>
+--------1
+----<StatementList>
+-----<Statement>
+------<Block>
+-------{
+-------<StatementList>
+--------<Statement>
+---------<VarDecl>
+----------int
+----------<Id>
+-----------b
+--------<StatementList>
+---------<Statement>
+----------<Block>
+-----------{
+-----------<StatementList>
+------------<Statement>
+-------------<VarDecl>
+--------------int
+--------------<Id>
+---------------c
+------------<StatementList>
+-------------<Statement>
+--------------<Block>
+---------------{
+---------------<StatementList>
+----------------<Statement>
+-----------------<VarDecl>
+------------------int
+------------------<Id>
+-------------------d
+----------------<StatementList>
+-----------------<Statement>
+------------------<AssignmentStatement>
+-------------------<Id>
+--------------------d
+-------------------=
+-------------------<Expr>
+--------------------<IntExpr>
+---------------------1
+-----------------<StatementList>
+------------------<Statement>
+-------------------<PrintStatement>
+--------------------print
+--------------------(
+--------------------<Expr>
+---------------------<BooleanExpr>
+----------------------(
+----------------------<Expr>
+-----------------------<Id>
+------------------------d
+----------------------==
+----------------------<Expr>
+-----------------------<Id>
+------------------------a
+----------------------)
+--------------------)
+------------------<StatementList>
+---------------}
+-------------<StatementList>
+-----------}
+---------<StatementList>
+-------}
+-----<StatementList>
+--}
+-$
+
+
+AST for program 9:
+<Block>
+-<Variable Declaration>
+--<int>
+--<a>
+-<Assignment Statement>
+--<a>
+--<1>
+-<Block>
+--<Variable Declaration>
+---<int>
+---<b>
+--<Block>
+---<Variable Declaration>
+----<int>
+----<c>
+---<Block>
+----<Variable Declaration>
+-----<int>
+-----<d>
+----<Assignment Statement>
+-----<d>
+-----<1>
+----<Print Statement>
+-----<==>
+------<d>
+------<a>
+
+SEMANTIC -- Analyzing program 9...
+SEMANTIC -- WARNING: Identifier <a> initialized, but never used, at (72:7)
+SEMANTIC -- WARNING: Identifier <b> is declared, but never initialized, at (78:9)
+SEMANTIC -- WARNING: Identifier <c> is declared, but never initialized, at (82:11)
+SEMANTIC -- WARNING: Identifier <d> initialized, but never used, at (86:13)
+SEMANTIC -- Semantic analysis completed successfully with 4 warning(s).
+
+Symbol table for program 9:
+ID	Type		Scope	Line	Position
+<a>	<int>		0	72	7
+<b>	<int>		1	78	9
+<c>	<int>		2	82	11
+<d>	<int>		3	86	13
+
+Compilation complete (for now) for program 9.
 
 -------------------------------------------
 

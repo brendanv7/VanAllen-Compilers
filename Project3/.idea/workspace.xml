@@ -4,8 +4,13 @@
     <list default="true" id="ec9fc2dc-9128-45c3-8d7b-df5ab5327f88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compiler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Compiler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project3/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project3/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project3/ScopeTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project3/ScopeTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project3/SemanticAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project3/SemanticAnalyzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScopeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScopeTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SemanticAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/semantic/success.in" beforeDir="false" afterPath="$PROJECT_DIR$/test/semantic/success.in" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/semantic/success.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/semantic/success.out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,29 +22,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="182" column="31" selection-start-line="182" selection-start-column="31" selection-end-line="182" selection-end-column="31" />
+            <state relative-caret-position="183">
+              <caret line="414" selection-start-line="414" selection-end-line="414" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#scopeCheck#1;class#SemanticAnalyzer#0" />
-                <element signature="method#buildSymbolTable#0;class#SemanticAnalyzer#0" />
-                <element signature="method#buildSymbolTable#1;class#SemanticAnalyzer#0" />
-                <element signature="method#isDuplicateId#0;class#SemanticAnalyzer#0" />
+                <element signature="method#typeCheck#1;class#SemanticAnalyzer#0" />
+                <element signature="method#typeMatch#0;class#SemanticAnalyzer#0" />
+                <element signature="e#13930#13931#0" expanded="true" />
+                <element signature="e#13982#13983#0" expanded="true" />
                 <element signature="method#printSymbolTable#0;class#SemanticAnalyzer#0" />
-                <element signature="method#findSymbol#0;class#SemanticAnalyzer#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ScopeTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="194">
+              <caret line="33" column="20" lean-forward="true" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -47,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HashTableRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -65,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="37" selection-end-column="9" />
+            <state relative-caret-position="180">
+              <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -102,6 +106,7 @@
     <findStrings>
       <find>new Toke</find>
       <find>ast.add</find>
+      <find>undecl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,10 +119,10 @@
         <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/Tree.java" />
         <option value="$PROJECT_DIR$/src/HashTableRecord.java" />
-        <option value="$PROJECT_DIR$/src/Parser.java" />
-        <option value="$PROJECT_DIR$/src/ScopeTree.java" />
         <option value="$PROJECT_DIR$/src/Compiler.java" />
+        <option value="$PROJECT_DIR$/src/Parser.java" />
         <option value="$PROJECT_DIR$/src/SemanticAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/ScopeTree.java" />
       </list>
     </option>
   </component>
@@ -155,7 +160,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555490926935" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555501844913" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -194,16 +199,15 @@
       <option name="presentableId" value="Default" />
       <updated>1553610367023</updated>
       <workItem from="1553610370135" duration="440000" />
-      <workItem from="1555348629974" duration="26245000" />
+      <workItem from="1555348629974" duration="36406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26685000" />
+    <option name="totallyTimeSpent" value="36846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="798" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -212,7 +216,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Messages" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
@@ -239,6 +243,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SemanticAnalyzer.java</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="child.scope" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Token.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -261,27 +282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="37" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HashTableRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ScopeTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -289,19 +289,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HashTableRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SemanticAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="182" column="31" selection-start-line="182" selection-start-column="31" selection-end-line="182" selection-end-column="31" />
+        <state relative-caret-position="183">
+          <caret line="414" selection-start-line="414" selection-end-line="414" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#scopeCheck#1;class#SemanticAnalyzer#0" />
-            <element signature="method#buildSymbolTable#0;class#SemanticAnalyzer#0" />
-            <element signature="method#buildSymbolTable#1;class#SemanticAnalyzer#0" />
-            <element signature="method#isDuplicateId#0;class#SemanticAnalyzer#0" />
+            <element signature="method#typeCheck#1;class#SemanticAnalyzer#0" />
+            <element signature="method#typeMatch#0;class#SemanticAnalyzer#0" />
+            <element signature="e#13930#13931#0" expanded="true" />
+            <element signature="e#13982#13983#0" expanded="true" />
             <element signature="method#printSymbolTable#0;class#SemanticAnalyzer#0" />
-            <element signature="method#findSymbol#0;class#SemanticAnalyzer#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ScopeTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="33" column="20" lean-forward="true" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
         </state>
       </provider>
     </entry>

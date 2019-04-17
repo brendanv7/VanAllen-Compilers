@@ -1,0 +1,607 @@
+Compiling program 1...
+
+LEXER -- Lexing program 1...
+LEXER -- EOP [ $ ] found at (4:1)
+LEXER -- ERROR: No input found at (4:1)
+LEXER -- Lexing complete for program 1. Lex failed with 1 error(s).
+
+Compilation stopped for program 1 due to Lexical error(s).
+
+-------------------------------------------
+
+Compiling program 2...
+
+LEXER -- Lexing program 2...
+LEXER -- ERROR: Unrecognized token [ L ] at (9:1)
+LEXER -- CHAR [ e ] found at (9:2)
+LEXER -- CHAR [ x ] found at (9:3)
+LEXER -- CHAR [ e ] found at (9:4)
+LEXER -- CHAR [ r ] found at (9:5)
+LEXER -- CHAR [ f ] found at (9:7)
+LEXER -- CHAR [ a ] found at (9:8)
+LEXER -- CHAR [ i ] found at (9:9)
+LEXER -- CHAR [ l ] found at (9:10)
+LEXER -- EOP [ $ ] found at (9:11)
+LEXER -- Lexing complete for program 2. Lex failed with 1 error(s).
+
+Compilation stopped for program 2 due to Lexical error(s).
+
+-------------------------------------------
+
+Compiling program 3...
+
+LEXER -- Lexing program 3...
+LEXER -- CHAR [ p ] found at (14:1)
+LEXER -- CHAR [ a ] found at (14:2)
+LEXER -- CHAR [ r ] found at (14:3)
+LEXER -- CHAR [ s ] found at (14:4)
+LEXER -- CHAR [ e ] found at (14:5)
+LEXER -- CHAR [ f ] found at (14:7)
+LEXER -- CHAR [ a ] found at (14:8)
+LEXER -- CHAR [ i ] found at (14:9)
+LEXER -- CHAR [ l ] found at (14:10)
+LEXER -- EOP [ $ ] found at (14:11)
+LEXER -- Lexing complete for program 3. No errors found.
+
+PARSER -- Parsing program 3...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- ERROR: Expected [L_BRACE], found [CHAR] with value 'p' at (14:1)
+PARSER -- Parse failed with 1 error(s)
+
+Compilation stopped for program 3 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 4...
+
+LEXER -- Lexing program 4...
+LEXER -- L_BRACE [ { ] found at (19:1)
+LEXER -- CHAR [ a ] found at (21:3)
+LEXER -- ASSIGN_OP [ = ] found at (21:5)
+LEXER -- DIGIT [ 2 ] found at (21:7)
+LEXER -- R_BRACE [ } ] found at (23:1)
+LEXER -- EOP [ $ ] found at (23:2)
+LEXER -- Lexing complete for program 4. No errors found.
+
+PARSER -- Parsing program 4...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 4:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------a
+-----=
+-----<Expr>
+------<IntExpr>
+-------2
+---<StatementList>
+--}
+-$
+
+
+AST for program 4:
+<Block>
+-<Assignment Statement>
+--<a>
+--<2>
+
+SEMANTIC -- Analyzing program 4...
+SEMANTIC -- ERROR: Undeclared identifier <a> at (21:3)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 0 warning(s)
+
+Compilation stopped for program 4 due to Semantic error(s).
+
+-------------------------------------------
+
+Compiling program 5...
+
+LEXER -- Lexing program 5...
+LEXER -- L_BRACE [ { ] found at (26:1)
+LEXER -- INT [ int ] found at (28:3)
+LEXER -- CHAR [ a ] found at (28:7)
+LEXER -- STRING [ string ] found at (30:3)
+LEXER -- CHAR [ b ] found at (30:10)
+LEXER -- CHAR [ a ] found at (32:3)
+LEXER -- ASSIGN_OP [ = ] found at (32:5)
+LEXER -- CHAR [ b ] found at (32:7)
+LEXER -- R_BRACE [ } ] found at (34:1)
+LEXER -- EOP [ $ ] found at (34:2)
+LEXER -- Lexing complete for program 5. No errors found.
+
+PARSER -- Parsing program 5...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 5:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----int
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<VarDecl>
+------string
+------<Id>
+-------b
+----<StatementList>
+-----<Statement>
+------<AssignmentStatement>
+-------<Id>
+--------a
+-------=
+-------<Expr>
+--------<Id>
+---------b
+-----<StatementList>
+--}
+-$
+
+
+AST for program 5:
+<Block>
+-<Variable Declaration>
+--<int>
+--<a>
+-<Variable Declaration>
+--<string>
+--<b>
+-<Assignment Statement>
+--<a>
+--<b>
+
+SEMANTIC -- Analyzing program 5...
+SEMANTIC -- ERROR: Type mismatch, expected <int>, found <string> at (32:7)
+SEMANTIC -- WARNING: Identifier <a> initialized, but never used, at (28:7)
+SEMANTIC -- WARNING: Identifier <b> is declared, but never initialized, at (30:10)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 2 warning(s)
+
+Compilation stopped for program 5 due to Semantic error(s).
+
+-------------------------------------------
+
+Compiling program 6...
+
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (37:1)
+LEXER -- BOOL [ boolean ] found at (39:3)
+LEXER -- CHAR [ a ] found at (39:11)
+LEXER -- CHAR [ a ] found at (41:3)
+LEXER -- ASSIGN_OP [ = ] found at (41:5)
+LEXER -- L_PAREN [ ( ] found at (41:7)
+LEXER -- BOOL_VAL [ true ] found at (41:8)
+LEXER -- BOOL_OP [ == ] found at (41:13)
+LEXER -- DIGIT [ 2 ] found at (41:16)
+LEXER -- R_PAREN [ ) ] found at (41:17)
+LEXER -- R_BRACE [ } ] found at (43:1)
+LEXER -- EOP [ $ ] found at (43:2)
+LEXER -- Lexing complete for program 6. No errors found.
+
+PARSER -- Parsing program 6...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 6:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----boolean
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------a
+------=
+------<Expr>
+-------<BooleanExpr>
+--------(
+--------<Expr>
+---------<BooleanExpr>
+----------true
+--------==
+--------<Expr>
+---------<IntExpr>
+----------2
+--------)
+----<StatementList>
+--}
+-$
+
+
+AST for program 6:
+<Block>
+-<Variable Declaration>
+--<boolean>
+--<a>
+-<Assignment Statement>
+--<a>
+--<==>
+---<true>
+---<2>
+
+SEMANTIC -- Analyzing program 6...
+SEMANTIC -- ERROR: Type mismatch, left side of boolean expression results in <boolean>, and right side results in <int>, at (41:16)
+SEMANTIC -- WARNING: Identifier <a> initialized, but never used, at (39:11)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 1 warning(s)
+
+Compilation stopped for program 6 due to Semantic error(s).
+
+-------------------------------------------
+
+Compiling program 7...
+
+LEXER -- Lexing program 7...
+LEXER -- L_BRACE [ { ] found at (46:1)
+LEXER -- WHILE [ while ] found at (48:3)
+LEXER -- L_PAREN [ ( ] found at (48:9)
+LEXER -- DIGIT [ 5 ] found at (48:10)
+LEXER -- BOOL_OP [ != ] found at (48:12)
+LEXER -- QUOTE [ " ] found at (48:15)
+LEXER -- CHAR [ f ] found at (48:16)
+LEXER -- CHAR [ i ] found at (48:17)
+LEXER -- CHAR [ v ] found at (48:18)
+LEXER -- CHAR [ e ] found at (48:19)
+LEXER -- QUOTE [ " ] found at (48:20)
+LEXER -- R_PAREN [ ) ] found at (48:21)
+LEXER -- L_BRACE [ { ] found at (48:23)
+LEXER -- R_BRACE [ } ] found at (48:24)
+LEXER -- R_BRACE [ } ] found at (50:1)
+LEXER -- EOP [ $ ] found at (50:2)
+LEXER -- Lexing complete for program 7. No errors found.
+
+PARSER -- Parsing program 7...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseWhileStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 7:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<WhileStatement>
+-----while
+-----<BooleanExpr>
+------(
+------<Expr>
+-------<IntExpr>
+--------5
+------!=
+------<Expr>
+-------<StringExpr>
+--------"
+--------<CharList>
+---------f
+---------<CharList>
+----------i
+----------<CharList>
+-----------v
+-----------<CharList>
+------------e
+------------<CharList>
+--------"
+------)
+-----<Block>
+------{
+------<StatementList>
+------}
+---<StatementList>
+--}
+-$
+
+
+AST for program 7:
+<Block>
+-<While Statement>
+--<!=>
+---<5>
+---<"five">
+--<Block>
+
+SEMANTIC -- Analyzing program 7...
+SEMANTIC -- ERROR: Type mismatch, left side of boolean expression results in <int>, and right side results in <string>, at (48:15)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 0 warning(s)
+
+Compilation stopped for program 7 due to Semantic error(s).
+
+-------------------------------------------
+
+Compiling program 8...
+
+LEXER -- Lexing program 8...
+LEXER -- L_BRACE [ { ] found at (53:1)
+LEXER -- INT [ int ] found at (55:3)
+LEXER -- CHAR [ a ] found at (55:7)
+LEXER -- L_BRACE [ { ] found at (57:3)
+LEXER -- INT [ int ] found at (59:5)
+LEXER -- CHAR [ b ] found at (59:9)
+LEXER -- CHAR [ a ] found at (61:5)
+LEXER -- ASSIGN_OP [ = ] found at (61:7)
+LEXER -- DIGIT [ 1 ] found at (61:9)
+LEXER -- CHAR [ b ] found at (63:5)
+LEXER -- ASSIGN_OP [ = ] found at (63:7)
+LEXER -- DIGIT [ 2 ] found at (63:9)
+LEXER -- R_BRACE [ } ] found at (65:3)
+LEXER -- PRINT [ print ] found at (67:3)
+LEXER -- L_PAREN [ ( ] found at (67:9)
+LEXER -- CHAR [ b ] found at (67:10)
+LEXER -- R_PAREN [ ) ] found at (67:11)
+LEXER -- R_BRACE [ } ] found at (69:1)
+LEXER -- EOP [ $ ] found at (69:2)
+LEXER -- Lexing complete for program 8. No errors found.
+
+PARSER -- Parsing program 8...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 8:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----int
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<Block>
+------{
+------<StatementList>
+-------<Statement>
+--------<VarDecl>
+---------int
+---------<Id>
+----------b
+-------<StatementList>
+--------<Statement>
+---------<AssignmentStatement>
+----------<Id>
+-----------a
+----------=
+----------<Expr>
+-----------<IntExpr>
+------------1
+--------<StatementList>
+---------<Statement>
+----------<AssignmentStatement>
+-----------<Id>
+------------b
+-----------=
+-----------<Expr>
+------------<IntExpr>
+-------------2
+---------<StatementList>
+------}
+----<StatementList>
+-----<Statement>
+------<PrintStatement>
+-------print
+-------(
+-------<Expr>
+--------<Id>
+---------b
+-------)
+-----<StatementList>
+--}
+-$
+
+
+AST for program 8:
+<Block>
+-<Variable Declaration>
+--<int>
+--<a>
+-<Block>
+--<Variable Declaration>
+---<int>
+---<b>
+--<Assignment Statement>
+---<a>
+---<1>
+--<Assignment Statement>
+---<b>
+---<2>
+-<Print Statement>
+--<b>
+
+SEMANTIC -- Analyzing program 8...
+SEMANTIC -- ERROR: Undeclared identifier <b> at (67:10)
+SEMANTIC -- WARNING: Identifier <a> initialized, but never used, at (55:7)
+SEMANTIC -- WARNING: Identifier <b> initialized, but never used, at (59:9)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 2 warning(s)
+
+Compilation stopped for program 8 due to Semantic error(s).
+
+-------------------------------------------
+
+Compiling program 9...
+
+LEXER -- Lexing program 9...
+LEXER -- L_BRACE [ { ] found at (72:1)
+LEXER -- INT [ int ] found at (74:3)
+LEXER -- CHAR [ a ] found at (74:7)
+LEXER -- L_BRACE [ { ] found at (76:3)
+LEXER -- INT [ int ] found at (78:5)
+LEXER -- CHAR [ a ] found at (78:9)
+LEXER -- R_BRACE [ } ] found at (80:3)
+LEXER -- R_BRACE [ } ] found at (82:1)
+LEXER -- EOP [ $ ] found at (82:2)
+LEXER -- Lexing complete for program 9. No errors found.
+
+PARSER -- Parsing program 9...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 9:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----int
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<Block>
+------{
+------<StatementList>
+-------<Statement>
+--------<VarDecl>
+---------int
+---------<Id>
+----------a
+-------<StatementList>
+------}
+----<StatementList>
+--}
+-$
+
+
+AST for program 9:
+<Block>
+-<Variable Declaration>
+--<int>
+--<a>
+-<Block>
+--<Variable Declaration>
+---<int>
+---<a>
+
+SEMANTIC -- Analyzing program 9...
+SEMANTIC -- ERROR: Identifier <a> is already defined in this scope. at (78:9)
+SEMANTIC -- WARNING: Identifier <a> is declared, but never initialized, at (74:7)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 1 warning(s)
+
+Compilation stopped for program 9 due to Semantic error(s).
+
+-------------------------------------------
+

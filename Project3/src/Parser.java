@@ -32,7 +32,7 @@ public class Parser {
         // Reset the tree so null is returned and compilation does not continue
         if (errors > 0) {
             cst = null;
-            System.out.println("PARSER -- Parse failed with " + errors + " error(s)");
+            System.out.println("PARSER -- Parse failed with " + errors + " error(s)\n");
         } else {
             System.out.println("PARSER -- Parse completed successfully.\n");
         }
@@ -420,6 +420,7 @@ public class Parser {
                     matchAndConsume("BOOL_OP");
                     parseExpr();
                     matchAndConsume("R_PAREN");
+                    ast.resetParent();
                     break;
                 }
 

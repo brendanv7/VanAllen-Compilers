@@ -16,7 +16,7 @@ public class ScopeTree {
         } else {
             Node child = new Node(scope, currentNode);
             currentNode.children.add(child);
-            currentNode = new Node(scope, currentNode);
+            currentNode = child;
         }
     }
 
@@ -27,20 +27,19 @@ public class ScopeTree {
     }
 
     public Node findScope(int scope) {
-        currentNode = root;
-        if(currentNode != null) {
-            return findScope(currentNode, scope);
+        Node current = root;
+        if(current != null) {
+            return findScope(current, scope);
         }
         return null;
     }
 
     private Node findScope(Node current, int scope) {
         if(current.scope == scope) {
-            return currentNode;
-        } else if (current.children.size() > 0) {
-            for (Node child : current.children) {
-                findScope(child, scope);
-            }
+            return current;
+        }
+        for (Node child : current.children) {
+            return findScope(child, scope);
         }
         return null;
     }
