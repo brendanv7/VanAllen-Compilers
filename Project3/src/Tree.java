@@ -55,7 +55,7 @@ public class Tree {
         }
     }
 
-    class Node {
+    public class Node {
         String data;
         Node parent;
         ArrayList<Node> children;

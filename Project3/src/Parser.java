@@ -13,6 +13,7 @@ public class Parser {
     private static Token currentToken;
     private static Tree cst;
     private static int errors;
+    public static Tree ast;
 
     public static Tree parse(ArrayList<Token> tokenList, int programNum) {
         tokens = tokenList;
@@ -21,9 +22,9 @@ public class Parser {
         cst = new Tree();
         errors = 0;
 
-        System.out.println("PARSER -- Parsing programNum " + programNum + "...");
+        System.out.println("PARSER -- Parsing program " + programNum + "...");
         System.out.println("PARSER -- parse()");
-        parseprogramNum();
+        parseProgram();
 
         // Reset the tree so null is returned and compilation does not continue
         if (errors > 0) {
@@ -62,9 +63,9 @@ public class Parser {
     /*
      * programNum ::== Block $
      */
-    private static void parseprogramNum() {
-        System.out.println("PARSER -- parseprogramNum()");
-        cst.addNode("<programNum>");
+    private static void parseProgram() {
+        System.out.println("PARSER -- parseProgram()");
+        cst.addNode("<Program>");
         parseBlock();
         matchAndConsume("EOP");
     }
@@ -76,6 +77,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseBlock()");
             cst.addNode("<Block>");
+            ast.addNode("<Block>");
             matchAndConsume("L_BRACE");
             parseStatementList();
             matchAndConsume("R_BRACE");
@@ -220,6 +222,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parsePrintStatement()");
             cst.addNode("<PrintStatement>");
+            ast.addNode("<Print Statement>");
             matchAndConsume("PRINT");
             matchAndConsume("L_PAREN");
             parseExpr();
@@ -235,6 +238,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseAssignmentStatement()");
             cst.addNode("<AssignmentStatement>");
+            ast.addNode("<Assignment Statement>");
             parseId();
             matchAndConsume("ASSIGN_OP");
             parseExpr();
@@ -249,6 +253,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseVarDecl()");
             cst.addNode("<VarDecl>");
+            ast.addNode("<Variable Declaration");
             parseType();
             parseId();
             cst.resetParent();
@@ -262,6 +267,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseWhileStatement()");
             cst.addNode("<WhileStatement>");
+            ast.addNode("<While Statement>");
             matchAndConsume("WHILE");
             parseBooleanExpr();
             parseBlock();
@@ -276,6 +282,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseIfStatement()");
             cst.addNode("<IfStatement>");
+            ast.addNode("<If Statement>");
             matchAndConsume("IF");
             parseBooleanExpr();
             parseBlock();
@@ -293,6 +300,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseExpr()");
             cst.addNode("<Expr>");
+            String value = "";
             switch (currentToken.type) {
                 case "DIGIT": {
                     parseIntExpr();
@@ -339,10 +347,16 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseIntExpr()");
             cst.addNode("<IntExpr>");
+            String first = currentToken.data;
             matchAndConsume("DIGIT");
             if (currentToken.type.equals("INT_OP")) {
+                ast.addNode("<Addition>");
+                ast.addNode("<"+first+">");
+                ast.resetParent();
                 matchAndConsume("INT_OP");
                 parseExpr();
+            } else {
+
             }
             cst.resetParent();
         }
@@ -356,8 +370,10 @@ public class Parser {
             System.out.println("PARSER -- parseStringExpr()");
             cst.addNode("<StringExpr>");
             matchAndConsume("QUOTE");
-            parseCharList();
+            String s = parseCharList("");
             matchAndConsume("QUOTE");
+            ast.addNode("<\""+s+"\">");
+            ast.resetParent();
             cst.resetParent();
         }
     }
@@ -372,6 +388,7 @@ public class Parser {
             cst.addNode("<BooleanExpr>");
             switch (currentToken.type) {
                 case "L_PAREN": {
+                    ast.addNode("<"+currentToken.data+">");
                     matchAndConsume("L_PAREN");
                     parseExpr();
                     matchAndConsume("BOOL_OP");
@@ -381,6 +398,8 @@ public class Parser {
                 }
 
                 case "BOOL_VAL": {
+                    ast.addNode("<"+currentToken.data+">");
+                    ast.resetParent();
                     matchAndConsume("BOOL_VAL");
                     break;
                 }
@@ -404,6 +423,8 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseId()");
             cst.addNode("<Id>");
+            ast.addNode("<"+currentToken.data+">");
+            ast.resetParent();
             matchAndConsume("CHAR");
             cst.resetParent();
         }
@@ -414,20 +435,22 @@ public class Parser {
      *          ::== space CharList
      *          ::== ε
      */
-    private static void parseCharList() {
+    private static String parseCharList(String s) {
         if (errors == 0) {
             System.out.println("PARSER -- parseCharList()");
             cst.addNode("<CharList>");
             switch (currentToken.type) {
                 case "CHAR": {
+                    s += currentToken.data;
                     matchAndConsume("CHAR");
-                    parseCharList();
+                    parseCharList(s);
                     break;
                 }
 
                 case "SPACE": {
+                    s += " ";
                     matchAndConsume("SPACE");
-                    parseCharList();
+                    parseCharList(s);
                     break;
                 }
 
@@ -437,6 +460,7 @@ public class Parser {
             
             cst.resetParent();
         }
+        return s;
     }
 
     /*
@@ -449,16 +473,22 @@ public class Parser {
         if (errors == 0) {
             switch (currentToken.type) {
                 case "INT": {
+                    ast.addNode("<"+currentToken.data+">");
+                    ast.resetParent();
                     matchAndConsume("INT");
                     break;
                 }
 
                 case "STRING": {
+                    ast.addNode("<"+currentToken.data+">");
+                    ast.resetParent();
                     matchAndConsume("STRING");
                     break;
                 }
 
                 case "BOOL": {
+                    ast.addNode("<"+currentToken.data+">");
+                    ast.resetParent();
                     matchAndConsume("BOOL");
                     break;
                 }
