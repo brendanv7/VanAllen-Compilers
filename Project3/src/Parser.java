@@ -20,6 +20,7 @@ public class Parser {
         index = 0;
         currentToken = tokens.get(index);
         cst = new Tree();
+        ast = new Tree();
         errors = 0;
 
         System.out.println("PARSER -- Parsing program " + programNum + "...");
@@ -228,6 +229,7 @@ public class Parser {
             parseExpr();
             matchAndConsume("R_PAREN");
             cst.resetParent();
+            ast.resetParent();
         }
     }
 
@@ -243,6 +245,7 @@ public class Parser {
             matchAndConsume("ASSIGN_OP");
             parseExpr();
             cst.resetParent();
+            ast.resetParent();
         }
     }
 
@@ -257,6 +260,7 @@ public class Parser {
             parseType();
             parseId();
             cst.resetParent();
+            ast.resetParent();
         }
     }
 
@@ -272,6 +276,7 @@ public class Parser {
             parseBooleanExpr();
             parseBlock();
             cst.resetParent();
+            ast.resetParent();
         }
     }
 
@@ -287,6 +292,7 @@ public class Parser {
             parseBooleanExpr();
             parseBlock();
             cst.resetParent();
+            ast.resetParent();
         }
     }
 
@@ -296,34 +302,35 @@ public class Parser {
      *      ::== BooleanExpr
      *      ::== Id
      */
-    private static void parseExpr() {
+    private static Tree.Node parseExpr() {
+        Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseExpr()");
             cst.addNode("<Expr>");
             String value = "";
             switch (currentToken.type) {
                 case "DIGIT": {
-                    parseIntExpr();
+                    parent = parseIntExpr();
                     break;
                 }
 
                 case "QUOTE": {
-                    parseStringExpr();
+                    parent = parseStringExpr();
                     break;
                 }
 
                 case "L_PAREN": {
-                    parseBooleanExpr();
+                    parent = parseBooleanExpr();
                     break;
                 }
 
                 case "BOOL_VAL": {
-                    parseBooleanExpr();
+                    parent = parseBooleanExpr();
                     break;
                 }
 
                 case "CHAR": {
-                    parseId();
+                    parent = parseId();
                     break;
                 }
 
@@ -337,13 +344,16 @@ public class Parser {
 
             cst.resetParent();
         }
+
+        return parent;
     }
 
     /*
      * IntExpr ::== digit intop Expr
      *         ::== digit
      */
-    private static void parseIntExpr() {
+    private static Tree.Node parseIntExpr() {
+        Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseIntExpr()");
             cst.addNode("<IntExpr>");
@@ -351,46 +361,58 @@ public class Parser {
             matchAndConsume("DIGIT");
             if (currentToken.type.equals("INT_OP")) {
                 ast.addNode("<Addition>");
+                parent = ast.currentNode;
                 ast.addNode("<"+first+">");
                 ast.resetParent();
                 matchAndConsume("INT_OP");
                 parseExpr();
             } else {
-
+                ast.addNode("<"+first+">");
+                parent = ast.currentNode;
+                ast.resetParent();
             }
             cst.resetParent();
         }
+        return parent;
     }
 
     /*
      * StringExpr ::== " CharList "
      */
-    private static void parseStringExpr() {
+    private static Tree.Node parseStringExpr() {
+        Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseStringExpr()");
             cst.addNode("<StringExpr>");
             matchAndConsume("QUOTE");
-            String s = parseCharList("");
+            String s = parseCharList();
             matchAndConsume("QUOTE");
             ast.addNode("<\""+s+"\">");
+            parent = ast.currentNode;
             ast.resetParent();
             cst.resetParent();
         }
+        return parent;
     }
 
     /*
      * BooleanExpr ::== ( Expr boolop Expr )
      *             ::== boolval
      */
-    private static void parseBooleanExpr() {
+    private static Tree.Node parseBooleanExpr() {
+        Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseBooleanExpr()");
             cst.addNode("<BooleanExpr>");
             switch (currentToken.type) {
                 case "L_PAREN": {
-                    ast.addNode("<"+currentToken.data+">");
                     matchAndConsume("L_PAREN");
-                    parseExpr();
+                    Tree.Node child = parseExpr();
+                    ast.addNode("<"+currentToken.data+">");
+                    parent = ast.currentNode;
+                    parent.children.add(child);
+                    child.parent.children.remove(child);
+                    child.parent = parent;
                     matchAndConsume("BOOL_OP");
                     parseExpr();
                     matchAndConsume("R_PAREN");
@@ -399,6 +421,7 @@ public class Parser {
 
                 case "BOOL_VAL": {
                     ast.addNode("<"+currentToken.data+">");
+                    parent = ast.currentNode;
                     ast.resetParent();
                     matchAndConsume("BOOL_VAL");
                     break;
@@ -414,20 +437,26 @@ public class Parser {
 
             cst.resetParent();
         }
+
+        return parent;
     }
 
     /*
      * Id ::== char
      */
-    private static void parseId() {
+    private static Tree.Node parseId() {
+        Tree.Node parent = null;
         if (errors == 0) {
             System.out.println("PARSER -- parseId()");
             cst.addNode("<Id>");
             ast.addNode("<"+currentToken.data+">");
+            parent = ast.currentNode;
             ast.resetParent();
             matchAndConsume("CHAR");
             cst.resetParent();
         }
+
+        return parent;
     }
 
     /*
@@ -435,22 +464,23 @@ public class Parser {
      *          ::== space CharList
      *          ::== ε
      */
-    private static String parseCharList(String s) {
+    private static String parseCharList() {
+        String s = "";
         if (errors == 0) {
             System.out.println("PARSER -- parseCharList()");
             cst.addNode("<CharList>");
             switch (currentToken.type) {
                 case "CHAR": {
-                    s += currentToken.data;
+                    s = currentToken.data;
                     matchAndConsume("CHAR");
-                    parseCharList(s);
+                    s += parseCharList();
                     break;
                 }
 
                 case "SPACE": {
-                    s += " ";
+                    s = " ";
                     matchAndConsume("SPACE");
-                    parseCharList(s);
+                    s += parseCharList();
                     break;
                 }
 

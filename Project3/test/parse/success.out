@@ -6,20 +6,24 @@ LEXER -- R_BRACE [ } ] found at (2:2)
 LEXER -- EOP [ $ ] found at (2:3)
 LEXER -- Lexing complete for program 1. No errors found.
 
-PARSER -- Parsing programNum 1...
+PARSER -- Parsing program 1...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 1:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
 --[}]
 -[$]
+
+
+AST for program 1:
+<Block>
 
 Compilation complete (for now) for program 1.
 
@@ -43,9 +47,9 @@ LEXER -- R_BRACE [ } ] found at (5:12)
 LEXER -- EOP [ $ ] found at (5:13)
 LEXER -- Lexing complete for program 2. No errors found.
 
-PARSER -- Parsing programNum 2...
+PARSER -- Parsing program 2...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -71,7 +75,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 2:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -108,6 +112,15 @@ CST for program 2:
 --[}]
 -[$]
 
+
+AST for program 2:
+<Block>
+-<Block>
+--<Block>
+---<Block>
+----<Block>
+-----<Block>
+
 Compilation complete (for now) for program 2.
 
 -------------------------------------------
@@ -125,9 +138,9 @@ LEXER -- R_BRACE [ } ] found at (12:1)
 LEXER -- EOP [ $ ] found at (12:2)
 LEXER -- Lexing complete for program 3. No errors found.
 
-PARSER -- Parsing programNum 3...
+PARSER -- Parsing program 3...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -139,7 +152,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 3:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -157,6 +170,12 @@ CST for program 3:
 --[}]
 -[$]
 
+
+AST for program 3:
+<Block>
+-<Print Statement>
+--<"">
+
 Compilation complete (for now) for program 3.
 
 -------------------------------------------
@@ -173,9 +192,9 @@ LEXER -- R_BRACE [ } ] found at (19:1)
 LEXER -- EOP [ $ ] found at (19:2)
 LEXER -- Lexing complete for program 4. No errors found.
 
-PARSER -- Parsing programNum 4...
+PARSER -- Parsing program 4...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -186,7 +205,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 4:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -201,6 +220,12 @@ CST for program 4:
 ---<StatementList>
 --[}]
 -[$]
+
+
+AST for program 4:
+<Block>
+-<Print Statement>
+--<a>
 
 Compilation complete (for now) for program 4.
 
@@ -218,9 +243,9 @@ LEXER -- R_BRACE [ } ] found at (26:1)
 LEXER -- EOP [ $ ] found at (26:2)
 LEXER -- Lexing complete for program 5. No errors found.
 
-PARSER -- Parsing programNum 5...
+PARSER -- Parsing program 5...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -231,7 +256,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 5:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -246,6 +271,12 @@ CST for program 5:
 ---<StatementList>
 --[}]
 -[$]
+
+
+AST for program 5:
+<Block>
+-<Print Statement>
+--<2>
 
 Compilation complete (for now) for program 5.
 
@@ -265,9 +296,9 @@ LEXER -- R_BRACE [ } ] found at (33:1)
 LEXER -- EOP [ $ ] found at (33:2)
 LEXER -- Lexing complete for program 6. No errors found.
 
-PARSER -- Parsing programNum 6...
+PARSER -- Parsing program 6...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -280,7 +311,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 6:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -300,6 +331,12 @@ CST for program 6:
 --[}]
 -[$]
 
+
+AST for program 6:
+<Block>
+-<Print Statement>
+--<"a">
+
 Compilation complete (for now) for program 6.
 
 -------------------------------------------
@@ -316,9 +353,9 @@ LEXER -- R_BRACE [ } ] found at (40:1)
 LEXER -- EOP [ $ ] found at (40:2)
 LEXER -- Lexing complete for program 7. No errors found.
 
-PARSER -- Parsing programNum 7...
+PARSER -- Parsing program 7...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -329,7 +366,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 7:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -344,6 +381,12 @@ CST for program 7:
 ---<StatementList>
 --[}]
 -[$]
+
+
+AST for program 7:
+<Block>
+-<Print Statement>
+--<false>
 
 Compilation complete (for now) for program 7.
 
@@ -367,9 +410,9 @@ LEXER -- R_BRACE [ } ] found at (47:1)
 LEXER -- EOP [ $ ] found at (47:2)
 LEXER -- Lexing complete for program 8. No errors found.
 
-PARSER -- Parsing programNum 8...
+PARSER -- Parsing program 8...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -386,7 +429,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 8:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -414,6 +457,12 @@ CST for program 8:
 --[}]
 -[$]
 
+
+AST for program 8:
+<Block>
+-<Print Statement>
+--<"int a">
+
 Compilation complete (for now) for program 8.
 
 -------------------------------------------
@@ -429,9 +478,9 @@ LEXER -- R_BRACE [ } ] found at (54:1)
 LEXER -- EOP [ $ ] found at (54:2)
 LEXER -- Lexing complete for program 9. No errors found.
 
-PARSER -- Parsing programNum 9...
+PARSER -- Parsing program 9...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -443,7 +492,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 9:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -458,6 +507,13 @@ CST for program 9:
 ---<StatementList>
 --[}]
 -[$]
+
+
+AST for program 9:
+<Block>
+-<Assignment Statement>
+--<a>
+--<1>
 
 Compilation complete (for now) for program 9.
 
@@ -482,9 +538,9 @@ LEXER -- R_BRACE [ } ] found at (61:1)
 LEXER -- EOP [ $ ] found at (61:2)
 LEXER -- Lexing complete for program 10. No errors found.
 
-PARSER -- Parsing programNum 10...
+PARSER -- Parsing program 10...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -504,7 +560,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 10:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -536,6 +592,21 @@ CST for program 10:
 --[}]
 -[$]
 
+
+AST for program 10:
+<Block>
+-<Assignment Statement>
+--<a>
+--<Addition>
+---<1>
+---<Addition>
+----<2>
+----<Addition>
+-----<3>
+-----<Addition>
+------<4>
+------<5>
+
 Compilation complete (for now) for program 10.
 
 -------------------------------------------
@@ -558,9 +629,9 @@ LEXER -- R_BRACE [ } ] found at (74:1)
 LEXER -- EOP [ $ ] found at (74:2)
 LEXER -- Lexing complete for program 11. No errors found.
 
-PARSER -- Parsing programNum 11...
+PARSER -- Parsing program 11...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -586,7 +657,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 11:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -623,6 +694,22 @@ CST for program 11:
 --[}]
 -[$]
 
+
+AST for program 11:
+<Block>
+-<Variable Declaration
+--<int>
+--<a>
+-<Assignment Statement>
+--<a>
+--<a>
+-<Variable Declaration
+--<string>
+--<b>
+-<Assignment Statement>
+--<a>
+--<b>
+
 Compilation complete (for now) for program 11.
 
 -------------------------------------------
@@ -645,9 +732,9 @@ LEXER -- R_BRACE [ } ] found at (77:26)
 LEXER -- EOP [ $ ] found at (77:27)
 LEXER -- Lexing complete for program 12. No errors found.
 
-PARSER -- Parsing programNum 12...
+PARSER -- Parsing program 12...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -673,7 +760,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 12:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -710,6 +797,22 @@ CST for program 12:
 --[}]
 -[$]
 
+
+AST for program 12:
+<Block>
+-<Variable Declaration
+--<int>
+--<a>
+-<Assignment Statement>
+--<a>
+--<a>
+-<Variable Declaration
+--<string>
+--<b>
+-<Assignment Statement>
+--<a>
+--<b>
+
 Compilation complete (for now) for program 12.
 
 -------------------------------------------
@@ -724,9 +827,9 @@ LEXER -- R_BRACE [ } ] found at (86:1)
 LEXER -- EOP [ $ ] found at (86:2)
 LEXER -- Lexing complete for program 13. No errors found.
 
-PARSER -- Parsing programNum 13...
+PARSER -- Parsing program 13...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -736,7 +839,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 13:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -748,6 +851,13 @@ CST for program 13:
 ---<StatementList>
 --[}]
 -[$]
+
+
+AST for program 13:
+<Block>
+-<Variable Declaration
+--<string>
+--<b>
 
 Compilation complete (for now) for program 13.
 
@@ -790,9 +900,9 @@ LEXER -- R_BRACE [ } ] found at (95:1)
 LEXER -- EOP [ $ ] found at (95:2)
 LEXER -- Lexing complete for program 14. No errors found.
 
-PARSER -- Parsing programNum 14...
+PARSER -- Parsing program 14...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -832,7 +942,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 14:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -902,6 +1012,16 @@ CST for program 14:
 --[}]
 -[$]
 
+
+AST for program 14:
+<Block>
+-<Variable Declaration
+--<string>
+--<s>
+-<Assignment Statement>
+--<s>
+--<"this string is  visible">
+
 Compilation complete (for now) for program 14.
 
 -------------------------------------------
@@ -937,9 +1057,9 @@ LEXER -- R_BRACE [ } ] found at (104:1)
 LEXER -- EOP [ $ ] found at (104:2)
 LEXER -- Lexing complete for program 15. No errors found.
 
-PARSER -- Parsing programNum 15...
+PARSER -- Parsing program 15...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -973,7 +1093,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 15:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -1031,6 +1151,18 @@ CST for program 15:
 --[}]
 -[$]
 
+
+AST for program 15:
+<Block>
+-<Variable Declaration
+--<boolean>
+--<d>
+-<Assignment Statement>
+--<d>
+--<!=>
+---<"string">
+---<"string">
+
 Compilation complete (for now) for program 15.
 
 -------------------------------------------
@@ -1057,9 +1189,9 @@ LEXER -- R_BRACE [ } ] found at (115:1)
 LEXER -- WARNING: No EOP character found and end-of-file has been reached. at (116:0)
 LEXER -- Lexing complete for program 16. No errors found.
 
-PARSER -- Parsing programNum 16...
+PARSER -- Parsing program 16...
 PARSER -- parse()
-PARSER -- parseprogramNum()
+PARSER -- parseProgram()
 PARSER -- parseBlock()
 PARSER -- parseStatementList()
 PARSER -- parseStatement()
@@ -1082,7 +1214,7 @@ PARSER -- parseStatementList()
 PARSER -- Parse completed successfully.
 
 CST for program 16:
-<programNum>
+<Program>
 -<Block>
 --[{]
 --<StatementList>
@@ -1119,6 +1251,19 @@ CST for program 16:
 ---<StatementList>
 --[}]
 -[$]
+
+
+AST for program 16:
+<Block>
+-<While Statement>
+--<true>
+--<Block>
+---<Print Statement>
+----<!=>
+-----<true>
+-----<Addition>
+------<1>
+------<2>
 
 Compilation complete (for now) for program 16.
 

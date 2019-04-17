@@ -23,7 +23,16 @@ public class Compiler {
                 if(cst != null) {
                     System.out.println("CST for program " + program + ":");
                     cst.printTree();
-                    // Semantic //////////////////
+                    System.out.println();
+
+                    Tree ast = Parser.ast;
+                    System.out.println("AST for program " + program + ":");
+                    ast.printTree();
+
+                    // Semantic
+                    SemanticAnalyzer.analyze(ast, program);
+                    ////////
+
                     System.out.println("Compilation complete (for now) for program " + program + ".\n");
                 } else {
                     System.out.println("Compilation stopped for program " + program + " due to Parse error(s).\n");
