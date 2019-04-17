@@ -1,0 +1,45 @@
+{}$
+
+{{{{{{}}}}}}$
+
+{
+  print("")
+}$
+
+{
+  print("int a")
+}$
+
+{
+  a = 1
+}$
+
+{
+  a = 1 + 2 + 3 + 4   +      5
+}$
+
+{
+  int a
+  a = a
+  string b
+  a = b
+}$
+
+{
+  int a
+  {
+    string b
+  }
+  boolean c
+}$
+
+{
+  boolean d
+  d = ("string" != "string")
+}$
+
+{
+  while true {
+    print ((true != 1 + 2))
+  }
+}

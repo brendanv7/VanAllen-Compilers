@@ -1,0 +1,882 @@
+Compiling program 1...
+
+LEXER -- Lexing program 1...
+LEXER -- L_BRACE [ { ] found at (2:1)
+LEXER -- R_BRACE [ } ] found at (2:2)
+LEXER -- EOP [ $ ] found at (2:3)
+LEXER -- Lexing complete for program 1. No errors found.
+
+PARSER -- Parsing program 1...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 1:
+<Program>
+-<Block>
+--{
+--<StatementList>
+--}
+-$
+
+
+AST for program 1:
+<Block>
+
+SEMANTIC -- Analyzing program 1...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 1.
+
+-------------------------------------------
+
+Compiling program 2...
+
+LEXER -- Lexing program 2...
+LEXER -- L_BRACE [ { ] found at (5:1)
+LEXER -- L_BRACE [ { ] found at (5:2)
+LEXER -- L_BRACE [ { ] found at (5:3)
+LEXER -- L_BRACE [ { ] found at (5:4)
+LEXER -- L_BRACE [ { ] found at (5:5)
+LEXER -- L_BRACE [ { ] found at (5:6)
+LEXER -- R_BRACE [ } ] found at (5:7)
+LEXER -- R_BRACE [ } ] found at (5:8)
+LEXER -- R_BRACE [ } ] found at (5:9)
+LEXER -- R_BRACE [ } ] found at (5:10)
+LEXER -- R_BRACE [ } ] found at (5:11)
+LEXER -- R_BRACE [ } ] found at (5:12)
+LEXER -- EOP [ $ ] found at (5:13)
+LEXER -- Lexing complete for program 2. No errors found.
+
+PARSER -- Parsing program 2...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 2:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<Block>
+-----{
+-----<StatementList>
+------<Statement>
+-------<Block>
+--------{
+--------<StatementList>
+---------<Statement>
+----------<Block>
+-----------{
+-----------<StatementList>
+------------<Statement>
+-------------<Block>
+--------------{
+--------------<StatementList>
+---------------<Statement>
+----------------<Block>
+-----------------{
+-----------------<StatementList>
+-----------------}
+---------------<StatementList>
+--------------}
+------------<StatementList>
+-----------}
+---------<StatementList>
+--------}
+------<StatementList>
+-----}
+---<StatementList>
+--}
+-$
+
+
+AST for program 2:
+<Block>
+-<Block>
+--<Block>
+---<Block>
+----<Block>
+-----<Block>
+
+SEMANTIC -- Analyzing program 2...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 2.
+
+-------------------------------------------
+
+Compiling program 3...
+
+LEXER -- Lexing program 3...
+LEXER -- L_BRACE [ { ] found at (8:1)
+LEXER -- PRINT [ print ] found at (10:3)
+LEXER -- L_PAREN [ ( ] found at (10:8)
+LEXER -- QUOTE [ " ] found at (10:9)
+LEXER -- QUOTE [ " ] found at (10:10)
+LEXER -- R_PAREN [ ) ] found at (10:11)
+LEXER -- R_BRACE [ } ] found at (12:1)
+LEXER -- EOP [ $ ] found at (12:2)
+LEXER -- Lexing complete for program 3. No errors found.
+
+PARSER -- Parsing program 3...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 3:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----print
+-----(
+-----<Expr>
+------<StringExpr>
+-------"
+-------<CharList>
+-------"
+-----)
+---<StatementList>
+--}
+-$
+
+
+AST for program 3:
+<Block>
+-<Print Statement>
+--<"">
+
+SEMANTIC -- Analyzing program 3...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 3.
+
+-------------------------------------------
+
+Compiling program 4...
+
+LEXER -- Lexing program 4...
+LEXER -- L_BRACE [ { ] found at (15:1)
+LEXER -- PRINT [ print ] found at (17:3)
+LEXER -- L_PAREN [ ( ] found at (17:8)
+LEXER -- QUOTE [ " ] found at (17:9)
+LEXER -- CHAR [ i ] found at (17:10)
+LEXER -- CHAR [ n ] found at (17:11)
+LEXER -- CHAR [ t ] found at (17:12)
+LEXER -- SPACE [   ] found at (17:13)
+LEXER -- CHAR [ a ] found at (17:14)
+LEXER -- QUOTE [ " ] found at (17:15)
+LEXER -- R_PAREN [ ) ] found at (17:16)
+LEXER -- R_BRACE [ } ] found at (19:1)
+LEXER -- EOP [ $ ] found at (19:2)
+LEXER -- Lexing complete for program 4. No errors found.
+
+PARSER -- Parsing program 4...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 4:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<PrintStatement>
+-----print
+-----(
+-----<Expr>
+------<StringExpr>
+-------"
+-------<CharList>
+--------i
+--------<CharList>
+---------n
+---------<CharList>
+----------t
+----------<CharList>
+----------- 
+-----------<CharList>
+------------a
+------------<CharList>
+-------"
+-----)
+---<StatementList>
+--}
+-$
+
+
+AST for program 4:
+<Block>
+-<Print Statement>
+--<"int a">
+
+SEMANTIC -- Analyzing program 4...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 4.
+
+-------------------------------------------
+
+Compiling program 5...
+
+LEXER -- Lexing program 5...
+LEXER -- L_BRACE [ { ] found at (22:1)
+LEXER -- CHAR [ a ] found at (24:3)
+LEXER -- ASSIGN_OP [ = ] found at (24:5)
+LEXER -- DIGIT [ 1 ] found at (24:7)
+LEXER -- R_BRACE [ } ] found at (26:1)
+LEXER -- EOP [ $ ] found at (26:2)
+LEXER -- Lexing complete for program 5. No errors found.
+
+PARSER -- Parsing program 5...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 5:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------a
+-----=
+-----<Expr>
+------<IntExpr>
+-------1
+---<StatementList>
+--}
+-$
+
+
+AST for program 5:
+<Block>
+-<Assignment Statement>
+--<a>
+--<1>
+
+SEMANTIC -- Analyzing program 5...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 5.
+
+-------------------------------------------
+
+Compiling program 6...
+
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (29:1)
+LEXER -- CHAR [ a ] found at (31:3)
+LEXER -- ASSIGN_OP [ = ] found at (31:5)
+LEXER -- DIGIT [ 1 ] found at (31:7)
+LEXER -- INT_OP [ + ] found at (31:9)
+LEXER -- DIGIT [ 2 ] found at (31:11)
+LEXER -- INT_OP [ + ] found at (31:13)
+LEXER -- DIGIT [ 3 ] found at (31:15)
+LEXER -- INT_OP [ + ] found at (31:17)
+LEXER -- DIGIT [ 4 ] found at (31:19)
+LEXER -- INT_OP [ + ] found at (31:23)
+LEXER -- DIGIT [ 5 ] found at (31:30)
+LEXER -- R_BRACE [ } ] found at (33:1)
+LEXER -- EOP [ $ ] found at (33:2)
+LEXER -- Lexing complete for program 6. No errors found.
+
+PARSER -- Parsing program 6...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 6:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------a
+-----=
+-----<Expr>
+------<IntExpr>
+-------1
+-------+
+-------<Expr>
+--------<IntExpr>
+---------2
+---------+
+---------<Expr>
+----------<IntExpr>
+-----------3
+-----------+
+-----------<Expr>
+------------<IntExpr>
+-------------4
+-------------+
+-------------<Expr>
+--------------<IntExpr>
+---------------5
+---<StatementList>
+--}
+-$
+
+
+AST for program 6:
+<Block>
+-<Assignment Statement>
+--<a>
+--<Addition>
+---<1>
+---<Addition>
+----<2>
+----<Addition>
+-----<3>
+-----<Addition>
+------<4>
+------<5>
+
+SEMANTIC -- Analyzing program 6...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 6.
+
+-------------------------------------------
+
+Compiling program 7...
+
+LEXER -- Lexing program 7...
+LEXER -- L_BRACE [ { ] found at (36:1)
+LEXER -- INT [ int ] found at (38:3)
+LEXER -- CHAR [ a ] found at (38:7)
+LEXER -- CHAR [ a ] found at (40:3)
+LEXER -- ASSIGN_OP [ = ] found at (40:5)
+LEXER -- CHAR [ a ] found at (40:7)
+LEXER -- STRING [ string ] found at (42:3)
+LEXER -- CHAR [ b ] found at (42:10)
+LEXER -- CHAR [ a ] found at (44:3)
+LEXER -- ASSIGN_OP [ = ] found at (44:5)
+LEXER -- CHAR [ b ] found at (44:7)
+LEXER -- R_BRACE [ } ] found at (46:1)
+LEXER -- EOP [ $ ] found at (46:2)
+LEXER -- Lexing complete for program 7. No errors found.
+
+PARSER -- Parsing program 7...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 7:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----int
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------a
+------=
+------<Expr>
+-------<Id>
+--------a
+----<StatementList>
+-----<Statement>
+------<VarDecl>
+-------string
+-------<Id>
+--------b
+-----<StatementList>
+------<Statement>
+-------<AssignmentStatement>
+--------<Id>
+---------a
+--------=
+--------<Expr>
+---------<Id>
+----------b
+------<StatementList>
+--}
+-$
+
+
+AST for program 7:
+<Block>
+-<Variable Declaration>
+--<int>
+--<a>
+-<Assignment Statement>
+--<a>
+--<a>
+-<Variable Declaration>
+--<string>
+--<b>
+-<Assignment Statement>
+--<a>
+--<b>
+
+SEMANTIC -- Analyzing program 7...
+
+ID	Type		Scope	Line	Position
+<a>	<int>		1	38	7
+<b>	<string>	1	42	10
+
+Compilation complete (for now) for program 7.
+
+-------------------------------------------
+
+Compiling program 8...
+
+LEXER -- Lexing program 8...
+LEXER -- L_BRACE [ { ] found at (49:1)
+LEXER -- INT [ int ] found at (51:3)
+LEXER -- CHAR [ a ] found at (51:7)
+LEXER -- L_BRACE [ { ] found at (53:3)
+LEXER -- STRING [ string ] found at (55:5)
+LEXER -- CHAR [ b ] found at (55:12)
+LEXER -- R_BRACE [ } ] found at (57:3)
+LEXER -- BOOL [ boolean ] found at (59:3)
+LEXER -- CHAR [ c ] found at (59:11)
+LEXER -- R_BRACE [ } ] found at (61:1)
+LEXER -- EOP [ $ ] found at (61:2)
+LEXER -- Lexing complete for program 8. No errors found.
+
+PARSER -- Parsing program 8...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 8:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----int
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<Block>
+------{
+------<StatementList>
+-------<Statement>
+--------<VarDecl>
+---------string
+---------<Id>
+----------b
+-------<StatementList>
+------}
+----<StatementList>
+-----<Statement>
+------<VarDecl>
+-------boolean
+-------<Id>
+--------c
+-----<StatementList>
+--}
+-$
+
+
+AST for program 8:
+<Block>
+-<Variable Declaration>
+--<int>
+--<a>
+-<Block>
+--<Variable Declaration>
+---<string>
+---<b>
+-<Variable Declaration>
+--<boolean>
+--<c>
+
+SEMANTIC -- Analyzing program 8...
+
+ID	Type		Scope	Line	Position
+<a>	<int>		1	51	7
+<b>	<string>	2	55	12
+<c>	<boolean>	1	59	11
+
+Compilation complete (for now) for program 8.
+
+-------------------------------------------
+
+Compiling program 9...
+
+LEXER -- Lexing program 9...
+LEXER -- L_BRACE [ { ] found at (64:1)
+LEXER -- BOOL [ boolean ] found at (66:3)
+LEXER -- CHAR [ d ] found at (66:11)
+LEXER -- CHAR [ d ] found at (68:3)
+LEXER -- ASSIGN_OP [ = ] found at (68:5)
+LEXER -- L_PAREN [ ( ] found at (68:7)
+LEXER -- QUOTE [ " ] found at (68:8)
+LEXER -- CHAR [ s ] found at (68:9)
+LEXER -- CHAR [ t ] found at (68:10)
+LEXER -- CHAR [ r ] found at (68:11)
+LEXER -- CHAR [ i ] found at (68:12)
+LEXER -- CHAR [ n ] found at (68:13)
+LEXER -- CHAR [ g ] found at (68:14)
+LEXER -- QUOTE [ " ] found at (68:15)
+LEXER -- BOOL_OP [ != ] found at (68:17)
+LEXER -- QUOTE [ " ] found at (68:20)
+LEXER -- CHAR [ s ] found at (68:21)
+LEXER -- CHAR [ t ] found at (68:22)
+LEXER -- CHAR [ r ] found at (68:23)
+LEXER -- CHAR [ i ] found at (68:24)
+LEXER -- CHAR [ n ] found at (68:25)
+LEXER -- CHAR [ g ] found at (68:26)
+LEXER -- QUOTE [ " ] found at (68:27)
+LEXER -- R_PAREN [ ) ] found at (68:28)
+LEXER -- R_BRACE [ } ] found at (70:1)
+LEXER -- EOP [ $ ] found at (70:2)
+LEXER -- Lexing complete for program 9. No errors found.
+
+PARSER -- Parsing program 9...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 9:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----boolean
+-----<Id>
+------d
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------d
+------=
+------<Expr>
+-------<BooleanExpr>
+--------(
+--------<Expr>
+---------<StringExpr>
+----------"
+----------<CharList>
+-----------s
+-----------<CharList>
+------------t
+------------<CharList>
+-------------r
+-------------<CharList>
+--------------i
+--------------<CharList>
+---------------n
+---------------<CharList>
+----------------g
+----------------<CharList>
+----------"
+--------!=
+--------<Expr>
+---------<StringExpr>
+----------"
+----------<CharList>
+-----------s
+-----------<CharList>
+------------t
+------------<CharList>
+-------------r
+-------------<CharList>
+--------------i
+--------------<CharList>
+---------------n
+---------------<CharList>
+----------------g
+----------------<CharList>
+----------"
+--------)
+----<StatementList>
+--}
+-$
+
+
+AST for program 9:
+<Block>
+-<Variable Declaration>
+--<boolean>
+--<d>
+-<Assignment Statement>
+--<d>
+--<!=>
+---<"string">
+---<"string">
+
+SEMANTIC -- Analyzing program 9...
+
+ID	Type		Scope	Line	Position
+<d>	<boolean>	1	66	11
+
+Compilation complete (for now) for program 9.
+
+-------------------------------------------
+
+Compiling program 10...
+
+LEXER -- Lexing program 10...
+LEXER -- L_BRACE [ { ] found at (73:1)
+LEXER -- WHILE [ while ] found at (75:3)
+LEXER -- BOOL_VAL [ true ] found at (75:9)
+LEXER -- L_BRACE [ { ] found at (75:14)
+LEXER -- PRINT [ print ] found at (77:5)
+LEXER -- L_PAREN [ ( ] found at (77:11)
+LEXER -- L_PAREN [ ( ] found at (77:12)
+LEXER -- BOOL_VAL [ true ] found at (77:13)
+LEXER -- BOOL_OP [ != ] found at (77:18)
+LEXER -- DIGIT [ 1 ] found at (77:21)
+LEXER -- INT_OP [ + ] found at (77:23)
+LEXER -- DIGIT [ 2 ] found at (77:25)
+LEXER -- R_PAREN [ ) ] found at (77:26)
+LEXER -- R_PAREN [ ) ] found at (77:27)
+LEXER -- R_BRACE [ } ] found at (79:3)
+LEXER -- R_BRACE [ } ] found at (81:1)
+LEXER -- WARNING: No EOP character found and end-of-file has been reached. at (82:0)
+LEXER -- Lexing complete for program 10. No errors found.
+
+PARSER -- Parsing program 10...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseWhileStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 10:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<WhileStatement>
+-----while
+-----<BooleanExpr>
+------true
+-----<Block>
+------{
+------<StatementList>
+-------<Statement>
+--------<PrintStatement>
+---------print
+---------(
+---------<Expr>
+----------<BooleanExpr>
+-----------(
+-----------<Expr>
+------------<BooleanExpr>
+-------------true
+-----------!=
+-----------<Expr>
+------------<IntExpr>
+-------------1
+-------------+
+-------------<Expr>
+--------------<IntExpr>
+---------------2
+-----------)
+---------)
+-------<StatementList>
+------}
+---<StatementList>
+--}
+-$
+
+
+AST for program 10:
+<Block>
+-<While Statement>
+--<true>
+--<Block>
+---<Print Statement>
+----<!=>
+-----<true>
+-----<Addition>
+------<1>
+------<2>
+
+SEMANTIC -- Analyzing program 10...
+
+ID	Type		Scope	Line	Position
+
+Compilation complete (for now) for program 10.
+
+-------------------------------------------
+

@@ -14,6 +14,7 @@ public class Parser {
     private static Tree cst;
     private static int errors;
     public static Tree ast;
+    private static int scope;
 
     public static Tree parse(ArrayList<Token> tokenList, int programNum) {
         tokens = tokenList;
@@ -22,6 +23,7 @@ public class Parser {
         cst = new Tree();
         ast = new Tree();
         errors = 0;
+        scope = 0;
 
         System.out.println("PARSER -- Parsing program " + programNum + "...");
         System.out.println("PARSER -- parse()");
@@ -83,6 +85,7 @@ public class Parser {
             parseStatementList();
             matchAndConsume("R_BRACE");
             cst.resetParent();
+            ast.resetParent();
         }
     }
 
@@ -256,7 +259,7 @@ public class Parser {
         if (errors == 0) {
             System.out.println("PARSER -- parseVarDecl()");
             cst.addNode(new Token("","<VarDecl>", 0, 0));
-            ast.addNode(new Token("","<Variable Declaration", 0, 0));
+            ast.addNode(new Token("","<Variable Declaration>", 0, 0));
             parseType();
             parseId();
             cst.resetParent();

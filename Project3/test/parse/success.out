@@ -26,6 +26,7 @@ AST for program 1:
 <Block>
 
 SEMANTIC -- Analyzing program 1...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 1.
 
 -------------------------------------------
@@ -123,6 +124,7 @@ AST for program 2:
 -----<Block>
 
 SEMANTIC -- Analyzing program 2...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 2.
 
 -------------------------------------------
@@ -179,6 +181,7 @@ AST for program 3:
 --<"">
 
 SEMANTIC -- Analyzing program 3...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 3.
 
 -------------------------------------------
@@ -231,6 +234,7 @@ AST for program 4:
 --<a>
 
 SEMANTIC -- Analyzing program 4...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 4.
 
 -------------------------------------------
@@ -283,6 +287,7 @@ AST for program 5:
 --<2>
 
 SEMANTIC -- Analyzing program 5...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 5.
 
 -------------------------------------------
@@ -343,6 +348,7 @@ AST for program 6:
 --<"a">
 
 SEMANTIC -- Analyzing program 6...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 6.
 
 -------------------------------------------
@@ -395,6 +401,7 @@ AST for program 7:
 --<false>
 
 SEMANTIC -- Analyzing program 7...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 7.
 
 -------------------------------------------
@@ -471,6 +478,7 @@ AST for program 8:
 --<"int a">
 
 SEMANTIC -- Analyzing program 8...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 8.
 
 -------------------------------------------
@@ -524,6 +532,7 @@ AST for program 9:
 --<1>
 
 SEMANTIC -- Analyzing program 9...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 9.
 
 -------------------------------------------
@@ -617,6 +626,7 @@ AST for program 10:
 ------<5>
 
 SEMANTIC -- Analyzing program 10...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 10.
 
 -------------------------------------------
@@ -707,13 +717,13 @@ CST for program 11:
 
 AST for program 11:
 <Block>
--<Variable Declaration
+-<Variable Declaration>
 --<int>
 --<a>
 -<Assignment Statement>
 --<a>
 --<a>
--<Variable Declaration
+-<Variable Declaration>
 --<string>
 --<b>
 -<Assignment Statement>
@@ -721,6 +731,9 @@ AST for program 11:
 --<b>
 
 SEMANTIC -- Analyzing program 11...
+ID	Type	Scope	Line	Position
+<a>	<int>	1	66	7
+<b>	<string>	1	70	10
 Compilation complete (for now) for program 11.
 
 -------------------------------------------
@@ -811,13 +824,13 @@ CST for program 12:
 
 AST for program 12:
 <Block>
--<Variable Declaration
+-<Variable Declaration>
 --<int>
 --<a>
 -<Assignment Statement>
 --<a>
 --<a>
--<Variable Declaration
+-<Variable Declaration>
 --<string>
 --<b>
 -<Assignment Statement>
@@ -825,6 +838,9 @@ AST for program 12:
 --<b>
 
 SEMANTIC -- Analyzing program 12...
+ID	Type	Scope	Line	Position
+<a>	<int>	1	77	7
+<b>	<string>	1	77	20
 Compilation complete (for now) for program 12.
 
 -------------------------------------------
@@ -867,11 +883,13 @@ CST for program 13:
 
 AST for program 13:
 <Block>
--<Variable Declaration
+-<Variable Declaration>
 --<string>
 --<b>
 
 SEMANTIC -- Analyzing program 13...
+ID	Type	Scope	Line	Position
+<b>	<string>	1	84	10
 Compilation complete (for now) for program 13.
 
 -------------------------------------------
@@ -1028,7 +1046,7 @@ CST for program 14:
 
 AST for program 14:
 <Block>
--<Variable Declaration
+-<Variable Declaration>
 --<string>
 --<s>
 -<Assignment Statement>
@@ -1036,6 +1054,8 @@ AST for program 14:
 --<"this string is  visible">
 
 SEMANTIC -- Analyzing program 14...
+ID	Type	Scope	Line	Position
+<s>	<string>	1	91	10
 Compilation complete (for now) for program 14.
 
 -------------------------------------------
@@ -1168,7 +1188,7 @@ CST for program 15:
 
 AST for program 15:
 <Block>
--<Variable Declaration
+-<Variable Declaration>
 --<boolean>
 --<d>
 -<Assignment Statement>
@@ -1178,6 +1198,8 @@ AST for program 15:
 ---<"string">
 
 SEMANTIC -- Analyzing program 15...
+ID	Type	Scope	Line	Position
+<d>	<boolean>	1	100	11
 Compilation complete (for now) for program 15.
 
 -------------------------------------------
@@ -1281,6 +1303,7 @@ AST for program 16:
 ------<2>
 
 SEMANTIC -- Analyzing program 16...
+ID	Type	Scope	Line	Position
 Compilation complete (for now) for program 16.
 
 -------------------------------------------

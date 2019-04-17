@@ -33,6 +33,7 @@ public class Compiler {
                     SemanticAnalyzer.analyze(ast, program);
                     ////////
 
+                    System.out.println();
                     System.out.println("Compilation complete (for now) for program " + program + ".\n");
                 } else {
                     System.out.println("Compilation stopped for program " + program + " due to Parse error(s).\n");
