@@ -26,12 +26,18 @@ public class Compiler {
                     System.out.println();
 
                     Tree ast = Parser.ast;
-                    // Semantic
-                    SemanticAnalyzer.analyze(ast, program);
-                    ////////
+                    System.out.println("AST for program " + program + ":");
+                    ast.printTree();
 
-                    System.out.println();
-                    System.out.println("Compilation complete (for now) for program " + program + ".\n");
+                    // Semantic
+                    ast = SemanticAnalyzer.analyze(ast, program);
+
+                    if(ast != null) {
+                        System.out.println("Compilation complete (for now) for program " + program + ".\n");
+                        // Generate code
+                    } else {
+                        System.out.println("Compilation stopped for program " + program + " due to Semantic error(s).\n");
+                    }
                 } else {
                     System.out.println("Compilation stopped for program " + program + " due to Parse error(s).\n");
                 }

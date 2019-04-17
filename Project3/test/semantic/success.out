@@ -22,13 +22,13 @@ CST for program 1:
 -$
 
 
-SEMANTIC -- Analyzing program 1...
-
 AST for program 1:
 <Block>
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 1...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
 Compilation complete (for now) for program 1.
 
 -------------------------------------------
@@ -117,8 +117,6 @@ CST for program 2:
 -$
 
 
-SEMANTIC -- Analyzing program 2...
-
 AST for program 2:
 <Block>
 -<Block>
@@ -127,8 +125,10 @@ AST for program 2:
 ----<Block>
 -----<Block>
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 2...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
 Compilation complete (for now) for program 2.
 
 -------------------------------------------
@@ -179,15 +179,15 @@ CST for program 3:
 -$
 
 
-SEMANTIC -- Analyzing program 3...
-
 AST for program 3:
 <Block>
 -<Print Statement>
 --<"">
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 3...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
 Compilation complete (for now) for program 3.
 
 -------------------------------------------
@@ -258,15 +258,15 @@ CST for program 4:
 -$
 
 
-SEMANTIC -- Analyzing program 4...
-
 AST for program 4:
 <Block>
 -<Print Statement>
 --<"int a">
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 4...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
 Compilation complete (for now) for program 4.
 
 -------------------------------------------
@@ -313,17 +313,17 @@ CST for program 5:
 -$
 
 
-SEMANTIC -- Analyzing program 5...
-
 AST for program 5:
 <Block>
 -<Assignment Statement>
 --<a>
 --<1>
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 5...
+SEMANTIC -- ERROR: Undeclared identifier <a> at (24:3)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 0 warning(s)
 
-Compilation complete (for now) for program 5.
+Compilation stopped for program 5 due to Semantic error(s).
 
 -------------------------------------------
 
@@ -401,8 +401,6 @@ CST for program 6:
 -$
 
 
-SEMANTIC -- Analyzing program 6...
-
 AST for program 6:
 <Block>
 -<Assignment Statement>
@@ -417,9 +415,11 @@ AST for program 6:
 ------<4>
 ------<5>
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 6...
+SEMANTIC -- ERROR: Undeclared identifier <a> at (31:3)
+SEMANTIC -- Semantic analysis failed with 1 error(s) and 0 warning(s)
 
-Compilation complete (for now) for program 6.
+Compilation stopped for program 6 due to Semantic error(s).
 
 -------------------------------------------
 
@@ -507,8 +507,6 @@ CST for program 7:
 -$
 
 
-SEMANTIC -- Analyzing program 7...
-
 AST for program 7:
 <Block>
 -<Variable Declaration>
@@ -524,10 +522,12 @@ AST for program 7:
 --<a>
 --<b>
 
-ID	Type		Scope	Line	Position
-<a>	<int>		1	38	7
-<b>	<string>	1	42	10
+SEMANTIC -- Analyzing program 7...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
+<a>	<int>		0	38	7
+<b>	<string>	0	42	10
 Compilation complete (for now) for program 7.
 
 -------------------------------------------
@@ -604,8 +604,6 @@ CST for program 8:
 -$
 
 
-SEMANTIC -- Analyzing program 8...
-
 AST for program 8:
 <Block>
 -<Variable Declaration>
@@ -619,11 +617,13 @@ AST for program 8:
 --<boolean>
 --<c>
 
-ID	Type		Scope	Line	Position
-<a>	<int>		1	51	7
-<b>	<string>	2	55	12
-<c>	<boolean>	1	59	11
+SEMANTIC -- Analyzing program 8...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
+<a>	<int>		0	51	7
+<b>	<string>	1	55	12
+<c>	<boolean>	0	59	11
 Compilation complete (for now) for program 8.
 
 -------------------------------------------
@@ -754,8 +754,6 @@ CST for program 9:
 -$
 
 
-SEMANTIC -- Analyzing program 9...
-
 AST for program 9:
 <Block>
 -<Variable Declaration>
@@ -767,9 +765,11 @@ AST for program 9:
 ---<"string">
 ---<"string">
 
-ID	Type		Scope	Line	Position
-<d>	<boolean>	1	66	11
+SEMANTIC -- Analyzing program 9...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
+<d>	<boolean>	0	66	11
 Compilation complete (for now) for program 9.
 
 -------------------------------------------
@@ -860,8 +860,6 @@ CST for program 10:
 -$
 
 
-SEMANTIC -- Analyzing program 10...
-
 AST for program 10:
 <Block>
 -<While Statement>
@@ -874,8 +872,10 @@ AST for program 10:
 ------<1>
 ------<2>
 
-ID	Type		Scope	Line	Position
+SEMANTIC -- Analyzing program 10...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
 
+ID	Type		Scope	Line	Position
 Compilation complete (for now) for program 10.
 
 -------------------------------------------
