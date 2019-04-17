@@ -22,10 +22,10 @@ CST for program 1:
 -$
 
 
+SEMANTIC -- Analyzing program 1...
+
 AST for program 1:
 <Block>
-
-SEMANTIC -- Analyzing program 1...
 
 ID	Type		Scope	Line	Position
 
@@ -117,6 +117,8 @@ CST for program 2:
 -$
 
 
+SEMANTIC -- Analyzing program 2...
+
 AST for program 2:
 <Block>
 -<Block>
@@ -124,8 +126,6 @@ AST for program 2:
 ---<Block>
 ----<Block>
 -----<Block>
-
-SEMANTIC -- Analyzing program 2...
 
 ID	Type		Scope	Line	Position
 
@@ -179,12 +179,12 @@ CST for program 3:
 -$
 
 
+SEMANTIC -- Analyzing program 3...
+
 AST for program 3:
 <Block>
 -<Print Statement>
 --<"">
-
-SEMANTIC -- Analyzing program 3...
 
 ID	Type		Scope	Line	Position
 
@@ -258,12 +258,12 @@ CST for program 4:
 -$
 
 
+SEMANTIC -- Analyzing program 4...
+
 AST for program 4:
 <Block>
 -<Print Statement>
 --<"int a">
-
-SEMANTIC -- Analyzing program 4...
 
 ID	Type		Scope	Line	Position
 
@@ -313,13 +313,13 @@ CST for program 5:
 -$
 
 
+SEMANTIC -- Analyzing program 5...
+
 AST for program 5:
 <Block>
 -<Assignment Statement>
 --<a>
 --<1>
-
-SEMANTIC -- Analyzing program 5...
 
 ID	Type		Scope	Line	Position
 
@@ -401,6 +401,8 @@ CST for program 6:
 -$
 
 
+SEMANTIC -- Analyzing program 6...
+
 AST for program 6:
 <Block>
 -<Assignment Statement>
@@ -414,8 +416,6 @@ AST for program 6:
 -----<Addition>
 ------<4>
 ------<5>
-
-SEMANTIC -- Analyzing program 6...
 
 ID	Type		Scope	Line	Position
 
@@ -507,6 +507,8 @@ CST for program 7:
 -$
 
 
+SEMANTIC -- Analyzing program 7...
+
 AST for program 7:
 <Block>
 -<Variable Declaration>
@@ -521,8 +523,6 @@ AST for program 7:
 -<Assignment Statement>
 --<a>
 --<b>
-
-SEMANTIC -- Analyzing program 7...
 
 ID	Type		Scope	Line	Position
 <a>	<int>		1	38	7
@@ -604,6 +604,8 @@ CST for program 8:
 -$
 
 
+SEMANTIC -- Analyzing program 8...
+
 AST for program 8:
 <Block>
 -<Variable Declaration>
@@ -616,8 +618,6 @@ AST for program 8:
 -<Variable Declaration>
 --<boolean>
 --<c>
-
-SEMANTIC -- Analyzing program 8...
 
 ID	Type		Scope	Line	Position
 <a>	<int>		1	51	7
@@ -754,6 +754,8 @@ CST for program 9:
 -$
 
 
+SEMANTIC -- Analyzing program 9...
+
 AST for program 9:
 <Block>
 -<Variable Declaration>
@@ -764,8 +766,6 @@ AST for program 9:
 --<!=>
 ---<"string">
 ---<"string">
-
-SEMANTIC -- Analyzing program 9...
 
 ID	Type		Scope	Line	Position
 <d>	<boolean>	1	66	11
@@ -860,6 +860,8 @@ CST for program 10:
 -$
 
 
+SEMANTIC -- Analyzing program 10...
+
 AST for program 10:
 <Block>
 -<While Statement>
@@ -871,8 +873,6 @@ AST for program 10:
 -----<Addition>
 ------<1>
 ------<2>
-
-SEMANTIC -- Analyzing program 10...
 
 ID	Type		Scope	Line	Position
 
