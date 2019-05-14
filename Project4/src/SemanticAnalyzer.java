@@ -25,6 +25,8 @@ public class SemanticAnalyzer {
             System.out.println("SEMANTIC -- Semantic analysis failed with " + errors + " error(s) and " + warnings + " warning(s)\n");
         } else {
             System.out.println("SEMANTIC -- Semantic analysis completed successfully with " + warnings + " warning(s).\n");
+            System.out.println("AST for program " + programNum + ":");
+            ast.printTree();
             System.out.println("Symbol table for program " + programNum + ":");
             printSymbolTable();
             System.out.println();

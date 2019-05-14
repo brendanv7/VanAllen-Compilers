@@ -26,8 +26,6 @@ public class Compiler {
                     System.out.println();
 
                     Tree ast = Parser.ast;
-                    System.out.println("AST for program " + program + ":");
-                    ast.printTree();
 
                     // Semantic
                     ast = SemanticAnalyzer.analyze(ast, program);

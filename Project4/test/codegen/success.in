@@ -1,4 +1,5 @@
 {
-  string a
-  a = "abc"
+  int a
+  boolean b
+  b = (true == (true == false))
 }$
