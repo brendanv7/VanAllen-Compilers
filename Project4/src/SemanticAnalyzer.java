@@ -405,7 +405,7 @@ public class SemanticAnalyzer {
         }
     }
 
-    private static HashTableRecord findSymbol(String symbol, int scope) {
+    static HashTableRecord findSymbol(String symbol, int scope) {
         while(scope >= 0) {
             for (HashTableRecord h : symbolTable) {
                 if (symbol.equals(h.data.data) && scope == h.scope) {

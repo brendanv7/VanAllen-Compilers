@@ -33,8 +33,10 @@ public class Compiler {
                     ast = SemanticAnalyzer.analyze(ast, program);
 
                     if(ast != null) {
-                        System.out.println("Compilation complete (for now) for program " + program + ".\n");
-                        // Generate code
+                        // Generate Code
+                        CodeGenerator.generateCode(ast, program);
+                        System.out.println();
+                        System.out.println("Compilation complete for program " + program + ".\n");
                     } else {
                         System.out.println("Compilation stopped for program " + program + " due to Semantic error(s).\n");
                     }
