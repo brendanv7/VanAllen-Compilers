@@ -9,7 +9,8 @@ public class CodeGenerator {
     private static int staticVarCount;
     private static int scope;
     private static boolean inAssignment;
-    private static boolean inAddition;
+    private static boolean inPrint;
+    private static int errors;
 
     public static void generateCode(Tree ast, int programNum) {
         // Initialize the image to contain 00 for every byte.
@@ -24,7 +25,8 @@ public class CodeGenerator {
         staticVarCount = 0;
         scope = 0;
         inAssignment = false;
-        inAssignment = false;
+        inPrint = false;
+        errors = 0;
 
         System.out.println("CODE GEN -- Beginning code gen for program "+ programNum + "...");
 
@@ -37,30 +39,39 @@ public class CodeGenerator {
         // Increment code index to separate code and static vars
         codeIndex++;
 
-        System.out.println("CODE GEN -- Backpatching...");
-
-        int staticStartIndex = codeIndex;
-
-        for(StaticVarEntry s : staticVars) {
-            String hex = Integer.toHexString(codeIndex).toUpperCase();
-            codeIndex++;
-            if(hex.length() == 1) {
-                hex = "0" + hex;
-            }
-            s.setPermAddress(hex);
-            System.out.println("CODE GEN -- Replacing [ " + s.tempAddress + " ] with [ " + s.permAddress + " ]");
-            for(int i = 0; i<staticStartIndex; i++) {
-                String temp = image.get(i);
-                if(temp.equals(s.tempAddress)) {
-                    image.set(i, s.permAddress);
-                    image.set(i+1, "00");
-                }
-            }
+        if (codeIndex + staticVarCount >= heapIndex) {
+            System.out.println("CODE GEN -- ERROR: Memory overflow. Please shorten the program.");
+            errors++;
         }
 
-        System.out.println("CODE GEN -- Backpatching complete");
+        if(errors == 0) {
+            System.out.println("CODE GEN -- Backpatching...");
 
-        printCode();
+            int staticStartIndex = codeIndex;
+
+            for (StaticVarEntry s : staticVars) {
+                String hex = Integer.toHexString(codeIndex).toUpperCase();
+                codeIndex++;
+                if (hex.length() == 1) {
+                    hex = "0" + hex;
+                }
+                s.setPermAddress(hex);
+                System.out.println("CODE GEN -- Replacing [ " + s.tempAddress + " ] with [ " + s.permAddress + " ]");
+                for (int i = 0; i < staticStartIndex; i++) {
+                    String temp = image.get(i);
+                    if (temp.equals(s.tempAddress)) {
+                        image.set(i, s.permAddress);
+                        image.set(i + 1, "00");
+                    }
+                }
+            }
+
+            System.out.println("CODE GEN -- Backpatching complete");
+
+            printCode();
+        } else {
+            System.out.println("CODE GEN -- Code gen failed with " + errors + " error(s).");
+        }
     }
 
     private static void codeGen(Tree.Node current) {
@@ -74,19 +85,18 @@ public class CodeGenerator {
                 }
 
                 case "<Print Statement>" : {
+                    inPrint = true;
                     codeGen(n);
+                    image.set(codeIndex, "FF");
+                    codeIndex++;
+                    inPrint = false;
                     break;
                 }
 
                 case "<Assignment Statement>" : {
                     inAssignment = true;
                     codeGen(n);
-//                    if(n.children.size() > 0) {
-//                        String type = SemanticAnalyzer.findSymbol(n.children.get(0).data.data, scope).type;
-//                        if(type.equals("<int>")) {
-//
-//                        }
-//                    }
+                    inAssignment = false;
                     break;
                 }
 
@@ -122,6 +132,12 @@ public class CodeGenerator {
                         image.set(codeIndex+1, "FB"); // Address of 'true' in heap memory
                         codeIndex += 2;
                         storeToStatic(n);
+                    } else if (inPrint) {
+                        image.set(codeIndex, "A0");
+                        image.set(codeIndex+1, "FB");
+                        image.set(codeIndex+2, "A2");
+                        image.set(codeIndex+3, "02");
+                        codeIndex += 4;
                     }
                     break;
                 }
@@ -132,17 +148,43 @@ public class CodeGenerator {
                         image.set(codeIndex+1, "F5"); // Address of 'false' in heap memory
                         codeIndex += 2;
                         storeToStatic(n);
+                    } else if (inPrint) {
+                        image.set(codeIndex, "A0");
+                        image.set(codeIndex+1, "F5");
+                        image.set(codeIndex+2, "A2");
+                        image.set(codeIndex+3, "02");
+                        codeIndex += 4;
                     }
                     break;
                 }
 
                 case "<!=>" : {
-                    // Do nothing
+                    generateEquality(n);
+                    if(inAssignment) {
+                        image.set(codeIndex, "A9");
+                        image.set(codeIndex+1, "FB");
+                        image.set(codeIndex+2, "D0");
+                        image.set(codeIndex+3, "02");
+                        image.set(codeIndex+4, "A9");
+                        image.set(codeIndex+5, "F5");
+                        codeIndex += 6;
+                        storeToStatic(n);
+                    } else if (inPrint) {
+                        image.set(codeIndex, "A0");
+                        image.set(codeIndex+1, "FB");
+                        image.set(codeIndex+2, "D0");
+                        image.set(codeIndex+3, "02");
+                        image.set(codeIndex+4, "A0");
+                        image.set(codeIndex+5, "F5");
+                        image.set(codeIndex+6, "A2");
+                        image.set(codeIndex+7, "02");
+                        codeIndex += 8;
+                    }
                     break;
                 }
 
                 case "<==>" : {
-                    generateEquality(n, 0);
+                    generateEquality(n);
                     if(inAssignment) {
                         image.set(codeIndex, "A9");
                         image.set(codeIndex+1, "F5");
@@ -152,6 +194,16 @@ public class CodeGenerator {
                         image.set(codeIndex+5, "FB");
                         codeIndex += 6;
                         storeToStatic(n);
+                    } else if (inPrint) {
+                        image.set(codeIndex, "A0");
+                        image.set(codeIndex+1, "F5");
+                        image.set(codeIndex+2, "D0");
+                        image.set(codeIndex+3, "02");
+                        image.set(codeIndex+4, "A0");
+                        image.set(codeIndex+5, "FB");
+                        image.set(codeIndex+6, "A2");
+                        image.set(codeIndex+7, "02");
+                        codeIndex += 8;
                     }
                     break;
                 }
@@ -176,6 +228,16 @@ public class CodeGenerator {
                     generateAddition(n, 0);
                     if(inAssignment) {
                         storeToStatic(n);
+                    } else if(inPrint) {
+                        image.set(codeIndex, "8D");
+                        image.set(codeIndex+1, "00");
+                        image.set(codeIndex+2, "00");
+                        image.set(codeIndex+3, "AC");
+                        image.set(codeIndex+4, "00");
+                        image.set(codeIndex+5, "00");
+                        image.set(codeIndex+6, "A2");
+                        image.set(codeIndex+7, "01");
+                        codeIndex += 8;
                     }
                     break;
                 }
@@ -191,6 +253,14 @@ public class CodeGenerator {
                             image.set(codeIndex+1, heapAddr);
                             codeIndex += 2;
                             storeToStatic(n);
+                        } else if (inPrint) {
+                            addToHeap(leftChild.substring(1, leftChild.length()-1));
+                            String heapAddr = Integer.toHexString(heapIndex+1).toUpperCase();
+                            image.set(codeIndex, "A0");
+                            image.set(codeIndex+1, heapAddr);
+                            image.set(codeIndex+2, "A2");
+                            image.set(codeIndex+3, "02");
+                            codeIndex += 4;
                         }
                     } else {
                         try {
@@ -201,9 +271,35 @@ public class CodeGenerator {
                                 image.set(codeIndex+1, hex);
                                 codeIndex += 2;
                                 storeToStatic(n);
+                            } else if (inPrint) {
+                                String hex = "0" + Integer.toHexString(digit);
+                                image.set(codeIndex, "A0");
+                                image.set(codeIndex+1, hex);
+                                image.set(codeIndex+2, "A2");
+                                image.set(codeIndex+3, "01");
+                                codeIndex += 4;
                             }
                         } catch (NumberFormatException e) {
-                            // Since leftChild wasn't a number, we know its an identifier
+                            if (inAssignment && n.parent.children.indexOf(n) == 1) {
+                                String addr = findStaticVar(n.parent.children.get(1).data.data, scope).tempAddress;
+                                image.set(codeIndex, "AD");
+                                image.set(codeIndex+1, addr);
+                                image.set(codeIndex+2, "XX");
+                                codeIndex += 3;
+                                storeToStatic(n);
+                            } else if (inPrint) {
+                                String addr = findStaticVar(n.data.data, scope).tempAddress;
+                                image.set(codeIndex, "AC");
+                                image.set(codeIndex+1, addr);
+                                image.set(codeIndex+2, "XX");
+                                image.set(codeIndex+3, "A2");
+                                if(n.data.type.equals("<int>")) {
+                                    image.set(codeIndex+4, "01");
+                                } else {
+                                    image.set(codeIndex+4, "02");
+                                }
+                                codeIndex += 5;
+                            }
                         }
                     }
                 }
@@ -219,14 +315,8 @@ public class CodeGenerator {
         codeIndex += 3;
     }
 
-    private static void generateEquality(Tree.Node current, int level) {
+    private static void generateEquality(Tree.Node current) {
         if(current.data.data.equals("<==>") || current.data.data.equals("<!=>")) {
-//            if(current.data.data.equals("<==>")) {
-//                generateEquality(current.children.get(1), level+1);
-//            } else {
-//                //generateInequality(current.children.get(1), level+1);
-//            }
-
             String leftChild = current.children.get(0).data.data.substring(1, current.children.get(0).data.data.length()-1);
             if(leftChild.substring(0,1).equals("\"")) {
                 addToHeap(leftChild.substring(1, leftChild.length()-1));
@@ -261,6 +351,7 @@ public class CodeGenerator {
                         generateAddition(current.children.get(0), 0);
                     } else if (leftChild.equals("==") || leftChild.equals("!=")) {
                         System.out.println("CODE GEN -- ERROR: Nested boolean expressions are not supported, sorry.");
+                        errors++;
                     }
                 }
             }
@@ -299,6 +390,7 @@ public class CodeGenerator {
                         generateAddition(current.children.get(1), 0);
                     } else if (rightChild.equals("==") || rightChild.equals("!=")) {
                         System.out.println("CODE GEN -- ERROR: Nested boolean expressions are not supported, sorry.");
+                        errors++;
                     }
                 }
             }

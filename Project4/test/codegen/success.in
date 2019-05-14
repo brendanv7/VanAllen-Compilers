@@ -1,5 +1,35 @@
 {
-  int a
-  boolean b
-  b = (true == (true == false))
+    int a
+    int b
+    boolean c
+    c = (a == b)
+}$
+
+{
+    int a
+    boolean b
+    b = (1 == a)
+    b = (a == 1)
+    b = (a == 1 + 2 + 3 + 4 + a)
+}$
+
+{
+    boolean a
+    a = true
+    a = (true == true)
+    a = (false == true)
+}$
+
+{
+    string a
+    boolean b
+    b = (a == "abc")
+    b = ("a" == "ab")
+    b = (a == a)
+}$
+
+{
+    string b
+    b = "what up bitch"
+    print((b == "what up bitch"))
 }$
