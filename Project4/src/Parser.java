@@ -369,6 +369,7 @@ public class Parser {
                 ast.resetParent();
                 matchAndConsume("INT_OP");
                 parseExpr();
+                ast.resetParent();
             } else {
                 ast.addNode(new Token("", "<"+first.data+">", first.lineNum, first.position));
                 parent = ast.currentNode;

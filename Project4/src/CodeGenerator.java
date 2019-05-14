@@ -4,13 +4,18 @@ public class CodeGenerator {
 
     public static ArrayList<String> image;
     private static ArrayList<StaticVarEntry> staticVars;
+    private static ArrayList<JumpTableEntry> jumpTable;
     private static int heapIndex;
     private static int codeIndex;
     private static int staticVarCount;
+    private static int jumpsCount;
     private static int scope;
     private static boolean inAssignment;
     private static boolean inPrint;
+    private static boolean inIf;
     private static int errors;
+    private static int jumps;
+    private static int jumpStart;
 
     public static void generateCode(Tree ast, int programNum) {
         // Initialize the image to contain 00 for every byte.
@@ -20,13 +25,18 @@ public class CodeGenerator {
         }
 
         staticVars = new ArrayList<>();
+        jumpTable = new ArrayList<>();
         codeIndex = 0;
         heapIndex = 255;
         staticVarCount = 0;
+        jumpsCount = 0;
         scope = 0;
         inAssignment = false;
         inPrint = false;
+        inIf = false;
         errors = 0;
+        jumps = 0;
+        jumpStart = 0;
 
         System.out.println("CODE GEN -- Beginning code gen for program "+ programNum + "...");
 
@@ -62,6 +72,20 @@ public class CodeGenerator {
                     if (temp.equals(s.tempAddress)) {
                         image.set(i, s.permAddress);
                         image.set(i + 1, "00");
+                    }
+                }
+            }
+
+            for (JumpTableEntry j : jumpTable) {
+                String hex = Integer.toHexString(j.shift).toUpperCase();
+                if (hex.length() == 1) {
+                    hex = "0" + hex;
+                }
+                System.out.println("CODE GEN -- Replacing [ " + j.id + " ] with [ " + hex + " ]");
+                for (int i = 0; i < staticStartIndex; i++) {
+                    String temp = image.get(i);
+                    if (temp.equals(j.id)) {
+                        image.set(i, hex);
                     }
                 }
             }
@@ -122,7 +146,13 @@ public class CodeGenerator {
                 }
 
                 case "<If Statement>" : {
-
+                    inIf = true;
+                    System.out.println("CODE GEN -- Generating <If Statement>");
+                    codeGen(n);
+                    jumps = codeIndex - jumpStart;
+                    jumpTable.add(new JumpTableEntry(jumpsCount, jumps));
+                    inIf = false;
+                    jumpsCount++;
                     break;
                 }
 
@@ -138,6 +168,21 @@ public class CodeGenerator {
                         image.set(codeIndex+2, "A2");
                         image.set(codeIndex+3, "02");
                         codeIndex += 4;
+                    } else if (inIf) {
+                        image.set(codeIndex, "A2");
+                        image.set(codeIndex+1, "01");
+                        image.set(codeIndex+2, "A9");
+                        image.set(codeIndex+3, "01");
+                        image.set(codeIndex+4, "8D");
+                        image.set(codeIndex+5, "00");
+                        image.set(codeIndex+6, "00");
+                        image.set(codeIndex+7, "EC");
+                        image.set(codeIndex+8, "00");
+                        image.set(codeIndex+9, "00");
+                        image.set(codeIndex+10, "D0");
+                        image.set(codeIndex+11, "J"+jumpsCount);
+                        codeIndex += 12;
+                        jumpStart = codeIndex;
                     }
                     break;
                 }
@@ -154,6 +199,21 @@ public class CodeGenerator {
                         image.set(codeIndex+2, "A2");
                         image.set(codeIndex+3, "02");
                         codeIndex += 4;
+                    } else if (inIf) {
+                        image.set(codeIndex, "A2");
+                        image.set(codeIndex+1, "01");
+                        image.set(codeIndex+2, "A9");
+                        image.set(codeIndex+3, "02");
+                        image.set(codeIndex+4, "8D");
+                        image.set(codeIndex+5, "00");
+                        image.set(codeIndex+6, "00");
+                        image.set(codeIndex+7, "EC");
+                        image.set(codeIndex+8, "00");
+                        image.set(codeIndex+9, "00");
+                        image.set(codeIndex+10, "D0");
+                        image.set(codeIndex+11, "J"+jumpsCount);
+                        codeIndex += 12;
+                        jumpStart = codeIndex;
                     }
                     break;
                 }
@@ -179,6 +239,25 @@ public class CodeGenerator {
                         image.set(codeIndex+6, "A2");
                         image.set(codeIndex+7, "02");
                         codeIndex += 8;
+                    } else if (inIf) {
+                        image.set(codeIndex, "A2");
+                        image.set(codeIndex+1, "F5");
+                        image.set(codeIndex+2, "D0");
+                        image.set(codeIndex+3, "02");
+                        image.set(codeIndex+4, "A2");
+                        image.set(codeIndex+5, "FB");
+                        image.set(codeIndex+6, "A9");
+                        image.set(codeIndex+7, "F5");
+                        image.set(codeIndex+8, "8D");
+                        image.set(codeIndex+9, "00");
+                        image.set(codeIndex+10, "00");
+                        image.set(codeIndex+11, "EC");
+                        image.set(codeIndex+12, "00");
+                        image.set(codeIndex+13, "00");
+                        image.set(codeIndex+14, "D0");
+                        image.set(codeIndex+15, "J"+jumpsCount);
+                        codeIndex += 16;
+                        jumpStart = codeIndex;
                     }
                     break;
                 }
@@ -204,6 +283,11 @@ public class CodeGenerator {
                         image.set(codeIndex+6, "A2");
                         image.set(codeIndex+7, "02");
                         codeIndex += 8;
+                    } else if (inIf) {
+                        image.set(codeIndex, "D0");
+                        image.set(codeIndex+1, "J"+jumpsCount);
+                        codeIndex += 2;
+                        jumpStart = codeIndex;
                     }
                     break;
                 }
@@ -404,6 +488,7 @@ public class CodeGenerator {
             codeIndex += 6;
         }
     }
+
 
     private static void generateAddition(Tree.Node current, int level) {
         if(current.data.data.equals("<Addition>")) {

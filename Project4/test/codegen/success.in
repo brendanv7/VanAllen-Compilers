@@ -29,7 +29,13 @@
 }$
 
 {
-    string b
-    b = "what up bitch"
-    print((b == "what up bitch"))
+    boolean a
+    boolean b
+    b = false
+    a = (1 == 1 + 1 )
+    print (a)
+    if (a != b)
+    {
+        print(1 + 2 + 3)
+    }
 }$

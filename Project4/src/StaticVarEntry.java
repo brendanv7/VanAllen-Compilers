@@ -3,7 +3,6 @@ public class StaticVarEntry {
     String tempAddress;
     String permAddress;
     int scope;
-    int offset;
 
     public StaticVarEntry(String id, int staticIndex, int scope) {
         this.id = id;
