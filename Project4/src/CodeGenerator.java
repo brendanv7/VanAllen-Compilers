@@ -13,6 +13,7 @@ public class CodeGenerator {
     private static boolean inAssignment;
     private static boolean inPrint;
     private static boolean inIf;
+    private static boolean inWhile;
     private static int errors;
     private static int jumps;
     private static int jumpStart;
@@ -141,7 +142,28 @@ public class CodeGenerator {
                 }
 
                 case "<While Statement>" : {
-
+                    inWhile = true;
+                    System.out.println("CODE GEN -- Generating <While Statement>");
+                    int topIndex = codeIndex;
+                    codeGen(n);
+                    jumps = codeIndex - jumpStart;
+                    jumpTable.add(new JumpTableEntry(jumpsCount, jumps));
+                    image.set(codeIndex, "A9");
+                    image.set(codeIndex+1, "00");
+                    image.set(codeIndex+2, "8D");
+                    image.set(codeIndex+3, "T"+staticVarCount);
+                    image.set(codeIndex+4, "XX");
+                    image.set(codeIndex+5, "A2");
+                    image.set(codeIndex+6, "01");
+                    image.set(codeIndex+7, "EC");
+                    image.set(codeIndex+8, "T"+staticVarCount);
+                    image.set(codeIndex+9, "XX");
+                    image.set(codeIndex+10, "D0");
+                    staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
+                    int jumpToTop = 255 - codeIndex + topIndex;
+                    image.set(codeIndex+11, "J"+jumpToTop);
+                    codeIndex += 12;
+                    inWhile = false;
                     break;
                 }
 
@@ -152,7 +174,6 @@ public class CodeGenerator {
                     jumps = codeIndex - jumpStart;
                     jumpTable.add(new JumpTableEntry(jumpsCount, jumps));
                     inIf = false;
-                    jumpsCount++;
                     break;
                 }
 
@@ -287,6 +308,13 @@ public class CodeGenerator {
                         image.set(codeIndex, "D0");
                         image.set(codeIndex+1, "J"+jumpsCount);
                         codeIndex += 2;
+                        jumpsCount++;
+                        jumpStart = codeIndex;
+                    } else if (inWhile) {
+                        image.set(codeIndex, "D0");
+                        image.set(codeIndex+1, "J"+jumpsCount);
+                        codeIndex += 2;
+                        jumpsCount++;
                         jumpStart = codeIndex;
                     }
                     break;
@@ -405,32 +433,83 @@ public class CodeGenerator {
             if(leftChild.substring(0,1).equals("\"")) {
                 addToHeap(leftChild.substring(1, leftChild.length()-1));
                 String heapAddr = Integer.toHexString(heapIndex+1).toUpperCase();
-                image.set(codeIndex, "A2");
-                image.set(codeIndex+1, heapAddr);
-                codeIndex += 2;
+                if (inWhile) {
+                    image.set(codeIndex, "A9");
+                    image.set(codeIndex+1, heapAddr);
+                    image.set(codeIndex+2, "8D");
+                    image.set(codeIndex+3, "T"+staticVarCount+1);
+                    image.set(codeIndex+4, "XX");
+                    codeIndex += 5;
+                    staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
+                } else {
+                    image.set(codeIndex, "A2");
+                    image.set(codeIndex + 1, heapAddr);
+                    codeIndex += 2;
+                }
             } else {
                 try {
                     int digit = Integer.parseInt(leftChild);
                     String hex = "0" + Integer.toHexString(digit);
-                    image.set(codeIndex, "A2");
-                    image.set(codeIndex+1, hex);
-                    codeIndex += 2;
+                    if (inWhile) {
+                        image.set(codeIndex, "A9");
+                        image.set(codeIndex+1, hex);
+                        image.set(codeIndex+2, "8D");
+                        image.set(codeIndex+3, "T"+staticVarCount+1);
+                        image.set(codeIndex+4, "XX");
+                        codeIndex += 5;
+                        staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
+                    } else {
+                        image.set(codeIndex, "A2");
+                        image.set(codeIndex + 1, hex);
+                        codeIndex += 2;
+                    }
                 } catch (NumberFormatException e) {
                     if(leftChild.length() == 1) {
                         // Id
                         String staticAddr = findStaticVar("<"+leftChild+">", scope).tempAddress;
-                        image.set(codeIndex, "AE");
-                        image.set(codeIndex+1, staticAddr);
-                        image.set(codeIndex+2, "XX");
-                        codeIndex += 3;
+                        if (inWhile) {
+                            image.set(codeIndex, "AD");
+                            image.set(codeIndex+1, staticAddr);
+                            image.set(codeIndex+2, "XX");
+                            image.set(codeIndex+3, "8D");
+                            image.set(codeIndex+4, "T"+staticVarCount+1);
+                            image.set(codeIndex+5, "XX");
+                            codeIndex += 6;
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
+                        } else {
+                            image.set(codeIndex, "AE");
+                            image.set(codeIndex + 1, staticAddr);
+                            image.set(codeIndex + 2, "XX");
+                            codeIndex += 3;
+                        }
                     } else if (leftChild.equals("true")) {
-                        image.set(codeIndex, "A2");
-                        image.set(codeIndex+1, "FB");
-                        codeIndex += 2;
+                        if (inWhile) {
+                            image.set(codeIndex, "A9");
+                            image.set(codeIndex+1, "FB");
+                            image.set(codeIndex+2, "8D");
+                            image.set(codeIndex+3, "T"+staticVarCount+1);
+                            image.set(codeIndex+4, "XX");
+                            codeIndex += 5;
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
+                        } else {
+                            image.set(codeIndex, "A2");
+                            image.set(codeIndex + 1, "FB");
+                            codeIndex += 2;
+                        }
                     } else if (leftChild.equals("false")) {
-                        image.set(codeIndex, "A2");
-                        image.set(codeIndex+1, "F5");
-                        codeIndex += 2;
+                        if (inWhile) {
+                            image.set(codeIndex, "A9");
+                            image.set(codeIndex+1, "F5");
+                            image.set(codeIndex+2, "8D");
+                            image.set(codeIndex+3, "T"+staticVarCount+1);
+                            image.set(codeIndex+4, "XX");
+                            codeIndex += 5;
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
+                        } else {
+                            image.set(codeIndex, "A2");
+                            image.set(codeIndex + 1, "F5");
+                            codeIndex += 2;
+                        }
                     } else if (leftChild.equals("Addition")) {
                         generateAddition(current.children.get(0), 0);
                     } else if (leftChild.equals("==") || leftChild.equals("!=")) {
@@ -451,27 +530,75 @@ public class CodeGenerator {
                 try {
                     int digit = Integer.parseInt(rightChild);
                     String hex = "0" + Integer.toHexString(digit);
-                    image.set(codeIndex, "A9");
-                    image.set(codeIndex+1, hex);
-                    codeIndex += 2;
+                    if (inWhile) {
+                        image.set(codeIndex, "A9");
+                        image.set(codeIndex+1, hex);
+                        image.set(codeIndex+2, "8D");
+                        image.set(codeIndex+3, "T"+staticVarCount);
+                        image.set(codeIndex+4, "XX");
+                        codeIndex += 5;
+                        staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
+                    } else {
+                        image.set(codeIndex, "A9");
+                        image.set(codeIndex + 1, hex);
+                        codeIndex += 2;
+                    }
                 } catch (NumberFormatException e) {
                     if(rightChild.length() == 1) {
                         // Id
                         String staticAddr = findStaticVar("<"+rightChild+">", scope).tempAddress;
-                        image.set(codeIndex, "AD");
-                        image.set(codeIndex+1, staticAddr);
-                        image.set(codeIndex+2, "XX");
-                        codeIndex += 3;
+                        if (inWhile) {
+                            image.set(codeIndex, "AD");
+                            image.set(codeIndex+1, staticAddr);
+                            image.set(codeIndex+2, "XX");
+                            image.set(codeIndex+3, "8D");
+                            image.set(codeIndex+4, "T"+staticVarCount);
+                            image.set(codeIndex+5, "XX");
+                            codeIndex += 6;
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
+                        } else {
+                            image.set(codeIndex, "AD");
+                            image.set(codeIndex + 1, staticAddr);
+                            image.set(codeIndex + 2, "XX");
+                            codeIndex += 3;
+                        }
                     } else if (rightChild.equals("true")) {
-                        image.set(codeIndex, "A9");
-                        image.set(codeIndex+1, "FB");
-                        codeIndex += 2;
+                        if (inWhile) {
+                            image.set(codeIndex, "A9");
+                            image.set(codeIndex+1,"FB");
+                            image.set(codeIndex+2, "8D");
+                            image.set(codeIndex+3, "T"+staticVarCount);
+                            image.set(codeIndex+4, "XX");
+                            codeIndex += 5;
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
+                        } else {
+                            image.set(codeIndex, "A9");
+                            image.set(codeIndex + 1, "FB");
+                            codeIndex += 2;
+                        }
                     } else if (rightChild.equals("false")){
-                        image.set(codeIndex, "A9");
-                        image.set(codeIndex+1, "F5");
-                        codeIndex += 2;
+                        if (inWhile) {
+                            image.set(codeIndex, "A9");
+                            image.set(codeIndex+1, "F5");
+                            image.set(codeIndex+2, "8D");
+                            image.set(codeIndex+3, "T"+staticVarCount);
+                            image.set(codeIndex+4, "XX");
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
+                            codeIndex += 5;
+                        } else {
+                            image.set(codeIndex, "A9");
+                            image.set(codeIndex + 1, "F5");
+                            codeIndex += 2;
+                        }
                     } else if (rightChild.equals("Addition")) {
                         generateAddition(current.children.get(1), 0);
+                        if (inWhile) {
+                            image.set(codeIndex, "8D");
+                            image.set(codeIndex+1, "T"+staticVarCount);
+                            image.set(codeIndex+2, "XX");
+                            staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
+                            codeIndex += 3;
+                        }
                     } else if (rightChild.equals("==") || rightChild.equals("!=")) {
                         System.out.println("CODE GEN -- ERROR: Nested boolean expressions are not supported, sorry.");
                         errors++;
@@ -479,13 +606,29 @@ public class CodeGenerator {
                 }
             }
 
-            image.set(codeIndex, "8D");
-            image.set(codeIndex+1, "00");
-            image.set(codeIndex+2, "00");
-            image.set(codeIndex+3, "EC");
-            image.set(codeIndex+4, "00");
-            image.set(codeIndex+5, "00");
-            codeIndex += 6;
+            if (inWhile) {
+                image.set(codeIndex, "AE");
+                image.set(codeIndex+1, "T"+staticVarCount+1);
+                image.set(codeIndex+2, "XX");
+                image.set(codeIndex+3, "EC");
+                image.set(codeIndex+4, "T"+staticVarCount);
+                image.set(codeIndex+5, "XX");
+//                image.set(codeIndex+6, "A9");
+//                image.set(codeIndex+7, "00");
+//                image.set(codeIndex+8, "D0");
+//                image.set(codeIndex+9, "02");
+//                image.set(codeIndex+10, "A9");
+//                image.set(codeIndex+11, "01");
+//                image.set(codeIndex+12, "XX");
+            } else {
+                image.set(codeIndex, "8D");
+                image.set(codeIndex + 1, "00");
+                image.set(codeIndex + 2, "00");
+                image.set(codeIndex + 3, "EC");
+                image.set(codeIndex + 4, "00");
+                image.set(codeIndex + 5, "00");
+                codeIndex += 6;
+            }
         }
     }
 

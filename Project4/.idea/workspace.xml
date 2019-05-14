@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec9fc2dc-9128-45c3-8d7b-df5ab5327f88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/JumpTableEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compiler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Compiler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project4/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project4/CodeGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project4/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project4/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project4/StaticVarEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project4/StaticVarEntry.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StaticVarEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StaticVarEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/codegen/success.in" beforeDir="false" afterPath="$PROJECT_DIR$/test/codegen/success.in" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,13 +24,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="260" column="21" lean-forward="true" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
+            <state relative-caret-position="-93">
+              <caret line="598" column="94" selection-start-line="598" selection-start-column="94" selection-end-line="598" selection-end-column="94" />
               <folding>
-                <element signature="method#generateAddition#0;class#CodeGenerator#0" />
                 <element signature="method#addToHeap#0;class#CodeGenerator#0" />
                 <element signature="method#printCode#0;class#CodeGenerator#0" />
               </folding>
@@ -94,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/codegen/success.in">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+            <state relative-caret-position="276">
+              <caret line="30" selection-start-line="30" selection-end-line="37" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -163,8 +155,8 @@
         <option value="$PROJECT_DIR$/src/JumpTableEntry.java" />
         <option value="$PROJECT_DIR$/src/StaticVarEntry.java" />
         <option value="$PROJECT_DIR$/src/Parser.java" />
-        <option value="$PROJECT_DIR$/src/CodeGenerator.java" />
         <option value="$PROJECT_DIR$/test/codegen/success.in" />
+        <option value="$PROJECT_DIR$/src/CodeGenerator.java" />
       </list>
     </option>
   </component>
@@ -219,7 +211,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557846059164" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557852174279" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -277,12 +269,12 @@
       <workItem from="1555547900702" duration="712000" />
       <workItem from="1557198281367" duration="621000" />
       <workItem from="1557792323541" duration="51000" />
-      <workItem from="1557792481784" duration="44597000" />
+      <workItem from="1557792481784" duration="49604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82995000" />
+    <option name="totallyTimeSpent" value="88002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="798" extended-state="6" />
@@ -357,38 +349,6 @@
         <state relative-caret-position="-1300" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StaticVarEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding>
-            <element signature="e#281#282#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JumpTableEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="256" column="58" selection-start-line="256" selection-start-column="58" selection-end-line="256" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SemanticAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
@@ -421,22 +381,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CodeGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="260" column="21" lean-forward="true" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
-          <folding>
-            <element signature="method#generateAddition#0;class#CodeGenerator#0" />
-            <element signature="method#addToHeap#0;class#CodeGenerator#0" />
-            <element signature="method#printCode#0;class#CodeGenerator#0" />
-          </folding>
+        <state relative-caret-position="162">
+          <caret line="256" column="58" selection-start-line="256" selection-start-column="58" selection-end-line="256" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/codegen/success.in">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        <state relative-caret-position="276">
+          <caret line="30" selection-start-line="30" selection-end-line="37" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StaticVarEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding>
+            <element signature="e#281#282#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JumpTableEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-93">
+          <caret line="598" column="94" selection-start-line="598" selection-start-column="94" selection-end-line="598" selection-end-column="94" />
+          <folding>
+            <element signature="method#addToHeap#0;class#CodeGenerator#0" />
+            <element signature="method#printCode#0;class#CodeGenerator#0" />
+          </folding>
         </state>
       </provider>
     </entry>

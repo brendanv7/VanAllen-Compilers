@@ -29,13 +29,10 @@
 }$
 
 {
-    boolean a
-    boolean b
-    b = false
-    a = (1 == 1 + 1 )
-    print (a)
-    if (a != b)
-    {
-        print(1 + 2 + 3)
+    int a
+    a = 1
+    while (a != 3) {
+        a = 1 + a
+        print(a)
     }
 }$
