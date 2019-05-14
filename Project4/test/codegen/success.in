@@ -1,4 +1,4 @@
 {
-  boolean a
-  a = true
+  string a
+  a = "abc"
 }$

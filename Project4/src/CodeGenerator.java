@@ -11,6 +11,7 @@ public class CodeGenerator {
     private static int staticVarCount;
     private static int scope;
     private static boolean inAssignment;
+    private static boolean inAddition;
 
     public static void generateCode(Tree ast, int programNum) {
         // Initialize the image to contain 00 for every byte.
@@ -24,6 +25,7 @@ public class CodeGenerator {
         heapIndex = 255;
         staticVarCount = 0;
         scope = 0;
+        inAssignment = false;
         inAssignment = false;
 
         System.out.println("CODE GEN -- Beginning code gen for program "+ programNum + "...");
@@ -64,7 +66,7 @@ public class CodeGenerator {
     }
 
     private static void codeGen(Tree.Node current) {
-        System.out.println("CODE GEN -- Generating " + current.data.data + " on line " + current.data.lineNum);
+        System.out.println("CODE GEN -- Generating " + current.data.data);
         for(Tree.Node n : current.children) {
             switch (n.data.data) {
                 case "<Block>" : {
@@ -99,6 +101,7 @@ public class CodeGenerator {
                         image.set(codeIndex+2, "8D");
                         image.set(codeIndex+3, "T"+staticVarCount);
                         image.set(codeIndex+4, "XX");
+                        staticVarCount++;
                         codeIndex += 5;
                     }
                     break;
@@ -116,13 +119,27 @@ public class CodeGenerator {
 
                 case "<true>" : {
                     if(inAssignment) {
-                        int
+                        image.set(codeIndex, "A9");
+                        image.set(codeIndex+1, "FB"); // Address of 'true' in heap memory
+                        image.set(codeIndex+2, "8D");
+                        String addr = findStaticVar(n.parent.children.get(0).data.data, scope).tempAddress;
+                        image.set(codeIndex+3, addr);
+                        image.set(codeIndex+4, "XX");
+                        codeIndex += 5;
                     }
                     break;
                 }
 
                 case "<false>" : {
-                    // Do nothing
+                    if(inAssignment) {
+                        image.set(codeIndex, "A9");
+                        image.set(codeIndex+1, "F5"); // Address of 'false' in heap memory
+                        image.set(codeIndex+2, "8D");
+                        String addr = findStaticVar(n.parent.children.get(0).data.data, scope).tempAddress;
+                        image.set(codeIndex+3, addr);
+                        image.set(codeIndex+4, "XX");
+                        codeIndex += 5;
+                    }
                     break;
                 }
 
@@ -152,31 +169,76 @@ public class CodeGenerator {
                 }
 
                 case "<Addition>" : {
-                    //do nothing
+                    inAddition = true;
+                    codeGen(n);
+                    if(inAssignment) {
+
+                    }
                     break;
                 }
 
                 default : {
                     // Remove < > to parse easier
                     String s = n.data.data.substring(1, n.data.data.length()-1);
-                    try {
-                        int digit = Integer.parseInt(s);
+                    if(s.substring(0,1).equals("\"")) {
                         if(inAssignment) {
-                            String hex = Integer.toHexString(digit);
-                            hex = "0" + hex;
+                            addToHeap(s.substring(1, s.length()-1));
+                            String heapAddr = Integer.toHexString(heapIndex+1).toUpperCase();
                             image.set(codeIndex, "A9");
-                            image.set(codeIndex+1, hex);
+                            image.set(codeIndex+1, heapAddr); // Address of 'false' in heap memory
                             image.set(codeIndex+2, "8D");
-                            String addr = findStaticVar(n.parent.children.get(0).data.data, scope).tempAddress;
-                            image.set(codeIndex+3, addr);
+                            String staticAddr = findStaticVar(n.parent.children.get(0).data.data, scope).tempAddress;
+                            image.set(codeIndex+3, staticAddr);
                             image.set(codeIndex+4, "XX");
                             codeIndex += 5;
                         }
-                    }
-                    catch (NumberFormatException e) {
-                        // Since s wasn't a number, we know its an identifier
+
+                    } else {
+                        try {
+                            int digit = Integer.parseInt(s);
+                            if(inAddition) {
+
+                            }
+                            if (inAssignment) {
+                                String hex = "0" + Integer.toHexString(digit);
+                                image.set(codeIndex, "A9");
+                                image.set(codeIndex + 1, hex);
+                                image.set(codeIndex + 2, "8D");
+                                String addr = findStaticVar(n.parent.children.get(0).data.data, scope).tempAddress;
+                                image.set(codeIndex + 3, addr);
+                                image.set(codeIndex + 4, "XX");
+                                codeIndex += 5;
+                            }
+                        } catch (NumberFormatException e) {
+                            // Since s wasn't a number, we know its an identifier
+                        }
                     }
                 }
+            }
+        }
+    }
+
+    private static void generateAddition(Tree.Node current, int scope) {
+        if(current.data.data.equals("<Addition>")) {
+            generateAddition(current.children.get(1), scope);
+            int digit = Integer.parseInt(current.children.get(0).data.data.substring(1, current.children.get(0).data.data.length()-1));
+            String hex = "0" + Integer.toHexString(digit);
+            image.set(codeIndex, "A9");
+            image.set(codeIndex+1, hex);
+        } else {
+            try {
+                int digit = Integer.parseInt(current.data.data.substring(1, current.data.data.length()-1));
+                String hex = "0" + Integer.toHexString(digit);
+                image.set(codeIndex, "A9");
+                image.set(codeIndex+1, hex);
+                image.set(codeIndex+2, "8D");
+                image.set(codeIndex+3, "00");
+                image.set(codeIndex+4, "00");
+                codeIndex += 5;
+
+            }
+            catch (NumberFormatException e) {
+                // ID
             }
         }
     }
@@ -198,7 +260,7 @@ public class CodeGenerator {
             image.set(heapIndex, hex);
             heapIndex++;
         }
-        heapIndex -= temp.length+1;
+        heapIndex -= temp.length+1; // Add 1 to include break
         System.out.println("CODE GEN -- Added string [ " + data + " ] to heap at address " + (heapIndex+1));
     }
 
