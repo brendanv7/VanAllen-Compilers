@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SemanticAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="188" selection-start-line="188" selection-end-line="188" />
+            <state relative-caret-position="159">
+              <caret line="184" selection-start-line="184" selection-end-line="184" />
             </state>
           </provider>
         </entry>
@@ -27,9 +27,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-93">
-              <caret line="598" column="94" selection-start-line="598" selection-start-column="94" selection-end-line="598" selection-end-column="94" />
+            <state relative-caret-position="3924">
+              <caret line="620" column="31" selection-start-line="620" selection-start-column="31" selection-end-line="620" selection-end-column="31" />
               <folding>
+                <element signature="method#storeToStatic#0;class#CodeGenerator#0" />
+                <element signature="method#generateAddition#0;class#CodeGenerator#0" />
+                <element signature="method#findStaticVar#0;class#CodeGenerator#0" />
+                <element signature="method#findJumpEntry#0;class#CodeGenerator#0" />
                 <element signature="method#addToHeap#0;class#CodeGenerator#0" />
                 <element signature="method#printCode#0;class#CodeGenerator#0" />
               </folding>
@@ -89,7 +93,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/codegen/success.in">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="269">
               <caret line="30" selection-start-line="30" selection-end-line="37" selection-end-column="2" />
             </state>
           </provider>
@@ -98,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StaticVarEntry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#281#282#0" expanded="true" />
                 <element signature="e#326#327#0" expanded="true" />
@@ -135,8 +139,11 @@
       <find>hex</find>
       <find>code</find>
       <find>+=</find>
-      <find>number</find>
       <find>static</find>
+      <find>number</find>
+      <find>findstatic</find>
+      <find>jumpCount</find>
+      <find>jumpsCount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -211,7 +218,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557852174279" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557891920462" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -269,16 +276,15 @@
       <workItem from="1555547900702" duration="712000" />
       <workItem from="1557198281367" duration="621000" />
       <workItem from="1557792323541" duration="51000" />
-      <workItem from="1557792481784" duration="49604000" />
+      <workItem from="1557792481784" duration="57185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88002000" />
+    <option name="totallyTimeSpent" value="95583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="798" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27110156" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -316,16 +322,6 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SemanticAnalyzer.java</url>
-          <line>184</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="child.scope" />
@@ -349,13 +345,6 @@
         <state relative-caret-position="-1300" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SemanticAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="188" selection-start-line="188" selection-end-line="188" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -374,13 +363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="371" column="34" selection-start-line="371" selection-start-column="34" selection-end-line="371" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -395,17 +377,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/codegen/success.in">
+    <entry file="file://$PROJECT_DIR$/src/SemanticAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="30" selection-start-line="30" selection-end-line="37" selection-end-column="2" />
+        <state relative-caret-position="159">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="371" column="34" selection-start-line="371" selection-start-column="34" selection-end-line="371" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StaticVarEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#281#282#0" expanded="true" />
             <element signature="e#326#327#0" expanded="true" />
@@ -420,11 +409,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/codegen/success.in">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="30" selection-start-line="30" selection-end-line="37" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93">
-          <caret line="598" column="94" selection-start-line="598" selection-start-column="94" selection-end-line="598" selection-end-column="94" />
+        <state relative-caret-position="3924">
+          <caret line="620" column="31" selection-start-line="620" selection-start-column="31" selection-end-line="620" selection-end-column="31" />
           <folding>
+            <element signature="method#storeToStatic#0;class#CodeGenerator#0" />
+            <element signature="method#generateAddition#0;class#CodeGenerator#0" />
+            <element signature="method#findStaticVar#0;class#CodeGenerator#0" />
+            <element signature="method#findJumpEntry#0;class#CodeGenerator#0" />
             <element signature="method#addToHeap#0;class#CodeGenerator#0" />
             <element signature="method#printCode#0;class#CodeGenerator#0" />
           </folding>

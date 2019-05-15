@@ -145,9 +145,8 @@ public class CodeGenerator {
                     inWhile = true;
                     System.out.println("CODE GEN -- Generating <While Statement>");
                     int topIndex = codeIndex;
+                    int jumpIndex = jumpsCount;
                     codeGen(n);
-                    jumps = codeIndex - jumpStart;
-                    jumpTable.add(new JumpTableEntry(jumpsCount, jumps));
                     image.set(codeIndex, "A9");
                     image.set(codeIndex+1, "00");
                     image.set(codeIndex+2, "8D");
@@ -160,9 +159,15 @@ public class CodeGenerator {
                     image.set(codeIndex+9, "XX");
                     image.set(codeIndex+10, "D0");
                     staticVars.add(new StaticVarEntry("Copy", staticVarCount, scope));
-                    int jumpToTop = 255 - codeIndex + topIndex;
-                    image.set(codeIndex+11, "J"+jumpToTop);
+                    String jumpToTop = Integer.toHexString(256 - (codeIndex+12) + topIndex).toUpperCase();
+                    if(jumpToTop.length() == 1) {
+                        jumpToTop = "0" + jumpToTop;
+                    }
+                    image.set(codeIndex+11, jumpToTop);
                     codeIndex += 12;
+                    jumps = codeIndex - jumpStart;
+                    jumpTable.add(new JumpTableEntry(jumpsCount, jumps));
+                    jumpsCount++;
                     inWhile = false;
                     break;
                 }
@@ -170,10 +175,12 @@ public class CodeGenerator {
                 case "<If Statement>" : {
                     inIf = true;
                     System.out.println("CODE GEN -- Generating <If Statement>");
+                    int jumpIndex = jumpsCount;
                     codeGen(n);
                     jumps = codeIndex - jumpStart;
                     jumpTable.add(new JumpTableEntry(jumpsCount, jumps));
                     inIf = false;
+                    jumpsCount++;
                     break;
                 }
 
@@ -308,13 +315,11 @@ public class CodeGenerator {
                         image.set(codeIndex, "D0");
                         image.set(codeIndex+1, "J"+jumpsCount);
                         codeIndex += 2;
-                        jumpsCount++;
                         jumpStart = codeIndex;
                     } else if (inWhile) {
                         image.set(codeIndex, "D0");
                         image.set(codeIndex+1, "J"+jumpsCount);
                         codeIndex += 2;
-                        jumpsCount++;
                         jumpStart = codeIndex;
                     }
                     break;
@@ -393,14 +398,14 @@ public class CodeGenerator {
                             }
                         } catch (NumberFormatException e) {
                             if (inAssignment && n.parent.children.indexOf(n) == 1) {
-                                String addr = findStaticVar(n.parent.children.get(1).data.data, scope).tempAddress;
+                                String addr = findStaticVar(n.parent.children.get(1).data.data).tempAddress;
                                 image.set(codeIndex, "AD");
                                 image.set(codeIndex+1, addr);
                                 image.set(codeIndex+2, "XX");
                                 codeIndex += 3;
                                 storeToStatic(n);
                             } else if (inPrint) {
-                                String addr = findStaticVar(n.data.data, scope).tempAddress;
+                                String addr = findStaticVar(n.data.data).tempAddress;
                                 image.set(codeIndex, "AC");
                                 image.set(codeIndex+1, addr);
                                 image.set(codeIndex+2, "XX");
@@ -421,7 +426,7 @@ public class CodeGenerator {
 
     private static void storeToStatic(Tree.Node n) {
         image.set(codeIndex, "8D");
-        String addr = findStaticVar(n.parent.children.get(0).data.data, scope).tempAddress;
+        String addr = findStaticVar(n.parent.children.get(0).data.data).tempAddress;
         image.set(codeIndex+1, addr);
         image.set(codeIndex+2, "XX");
         codeIndex += 3;
@@ -437,7 +442,7 @@ public class CodeGenerator {
                     image.set(codeIndex, "A9");
                     image.set(codeIndex+1, heapAddr);
                     image.set(codeIndex+2, "8D");
-                    image.set(codeIndex+3, "T"+staticVarCount+1);
+                    image.set(codeIndex+3, "T"+(staticVarCount+1));
                     image.set(codeIndex+4, "XX");
                     codeIndex += 5;
                     staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
@@ -454,7 +459,7 @@ public class CodeGenerator {
                         image.set(codeIndex, "A9");
                         image.set(codeIndex+1, hex);
                         image.set(codeIndex+2, "8D");
-                        image.set(codeIndex+3, "T"+staticVarCount+1);
+                        image.set(codeIndex+3, "T"+(staticVarCount+1));
                         image.set(codeIndex+4, "XX");
                         codeIndex += 5;
                         staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
@@ -466,13 +471,13 @@ public class CodeGenerator {
                 } catch (NumberFormatException e) {
                     if(leftChild.length() == 1) {
                         // Id
-                        String staticAddr = findStaticVar("<"+leftChild+">", scope).tempAddress;
+                        String staticAddr = findStaticVar("<"+leftChild+">").tempAddress;
                         if (inWhile) {
                             image.set(codeIndex, "AD");
                             image.set(codeIndex+1, staticAddr);
                             image.set(codeIndex+2, "XX");
                             image.set(codeIndex+3, "8D");
-                            image.set(codeIndex+4, "T"+staticVarCount+1);
+                            image.set(codeIndex+4, "T"+(staticVarCount+1));
                             image.set(codeIndex+5, "XX");
                             codeIndex += 6;
                             staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
@@ -487,7 +492,7 @@ public class CodeGenerator {
                             image.set(codeIndex, "A9");
                             image.set(codeIndex+1, "FB");
                             image.set(codeIndex+2, "8D");
-                            image.set(codeIndex+3, "T"+staticVarCount+1);
+                            image.set(codeIndex+3, "T"+(staticVarCount+1));
                             image.set(codeIndex+4, "XX");
                             codeIndex += 5;
                             staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
@@ -501,7 +506,7 @@ public class CodeGenerator {
                             image.set(codeIndex, "A9");
                             image.set(codeIndex+1, "F5");
                             image.set(codeIndex+2, "8D");
-                            image.set(codeIndex+3, "T"+staticVarCount+1);
+                            image.set(codeIndex+3, "T"+(staticVarCount+1));
                             image.set(codeIndex+4, "XX");
                             codeIndex += 5;
                             staticVars.add(new StaticVarEntry("Copy", staticVarCount+1, scope));
@@ -546,7 +551,7 @@ public class CodeGenerator {
                 } catch (NumberFormatException e) {
                     if(rightChild.length() == 1) {
                         // Id
-                        String staticAddr = findStaticVar("<"+rightChild+">", scope).tempAddress;
+                        String staticAddr = findStaticVar("<"+rightChild+">").tempAddress;
                         if (inWhile) {
                             image.set(codeIndex, "AD");
                             image.set(codeIndex+1, staticAddr);
@@ -608,18 +613,12 @@ public class CodeGenerator {
 
             if (inWhile) {
                 image.set(codeIndex, "AE");
-                image.set(codeIndex+1, "T"+staticVarCount+1);
+                image.set(codeIndex+1, "T"+(staticVarCount+1));
                 image.set(codeIndex+2, "XX");
                 image.set(codeIndex+3, "EC");
                 image.set(codeIndex+4, "T"+staticVarCount);
                 image.set(codeIndex+5, "XX");
-//                image.set(codeIndex+6, "A9");
-//                image.set(codeIndex+7, "00");
-//                image.set(codeIndex+8, "D0");
-//                image.set(codeIndex+9, "02");
-//                image.set(codeIndex+10, "A9");
-//                image.set(codeIndex+11, "01");
-//                image.set(codeIndex+12, "XX");
+                codeIndex += 6;
             } else {
                 image.set(codeIndex, "8D");
                 image.set(codeIndex + 1, "00");
@@ -631,7 +630,6 @@ public class CodeGenerator {
             }
         }
     }
-
 
     private static void generateAddition(Tree.Node current, int level) {
         if(current.data.data.equals("<Addition>")) {
@@ -664,7 +662,7 @@ public class CodeGenerator {
             }
             catch (NumberFormatException e) {
                 // Id
-                String staticAddr = findStaticVar(current.data.data, scope).tempAddress;
+                String staticAddr = findStaticVar(current.data.data).tempAddress;
                 image.set(codeIndex, "AD");
                 image.set(codeIndex+1, staticAddr);
                 image.set(codeIndex+2, "XX");
@@ -676,13 +674,22 @@ public class CodeGenerator {
         }
     }
 
-    private static StaticVarEntry findStaticVar(String var, int scope) {
+    private static StaticVarEntry findStaticVar(String var) {
         for(StaticVarEntry s : staticVars) {
             if(s.id.equals(var)) {
                 return s;
             }
         }
         return null;
+    }
+
+    private static int findJumpEntry(int jumpCount) {
+        for(int i=0; i<jumpTable.size(); i++) {
+            if(jumpTable.get(i).id == "J"+jumpCount) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private static void addToHeap(String data) {
