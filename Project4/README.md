@@ -1,4 +1,5 @@
-Same business as project 1.
+A few notes:
 
-1. The project JAR file is Compiler.JAR, located in the root of the Project2 folder.
-2. My test files are located in the 'test' folder. There are 3 test files: succeeding tests (no errors or warnings), failed tests (errors and/or warnings), and 1 file that contains your test cases from the project instructions.
+- The project JAR file is Compiler.JAR, located in the root of the Project4 folder.
+- My test files are located in the 'test' folder. There are 2 test files: succeeding tests (no errors, possibly some warnings) and failed tests (errors and/or warnings).
+- There a few known issues (i.e. things I slaved over trying to figure out, but just could not). Instead of just having the program error out or produce a wrong executable image, I chose to just not support some things and have code gen fail if these unsupported things are attempted. I have test cases for these failures in the fails.in file.
