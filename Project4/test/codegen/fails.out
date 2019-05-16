@@ -1,0 +1,1125 @@
+Compiling program 1...
+
+LEXER -- Lexing program 1...
+LEXER -- EOP [ $ ] found at (4:1)
+LEXER -- ERROR: No input found at (4:1)
+LEXER -- Lexing complete for program 1. Lex failed with 1 error(s).
+
+Compilation stopped for program 1 due to Lexical error(s).
+
+-------------------------------------------
+
+Compiling program 2...
+
+LEXER -- Lexing program 2...
+LEXER -- ERROR: Unrecognized token [ L ] at (9:1)
+LEXER -- CHAR [ e ] found at (9:2)
+LEXER -- CHAR [ x ] found at (9:3)
+LEXER -- CHAR [ e ] found at (9:4)
+LEXER -- CHAR [ r ] found at (9:5)
+LEXER -- CHAR [ f ] found at (9:7)
+LEXER -- CHAR [ a ] found at (9:8)
+LEXER -- CHAR [ i ] found at (9:9)
+LEXER -- CHAR [ l ] found at (9:10)
+LEXER -- EOP [ $ ] found at (9:11)
+LEXER -- Lexing complete for program 2. Lex failed with 1 error(s).
+
+Compilation stopped for program 2 due to Lexical error(s).
+
+-------------------------------------------
+
+Compiling program 3...
+
+LEXER -- Lexing program 3...
+LEXER -- CHAR [ p ] found at (14:1)
+LEXER -- CHAR [ a ] found at (14:2)
+LEXER -- CHAR [ r ] found at (14:3)
+LEXER -- CHAR [ s ] found at (14:4)
+LEXER -- CHAR [ e ] found at (14:5)
+LEXER -- CHAR [ f ] found at (14:7)
+LEXER -- CHAR [ a ] found at (14:8)
+LEXER -- CHAR [ i ] found at (14:9)
+LEXER -- CHAR [ l ] found at (14:10)
+LEXER -- EOP [ $ ] found at (14:11)
+LEXER -- Lexing complete for program 3. No errors found.
+
+PARSER -- Parsing program 3...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- ERROR: Expected [L_BRACE], found [CHAR] with value 'p' at (14:1)
+PARSER -- Parse failed with 1 error(s)
+
+Compilation stopped for program 3 due to Parse error(s).
+
+-------------------------------------------
+
+Compiling program 4...
+
+LEXER -- Lexing program 4...
+LEXER -- L_BRACE [ { ] found at (19:1)
+LEXER -- CHAR [ a ] found at (21:3)
+LEXER -- ASSIGN_OP [ = ] found at (21:5)
+LEXER -- DIGIT [ 2 ] found at (21:7)
+LEXER -- R_BRACE [ } ] found at (23:1)
+LEXER -- EOP [ $ ] found at (23:2)
+LEXER -- Lexing complete for program 4. No errors found.
+
+PARSER -- Parsing program 4...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 4:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<AssignmentStatement>
+-----<Id>
+------a
+-----=
+-----<Expr>
+------<IntExpr>
+-------2
+---<StatementList>
+--}
+-$
+
+
+SEMANTIC -- Analyzing program 4...
+SEMANTIC -- ERROR: Undeclared identifier <a> at (21:3)
+SEMANTIC -- ERROR: Undeclared identifier <a> at (21:3)
+SEMANTIC -- Semantic analysis failed with 2 error(s) and 0 warning(s)
+
+Compilation stopped for program 4 due to Semantic error(s).
+
+-------------------------------------------
+
+Compiling program 5...
+
+LEXER -- Lexing program 5...
+LEXER -- L_BRACE [ { ] found at (28:1)
+LEXER -- STRING [ string ] found at (30:3)
+LEXER -- CHAR [ a ] found at (30:10)
+LEXER -- CHAR [ a ] found at (32:3)
+LEXER -- ASSIGN_OP [ = ] found at (32:5)
+LEXER -- QUOTE [ " ] found at (32:7)
+LEXER -- CHAR [ a ] found at (32:8)
+LEXER -- CHAR [ b ] found at (32:9)
+LEXER -- CHAR [ c ] found at (32:10)
+LEXER -- CHAR [ d ] found at (32:11)
+LEXER -- CHAR [ e ] found at (32:12)
+LEXER -- CHAR [ f ] found at (32:13)
+LEXER -- CHAR [ g ] found at (32:14)
+LEXER -- CHAR [ h ] found at (32:15)
+LEXER -- CHAR [ i ] found at (32:16)
+LEXER -- CHAR [ j ] found at (32:17)
+LEXER -- CHAR [ k ] found at (32:18)
+LEXER -- CHAR [ l ] found at (32:19)
+LEXER -- CHAR [ m ] found at (32:20)
+LEXER -- CHAR [ n ] found at (32:21)
+LEXER -- CHAR [ o ] found at (32:22)
+LEXER -- CHAR [ p ] found at (32:23)
+LEXER -- CHAR [ q ] found at (32:24)
+LEXER -- CHAR [ r ] found at (32:25)
+LEXER -- CHAR [ s ] found at (32:26)
+LEXER -- CHAR [ t ] found at (32:27)
+LEXER -- CHAR [ u ] found at (32:28)
+LEXER -- CHAR [ v ] found at (32:29)
+LEXER -- CHAR [ w ] found at (32:30)
+LEXER -- CHAR [ x ] found at (32:31)
+LEXER -- CHAR [ y ] found at (32:32)
+LEXER -- CHAR [ z ] found at (32:33)
+LEXER -- QUOTE [ " ] found at (32:34)
+LEXER -- STRING [ string ] found at (34:3)
+LEXER -- CHAR [ b ] found at (34:10)
+LEXER -- CHAR [ b ] found at (36:3)
+LEXER -- ASSIGN_OP [ = ] found at (36:5)
+LEXER -- QUOTE [ " ] found at (36:7)
+LEXER -- CHAR [ a ] found at (36:8)
+LEXER -- CHAR [ b ] found at (36:9)
+LEXER -- CHAR [ c ] found at (36:10)
+LEXER -- CHAR [ d ] found at (36:11)
+LEXER -- CHAR [ e ] found at (36:12)
+LEXER -- CHAR [ f ] found at (36:13)
+LEXER -- CHAR [ g ] found at (36:14)
+LEXER -- CHAR [ h ] found at (36:15)
+LEXER -- CHAR [ i ] found at (36:16)
+LEXER -- CHAR [ j ] found at (36:17)
+LEXER -- CHAR [ k ] found at (36:18)
+LEXER -- CHAR [ l ] found at (36:19)
+LEXER -- CHAR [ m ] found at (36:20)
+LEXER -- CHAR [ n ] found at (36:21)
+LEXER -- CHAR [ o ] found at (36:22)
+LEXER -- CHAR [ p ] found at (36:23)
+LEXER -- CHAR [ q ] found at (36:24)
+LEXER -- CHAR [ r ] found at (36:25)
+LEXER -- CHAR [ s ] found at (36:26)
+LEXER -- CHAR [ t ] found at (36:27)
+LEXER -- CHAR [ u ] found at (36:28)
+LEXER -- CHAR [ v ] found at (36:29)
+LEXER -- CHAR [ w ] found at (36:30)
+LEXER -- CHAR [ x ] found at (36:31)
+LEXER -- CHAR [ y ] found at (36:32)
+LEXER -- QUOTE [ " ] found at (36:33)
+LEXER -- IF [ if ] found at (38:3)
+LEXER -- L_PAREN [ ( ] found at (38:6)
+LEXER -- CHAR [ a ] found at (38:7)
+LEXER -- BOOL_OP [ != ] found at (38:9)
+LEXER -- CHAR [ b ] found at (38:12)
+LEXER -- R_PAREN [ ) ] found at (38:13)
+LEXER -- L_BRACE [ { ] found at (38:15)
+LEXER -- PRINT [ print ] found at (40:5)
+LEXER -- L_PAREN [ ( ] found at (40:10)
+LEXER -- CHAR [ a ] found at (40:11)
+LEXER -- R_PAREN [ ) ] found at (40:12)
+LEXER -- PRINT [ print ] found at (42:5)
+LEXER -- L_PAREN [ ( ] found at (42:10)
+LEXER -- QUOTE [ " ] found at (42:11)
+LEXER -- SPACE [   ] found at (42:12)
+LEXER -- CHAR [ i ] found at (42:13)
+LEXER -- CHAR [ s ] found at (42:14)
+LEXER -- SPACE [   ] found at (42:15)
+LEXER -- CHAR [ n ] found at (42:16)
+LEXER -- CHAR [ o ] found at (42:17)
+LEXER -- CHAR [ t ] found at (42:18)
+LEXER -- SPACE [   ] found at (42:19)
+LEXER -- CHAR [ e ] found at (42:20)
+LEXER -- CHAR [ q ] found at (42:21)
+LEXER -- CHAR [ u ] found at (42:22)
+LEXER -- CHAR [ a ] found at (42:23)
+LEXER -- CHAR [ l ] found at (42:24)
+LEXER -- SPACE [   ] found at (42:25)
+LEXER -- CHAR [ t ] found at (42:26)
+LEXER -- CHAR [ o ] found at (42:27)
+LEXER -- SPACE [   ] found at (42:28)
+LEXER -- QUOTE [ " ] found at (42:29)
+LEXER -- R_PAREN [ ) ] found at (42:30)
+LEXER -- PRINT [ print ] found at (44:5)
+LEXER -- L_PAREN [ ( ] found at (44:10)
+LEXER -- CHAR [ b ] found at (44:11)
+LEXER -- R_PAREN [ ) ] found at (44:12)
+LEXER -- R_BRACE [ } ] found at (46:3)
+LEXER -- INT [ int ] found at (49:3)
+LEXER -- CHAR [ c ] found at (49:7)
+LEXER -- CHAR [ c ] found at (51:3)
+LEXER -- ASSIGN_OP [ = ] found at (51:5)
+LEXER -- DIGIT [ 1 ] found at (51:7)
+LEXER -- WHILE [ while ] found at (53:3)
+LEXER -- L_PAREN [ ( ] found at (53:8)
+LEXER -- CHAR [ c ] found at (53:9)
+LEXER -- BOOL_OP [ == ] found at (53:11)
+LEXER -- DIGIT [ 1 ] found at (53:14)
+LEXER -- R_PAREN [ ) ] found at (53:15)
+LEXER -- L_BRACE [ { ] found at (53:17)
+LEXER -- PRINT [ print ] found at (55:5)
+LEXER -- L_PAREN [ ( ] found at (55:10)
+LEXER -- CHAR [ c ] found at (55:11)
+LEXER -- R_PAREN [ ) ] found at (55:12)
+LEXER -- CHAR [ c ] found at (57:5)
+LEXER -- ASSIGN_OP [ = ] found at (57:7)
+LEXER -- DIGIT [ 8 ] found at (57:9)
+LEXER -- INT_OP [ + ] found at (57:11)
+LEXER -- DIGIT [ 7 ] found at (57:13)
+LEXER -- INT_OP [ + ] found at (57:15)
+LEXER -- DIGIT [ 6 ] found at (57:17)
+LEXER -- INT_OP [ + ] found at (57:19)
+LEXER -- DIGIT [ 5 ] found at (57:21)
+LEXER -- INT_OP [ + ] found at (57:23)
+LEXER -- DIGIT [ 4 ] found at (57:25)
+LEXER -- INT_OP [ + ] found at (57:27)
+LEXER -- DIGIT [ 3 ] found at (57:29)
+LEXER -- INT_OP [ + ] found at (57:31)
+LEXER -- DIGIT [ 2 ] found at (57:33)
+LEXER -- INT_OP [ + ] found at (57:35)
+LEXER -- CHAR [ c ] found at (57:37)
+LEXER -- R_BRACE [ } ] found at (59:3)
+LEXER -- R_BRACE [ } ] found at (61:1)
+LEXER -- EOP [ $ ] found at (61:2)
+LEXER -- Lexing complete for program 5. No errors found.
+
+PARSER -- Parsing program 5...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseIfStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseWhileStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 5:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----string
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------a
+------=
+------<Expr>
+-------<StringExpr>
+--------"
+--------<CharList>
+---------a
+---------<CharList>
+----------b
+----------<CharList>
+-----------c
+-----------<CharList>
+------------d
+------------<CharList>
+-------------e
+-------------<CharList>
+--------------f
+--------------<CharList>
+---------------g
+---------------<CharList>
+----------------h
+----------------<CharList>
+-----------------i
+-----------------<CharList>
+------------------j
+------------------<CharList>
+-------------------k
+-------------------<CharList>
+--------------------l
+--------------------<CharList>
+---------------------m
+---------------------<CharList>
+----------------------n
+----------------------<CharList>
+-----------------------o
+-----------------------<CharList>
+------------------------p
+------------------------<CharList>
+-------------------------q
+-------------------------<CharList>
+--------------------------r
+--------------------------<CharList>
+---------------------------s
+---------------------------<CharList>
+----------------------------t
+----------------------------<CharList>
+-----------------------------u
+-----------------------------<CharList>
+------------------------------v
+------------------------------<CharList>
+-------------------------------w
+-------------------------------<CharList>
+--------------------------------x
+--------------------------------<CharList>
+---------------------------------y
+---------------------------------<CharList>
+----------------------------------z
+----------------------------------<CharList>
+--------"
+----<StatementList>
+-----<Statement>
+------<VarDecl>
+-------string
+-------<Id>
+--------b
+-----<StatementList>
+------<Statement>
+-------<AssignmentStatement>
+--------<Id>
+---------b
+--------=
+--------<Expr>
+---------<StringExpr>
+----------"
+----------<CharList>
+-----------a
+-----------<CharList>
+------------b
+------------<CharList>
+-------------c
+-------------<CharList>
+--------------d
+--------------<CharList>
+---------------e
+---------------<CharList>
+----------------f
+----------------<CharList>
+-----------------g
+-----------------<CharList>
+------------------h
+------------------<CharList>
+-------------------i
+-------------------<CharList>
+--------------------j
+--------------------<CharList>
+---------------------k
+---------------------<CharList>
+----------------------l
+----------------------<CharList>
+-----------------------m
+-----------------------<CharList>
+------------------------n
+------------------------<CharList>
+-------------------------o
+-------------------------<CharList>
+--------------------------p
+--------------------------<CharList>
+---------------------------q
+---------------------------<CharList>
+----------------------------r
+----------------------------<CharList>
+-----------------------------s
+-----------------------------<CharList>
+------------------------------t
+------------------------------<CharList>
+-------------------------------u
+-------------------------------<CharList>
+--------------------------------v
+--------------------------------<CharList>
+---------------------------------w
+---------------------------------<CharList>
+----------------------------------x
+----------------------------------<CharList>
+-----------------------------------y
+-----------------------------------<CharList>
+----------"
+------<StatementList>
+-------<Statement>
+--------<IfStatement>
+---------if
+---------<BooleanExpr>
+----------(
+----------<Expr>
+-----------<Id>
+------------a
+----------!=
+----------<Expr>
+-----------<Id>
+------------b
+----------)
+---------<Block>
+----------{
+----------<StatementList>
+-----------<Statement>
+------------<PrintStatement>
+-------------print
+-------------(
+-------------<Expr>
+--------------<Id>
+---------------a
+-------------)
+-----------<StatementList>
+------------<Statement>
+-------------<PrintStatement>
+--------------print
+--------------(
+--------------<Expr>
+---------------<StringExpr>
+----------------"
+----------------<CharList>
+----------------- 
+-----------------<CharList>
+------------------i
+------------------<CharList>
+-------------------s
+-------------------<CharList>
+-------------------- 
+--------------------<CharList>
+---------------------n
+---------------------<CharList>
+----------------------o
+----------------------<CharList>
+-----------------------t
+-----------------------<CharList>
+------------------------ 
+------------------------<CharList>
+-------------------------e
+-------------------------<CharList>
+--------------------------q
+--------------------------<CharList>
+---------------------------u
+---------------------------<CharList>
+----------------------------a
+----------------------------<CharList>
+-----------------------------l
+-----------------------------<CharList>
+------------------------------ 
+------------------------------<CharList>
+-------------------------------t
+-------------------------------<CharList>
+--------------------------------o
+--------------------------------<CharList>
+--------------------------------- 
+---------------------------------<CharList>
+----------------"
+--------------)
+------------<StatementList>
+-------------<Statement>
+--------------<PrintStatement>
+---------------print
+---------------(
+---------------<Expr>
+----------------<Id>
+-----------------b
+---------------)
+-------------<StatementList>
+----------}
+-------<StatementList>
+--------<Statement>
+---------<VarDecl>
+----------int
+----------<Id>
+-----------c
+--------<StatementList>
+---------<Statement>
+----------<AssignmentStatement>
+-----------<Id>
+------------c
+-----------=
+-----------<Expr>
+------------<IntExpr>
+-------------1
+---------<StatementList>
+----------<Statement>
+-----------<WhileStatement>
+------------while
+------------<BooleanExpr>
+-------------(
+-------------<Expr>
+--------------<Id>
+---------------c
+-------------==
+-------------<Expr>
+--------------<IntExpr>
+---------------1
+-------------)
+------------<Block>
+-------------{
+-------------<StatementList>
+--------------<Statement>
+---------------<PrintStatement>
+----------------print
+----------------(
+----------------<Expr>
+-----------------<Id>
+------------------c
+----------------)
+--------------<StatementList>
+---------------<Statement>
+----------------<AssignmentStatement>
+-----------------<Id>
+------------------c
+-----------------=
+-----------------<Expr>
+------------------<IntExpr>
+-------------------8
+-------------------+
+-------------------<Expr>
+--------------------<IntExpr>
+---------------------7
+---------------------+
+---------------------<Expr>
+----------------------<IntExpr>
+-----------------------6
+-----------------------+
+-----------------------<Expr>
+------------------------<IntExpr>
+-------------------------5
+-------------------------+
+-------------------------<Expr>
+--------------------------<IntExpr>
+---------------------------4
+---------------------------+
+---------------------------<Expr>
+----------------------------<IntExpr>
+-----------------------------3
+-----------------------------+
+-----------------------------<Expr>
+------------------------------<IntExpr>
+-------------------------------2
+-------------------------------+
+-------------------------------<Expr>
+--------------------------------<Id>
+---------------------------------c
+---------------<StatementList>
+-------------}
+----------<StatementList>
+--}
+-$
+
+
+SEMANTIC -- Analyzing program 5...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
+
+AST for program 5:
+<Block>
+-<Variable Declaration>
+--<string>
+--<a>
+-<Assignment Statement>
+--<a>
+--<"abcdefghijklmnopqrstuvwxyz">
+-<Variable Declaration>
+--<string>
+--<b>
+-<Assignment Statement>
+--<b>
+--<"abcdefghijklmnopqrstuvwxy">
+-<If Statement>
+--<!=>
+---<a>
+---<b>
+--<Block>
+---<Print Statement>
+----<a>
+---<Print Statement>
+----<" is not equal to ">
+---<Print Statement>
+----<b>
+-<Variable Declaration>
+--<int>
+--<c>
+-<Assignment Statement>
+--<c>
+--<1>
+-<While Statement>
+--<==>
+---<c>
+---<1>
+--<Block>
+---<Print Statement>
+----<c>
+---<Assignment Statement>
+----<c>
+----<Addition>
+-----<8>
+-----<Addition>
+------<7>
+------<Addition>
+-------<6>
+-------<Addition>
+--------<5>
+--------<Addition>
+---------<4>
+---------<Addition>
+----------<3>
+----------<Addition>
+-----------<2>
+-----------<c>
+
+Symbol table for program 5:
+ID	Type		Scope	Line	Position
+<a>	<string>	0	30	10
+<b>	<string>	0	34	10
+<c>	<int>		0	49	7
+
+CODE GEN -- Beginning code gen for program 5...
+CODE GEN -- Added string [ true ] to heap at address 251
+CODE GEN -- Added string [ false ] to heap at address 245
+CODE GEN -- Generating <Block>
+CODE GEN -- Generating <VariableDeclaration>
+CODE GEN -- Generating <Assignment Statement>
+CODE GEN -- Added string [ abcdefghijklmnopqrstuvwxyz ] to heap at address 218
+CODE GEN -- Generating <VariableDeclaration>
+CODE GEN -- Generating <Assignment Statement>
+CODE GEN -- Added string [ abcdefghijklmnopqrstuvwxy ] to heap at address 192
+CODE GEN -- Generating <If Statement>
+CODE GEN -- Generating <If Statement>
+CODE GEN -- Generating <Block>
+CODE GEN -- Generating <Print Statement>
+CODE GEN -- Generating <Print Statement>
+CODE GEN -- Added string [  is not equal to  ] to heap at address 174
+CODE GEN -- Generating <Print Statement>
+CODE GEN -- Generating <VariableDeclaration>
+CODE GEN -- Generating <Assignment Statement>
+CODE GEN -- Generating <While Statement>
+CODE GEN -- Generating <While Statement>
+CODE GEN -- Generating <Block>
+CODE GEN -- Generating <Print Statement>
+CODE GEN -- Generating <Assignment Statement>
+CODE GEN -- Generating <Addition>
+CODE GEN -- ERROR: Memory overflow. Please shorten the program.
+CODE GEN -- Code gen failed with 1 error(s).
+
+Compilation complete for program 5.
+
+-------------------------------------------
+
+Compiling program 6...
+
+LEXER -- Lexing program 6...
+LEXER -- L_BRACE [ { ] found at (66:1)
+LEXER -- IF [ if ] found at (68:5)
+LEXER -- L_PAREN [ ( ] found at (68:7)
+LEXER -- DIGIT [ 1 ] found at (68:8)
+LEXER -- BOOL_OP [ == ] found at (68:10)
+LEXER -- DIGIT [ 1 ] found at (68:13)
+LEXER -- R_PAREN [ ) ] found at (68:14)
+LEXER -- L_BRACE [ { ] found at (68:15)
+LEXER -- IF [ if ] found at (70:9)
+LEXER -- L_PAREN [ ( ] found at (70:11)
+LEXER -- BOOL_VAL [ true ] found at (70:12)
+LEXER -- BOOL_OP [ != ] found at (70:17)
+LEXER -- BOOL_VAL [ false ] found at (70:20)
+LEXER -- R_PAREN [ ) ] found at (70:25)
+LEXER -- L_BRACE [ { ] found at (70:27)
+LEXER -- PRINT [ print ] found at (72:13)
+LEXER -- L_PAREN [ ( ] found at (72:18)
+LEXER -- QUOTE [ " ] found at (72:19)
+LEXER -- CHAR [ s ] found at (72:20)
+LEXER -- CHAR [ a ] found at (72:21)
+LEXER -- CHAR [ d ] found at (72:22)
+LEXER -- SPACE [   ] found at (72:23)
+LEXER -- CHAR [ f ] found at (72:24)
+LEXER -- CHAR [ a ] found at (72:25)
+LEXER -- CHAR [ c ] found at (72:26)
+LEXER -- CHAR [ e ] found at (72:27)
+LEXER -- QUOTE [ " ] found at (72:28)
+LEXER -- R_PAREN [ ) ] found at (72:29)
+LEXER -- R_BRACE [ } ] found at (74:9)
+LEXER -- R_BRACE [ } ] found at (76:5)
+LEXER -- R_BRACE [ } ] found at (78:1)
+LEXER -- EOP [ $ ] found at (78:2)
+LEXER -- Lexing complete for program 6. No errors found.
+
+PARSER -- Parsing program 6...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseIfStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseIfStatement()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parsePrintStatement()
+PARSER -- parseExpr()
+PARSER -- parseStringExpr()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseCharList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 6:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<IfStatement>
+-----if
+-----<BooleanExpr>
+------(
+------<Expr>
+-------<IntExpr>
+--------1
+------==
+------<Expr>
+-------<IntExpr>
+--------1
+------)
+-----<Block>
+------{
+------<StatementList>
+-------<Statement>
+--------<IfStatement>
+---------if
+---------<BooleanExpr>
+----------(
+----------<Expr>
+-----------<BooleanExpr>
+------------true
+----------!=
+----------<Expr>
+-----------<BooleanExpr>
+------------false
+----------)
+---------<Block>
+----------{
+----------<StatementList>
+-----------<Statement>
+------------<PrintStatement>
+-------------print
+-------------(
+-------------<Expr>
+--------------<StringExpr>
+---------------"
+---------------<CharList>
+----------------s
+----------------<CharList>
+-----------------a
+-----------------<CharList>
+------------------d
+------------------<CharList>
+------------------- 
+-------------------<CharList>
+--------------------f
+--------------------<CharList>
+---------------------a
+---------------------<CharList>
+----------------------c
+----------------------<CharList>
+-----------------------e
+-----------------------<CharList>
+---------------"
+-------------)
+-----------<StatementList>
+----------}
+-------<StatementList>
+------}
+---<StatementList>
+--}
+-$
+
+
+SEMANTIC -- Analyzing program 6...
+SEMANTIC -- Semantic analysis completed successfully with 0 warning(s).
+
+AST for program 6:
+<Block>
+-<If Statement>
+--<==>
+---<1>
+---<1>
+--<Block>
+---<If Statement>
+----<!=>
+-----<true>
+-----<false>
+----<Block>
+-----<Print Statement>
+------<"sad face">
+
+Symbol table for program 6:
+ID	Type		Scope	Line	Position
+
+CODE GEN -- Beginning code gen for program 6...
+CODE GEN -- Added string [ true ] to heap at address 251
+CODE GEN -- Added string [ false ] to heap at address 245
+CODE GEN -- Generating <Block>
+CODE GEN -- Generating <If Statement>
+CODE GEN -- Generating <If Statement>
+CODE GEN -- Generating <Block>
+CODE GEN -- ERROR: Nested If/While expressions are not supported, sorry.
+CODE GEN -- Code gen failed with 1 error(s).
+
+Compilation complete for program 6.
+
+-------------------------------------------
+
+Compiling program 7...
+
+LEXER -- Lexing program 7...
+LEXER -- L_BRACE [ { ] found at (83:1)
+LEXER -- BOOL [ boolean ] found at (85:5)
+LEXER -- CHAR [ a ] found at (85:13)
+LEXER -- CHAR [ a ] found at (87:5)
+LEXER -- ASSIGN_OP [ = ] found at (87:7)
+LEXER -- L_PAREN [ ( ] found at (87:9)
+LEXER -- BOOL_VAL [ true ] found at (87:10)
+LEXER -- BOOL_OP [ == ] found at (87:15)
+LEXER -- L_PAREN [ ( ] found at (87:18)
+LEXER -- DIGIT [ 1 ] found at (87:19)
+LEXER -- BOOL_OP [ == ] found at (87:21)
+LEXER -- DIGIT [ 1 ] found at (87:24)
+LEXER -- R_PAREN [ ) ] found at (87:25)
+LEXER -- R_PAREN [ ) ] found at (87:26)
+LEXER -- R_BRACE [ } ] found at (89:1)
+LEXER -- EOP [ $ ] found at (89:2)
+LEXER -- Lexing complete for program 7. No errors found.
+
+PARSER -- Parsing program 7...
+PARSER -- parse()
+PARSER -- parseProgram()
+PARSER -- parseBlock()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseVarDecl()
+PARSER -- parseId()
+PARSER -- parseStatementList()
+PARSER -- parseStatement()
+PARSER -- parseAssignmentStatement()
+PARSER -- parseId()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseBooleanExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseExpr()
+PARSER -- parseIntExpr()
+PARSER -- parseStatementList()
+PARSER -- Parse completed successfully.
+
+CST for program 7:
+<Program>
+-<Block>
+--{
+--<StatementList>
+---<Statement>
+----<VarDecl>
+-----boolean
+-----<Id>
+------a
+---<StatementList>
+----<Statement>
+-----<AssignmentStatement>
+------<Id>
+-------a
+------=
+------<Expr>
+-------<BooleanExpr>
+--------(
+--------<Expr>
+---------<BooleanExpr>
+----------true
+--------==
+--------<Expr>
+---------<BooleanExpr>
+----------(
+----------<Expr>
+-----------<IntExpr>
+------------1
+----------==
+----------<Expr>
+-----------<IntExpr>
+------------1
+----------)
+--------)
+----<StatementList>
+--}
+-$
+
+
+SEMANTIC -- Analyzing program 7...
+SEMANTIC -- WARNING: Identifier <a> initialized, but never used, at (85:13)
+SEMANTIC -- Semantic analysis completed successfully with 1 warning(s).
+
+AST for program 7:
+<Block>
+-<Variable Declaration>
+--<boolean>
+--<a>
+-<Assignment Statement>
+--<a>
+--<==>
+---<true>
+---<==>
+----<1>
+----<1>
+
+Symbol table for program 7:
+ID	Type		Scope	Line	Position
+<a>	<boolean>	0	85	13
+
+CODE GEN -- Beginning code gen for program 7...
+CODE GEN -- Added string [ true ] to heap at address 251
+CODE GEN -- Added string [ false ] to heap at address 245
+CODE GEN -- Generating <Block>
+CODE GEN -- Generating <VariableDeclaration>
+CODE GEN -- Generating <Assignment Statement>
+CODE GEN -- ERROR: Nested boolean expressions are not supported, sorry.
+CODE GEN -- Code gen failed with 1 error(s).
+
+Compilation complete for program 7.
+
+-------------------------------------------
+

@@ -96,7 +96,9 @@ public class CodeGenerator {
             }
 
             System.out.println("CODE GEN -- Backpatching complete");
-
+            System.out.println("CODE GEN -- Code gen completed successfully");
+            System.out.println();
+            System.out.println("Executable Image for program "+programNum+":");
             printCode();
         } else {
             System.out.println("CODE GEN -- Code gen failed with " + errors + " error(s).");

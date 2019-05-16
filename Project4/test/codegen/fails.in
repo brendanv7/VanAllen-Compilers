@@ -1,0 +1,48 @@
+/* Special no input case */
+$
+
+/* One lex fail to prove that compilation stops */
+Lexer fail$
+
+/* One parse fail to prove that compilation stops */
+parse fail$
+
+/* One semantic fail to prove that compilation stops */
+{
+  a = 2
+}$
+
+/* Memory Error */
+{
+  string a
+  a = "abcdefghijklmnopqrstuvwxyz"
+  string b
+  b = "abcdefghijklmnopqrstuvwxy"
+  if (a != b) {
+    print(a)
+    print(" is not equal to ")
+    print(b)
+  }
+
+  int c
+  c = 1
+  while(c == 1) {
+    print(c)
+    c = 8 + 7 + 6 + 5 + 4 + 3 + 2 + c
+  }
+}$
+
+/* Known bug: Nested If/Whiles not supported */
+{
+    if(1 == 1){
+        if(true != false) {
+            print("sad face")
+        }
+    }
+}$
+
+/* Known bug: Nest boolean expression not supported */
+{
+    boolean a
+    a = (true == (1 == 1))
+}$
