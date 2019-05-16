@@ -1,38 +1,89 @@
 {
-    int a
-    int b
-    boolean c
-    c = (a == b)
+	string a
+	a = "this is a string"
+	print(a)
 }$
 
 {
-    int a
-    boolean b
-    b = (1 == a)
-    b = (a == 1)
-    b = (a == 1 + 2 + 3 + 4 + a)
+	boolean a
+	a = false
+	print((a == true))
+	print((true == a))
+	print((a == false))
+	print(a)
+	if (a == false) {
+	    a = true
+	}
+	print(a)
 }$
 
 {
-    boolean a
-    a = true
-    a = (true == true)
-    a = (false == true)
+	string s
+	int a
+	a = 1
+	{
+		s = "meow"
+		int a
+		a = 2
+		print(a)
+	}
+	{
+	    while (a != 5) {
+	       a = 1 + a
+	        print(a)
+	    }
+	    print(3 + a)
+	    print(s)
+	}
 }$
 
 {
-    string a
-    boolean b
-    b = (a == "abc")
-    b = ("a" == "ab")
-    b = (a == a)
+	int a
+	a = 1
+	a = 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + a
+	print(a)
+}$
+
+{
+	if ("true" == "true") {
+		print("stringcheck")
+	}
+	print(" ")
+	if ("true" != "false") {
+		print("noequal")
+	}
+}$
+
+{
+	int a
+	int b
+	int c
+	a = 7
+	b = a
+	if (a == b) {
+		print("equal")
+	}
+	print(" ")
+	if (b != c) {
+		print("not equal")
+	}
+	print(" ")
+	if (true != (a == a)) {
+		print("a is a is true but a is not true")
+	}
 }$
 
 {
     int a
     a = 1
-    while (a == 3) {
-        a = 1 + a
+    if (a == 2) {
         print(a)
+        if( a == 2) {
+          print(2)
+          print(3)
+          print(4)
+        }
+        print("a")
     }
+    print("not two")
 }$

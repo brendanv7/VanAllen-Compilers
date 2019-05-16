@@ -6,16 +6,20 @@ public class SemanticAnalyzer {
     public static ScopeTree scopeTree;
     private static int errors;
     private static int warnings;
+    private static int nextNewScope;
 
     public static Tree analyze(Tree ast, int programNum) {
         errors = 0;
         warnings = 0;
+        nextNewScope = 0;
         symbolTable = new ArrayList<>();
 
         System.out.println("SEMANTIC -- Analyzing program " + programNum + "...");
 
         buildSymbolTable(ast);
+        nextNewScope = 0;
         scopeCheck(ast);
+        nextNewScope = 0;
         typeCheck(ast);
         usageCheck();
 
@@ -46,9 +50,11 @@ public class SemanticAnalyzer {
         for(Tree.Node n : current.children) {
             switch (n.data.data) {
                 case "<Block>" : {
-                    scope++;
+                    int thisScope = scope;
+                    scope += 1 + nextNewScope;
                     scopeCheck(n, scope);
-                    scope--;
+                    scope = thisScope;
+                    nextNewScope++;
                     break;
                 }
 
@@ -170,9 +176,11 @@ public class SemanticAnalyzer {
         for(Tree.Node n : current.children) {
             switch (n.data.data) {
                 case "<Block>" : {
-                    scope++;
+                    int thisScope = scope;
+                    scope += 1 + nextNewScope;
                     typeCheck(n, scope);
-                    scope--;
+                    scope = thisScope;
+                    nextNewScope++;
                     break;
                 }
 
@@ -282,7 +290,28 @@ public class SemanticAnalyzer {
                 }
 
                 default : {
-                    // Ignore IDs, digits, and strings since they have no type concerns.
+                    // Remove < > to parse easier
+                    String s = n.data.data.substring(1, n.data.data.length()-1);
+                    if(s.substring(0,1).equals("\"")) {
+                        // Ignore strings
+                    } else {
+                        try {
+                            Integer.parseInt(s);
+                            // Ignore digits;
+                        }
+                        catch (NumberFormatException e) {
+                            // Since s wasn't a number, we know its an identifier
+                            s = "<" + s + ">";
+                            HashTableRecord h = findSymbol(s, scope);
+                            if(h != null) {
+                                n.data.type = h.type;
+                            } else {
+                                errors++;
+                                System.out.println("SEMANTIC -- ERROR: Undeclared identifier " + s +
+                                        " at (" + n.data.lineNum + ":" + n.data.position+ ")");
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -362,7 +391,7 @@ public class SemanticAnalyzer {
     private static void buildSymbolTable(Tree.Node current, int scope) {
         boolean newScope = false;
         if(current.data.data.equals("<Block>")) {
-            scope++;
+            scope += 1 + nextNewScope;
             newScope = true;
             scopeTree.openScope(scope);
         }
@@ -377,6 +406,7 @@ public class SemanticAnalyzer {
                         "at (" + id.lineNum + ":" + id.position+ ")");
             } else {
                 HashTableRecord h = new HashTableRecord(id, type, scope);
+                current.children.get(1).data.type = type;
                 symbolTable.add(h);
             }
         }
@@ -387,13 +417,18 @@ public class SemanticAnalyzer {
         }
 
         if(newScope) {
-            scope--;
+            nextNewScope++;
             scopeTree.closeScope();
         }
     }
 
     private static boolean isDuplicateId(String id, int scope) {
-        return findSymbol(id, scope) != null;
+        HashTableRecord h = findSymbol(id, scope);
+        if(h != null) {
+            return h.scope == scope;
+        } else {
+            return false;
+        }
     }
 
     private static void printSymbolTable() {

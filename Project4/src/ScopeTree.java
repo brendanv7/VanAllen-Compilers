@@ -39,7 +39,11 @@ public class ScopeTree {
             return current;
         }
         for (Node child : current.children) {
-            return findScope(child, scope);
+            Node temp = findScope(child,scope);
+            if(temp != null) {
+                return temp;
+            }
+            //return findScope(child, scope);
         }
         return null;
     }
